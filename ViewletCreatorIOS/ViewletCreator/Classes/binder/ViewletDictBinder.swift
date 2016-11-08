@@ -12,6 +12,9 @@ open class ViewletDictBinder : ViewletBinder {
     
     private var boundViews: [String: UIView] = [:]
     
+    public init() {
+    }
+    
     open func onBind(refId: String, view: UIView) {
         boundViews[refId] = view
     }
