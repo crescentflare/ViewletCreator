@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ViewletCreator_Example' do
+  pod 'ViewletCreator', :path => '../../'
+
+  target 'ViewletCreator_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

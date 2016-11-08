@@ -1,0 +1,16 @@
+PODS:
+  - ViewletCreator (0.1.0)
+
+DEPENDENCIES:
+  - ViewletCreator (from `../../`)
+
+EXTERNAL SOURCES:
+  ViewletCreator:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  ViewletCreator: 37a0c36e9eaa7cf359d2edc464a5ce769d7853dd
+
+PODFILE CHECKSUM: 92343c16a3d90390d14bf69f594763ee8402d547
+
+COCOAPODS: 1.1.1
