@@ -1,0 +1,8 @@
+{
+  "name": "Layout list (iOS)",
+  "description": "A list of layout JSON files",
+  "category": "iOS",
+  "method": "GET",
+  "responseCode": 200,
+  "generates": "fileList"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Viewlet server",
+  "description": "Serves the viewlet JSON layout files to be polled for updates by the example project",
+  "method": "GET",
+  "responseCode": 200,
+  "generates": "indexPage"
+}
