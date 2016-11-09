@@ -1,0 +1,8 @@
+{
+  "name": "Layout list (Android)",
+  "description": "A list of layout JSON files",
+  "category": "Android",
+  "method": "GET",
+  "responseCode": 200,
+  "generates": "fileList"
+}
