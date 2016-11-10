@@ -1,24 +1,37 @@
 //
 //  ViewController.swift
-//  ViewletCreator
+//  Viewlet creator example
 //
-//  Created by Johan Bos on 11/08/2016.
-//  Copyright (c) 2016 Johan Bos. All rights reserved.
+//  The main example view controller
 //
 
 import UIKit
+import ViewletCreator
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    // --
+    // MARK: Lifecycle
+    // --
+
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = UIColor(white: 1, alpha: 1)
+        edgesForExtendedLayout = UIRectEdge()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidLoad() {
+        // Initialize navigation bar
+        super.viewDidLoad()
+        navigationItem.title = "Viewlet example"
+        
+        // Basic viewlet test
+        if let jsonData = ViewletLoader.attributesFrom(jsonFile: "Layouts/layout_main")?["textView"] as? [String: Any] {
+            if let view = ViewletCreator.create(name: "textView", attributes: jsonData) {
+                view.sizeToFit()
+                self.view.addSubview(view)
+            }
+        }
     }
 
 }
-
