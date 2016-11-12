@@ -36,7 +36,7 @@ public class ViewletLoader {
     // MARK: Loading
     // ---
     
-    public static func attributesFrom(jsonFile: String) -> [String: Any?]? {
+    public static func attributesFrom(jsonFile: String) -> [String: Any]? {
         if let item = shared.loadedJson[jsonFile] {
             return item
         }

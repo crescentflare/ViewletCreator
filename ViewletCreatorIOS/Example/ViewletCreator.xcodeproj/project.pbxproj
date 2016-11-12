@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0479BB591DD4F29700627171 /* TextViewViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479BB581DD4F29700627171 /* TextViewViewlet.swift */; };
+		046A9D3F1DD76D8C0002B75E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 046A9D3D1DD76D8C0002B75E /* Localizable.strings */; };
+		046A9D421DD76FB00002B75E /* UILabelViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D401DD76FB00002B75E /* UILabelViewlet.swift */; };
+		046A9D451DD76FFF0002B75E /* UIViewContainerViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D441DD76FFF0002B75E /* UIViewContainerViewlet.swift */; };
+		046A9D471DD773B00002B75E /* UISwitchViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D461DD773B00002B75E /* UISwitchViewlet.swift */; };
+		046A9D491DD7757D0002B75E /* UIViewViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D481DD7757D0002B75E /* UIViewViewlet.swift */; };
+		046A9D4B1DD77B7D0002B75E /* UITextFieldViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */; };
+		046A9D4D1DD7AC200002B75E /* UIButtonViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */; };
 		04C654441DD5DC520094C135 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654431DD5DC520094C135 /* Settings.swift */; };
 		04C654461DD5F3940094C135 /* LiveJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654451DD5F3940094C135 /* LiveJson.swift */; };
 		04C654481DD5F8860094C135 /* Data+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654471DD5F8860094C135 /* Data+MD5.swift */; };
@@ -15,7 +21,6 @@
 		4E82F7CB92433BEC94E64BB3 /* Pods_ViewletCreator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D887183603C26C392E51BAA1 /* Pods_ViewletCreator_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
@@ -34,7 +39,13 @@
 
 /* Begin PBXFileReference section */
 		03F52191BFDDE4F20EACF03C /* Pods-ViewletCreator_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewletCreator_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewletCreator_Example/Pods-ViewletCreator_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		0479BB581DD4F29700627171 /* TextViewViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewViewlet.swift; sourceTree = "<group>"; };
+		046A9D3E1DD76D8C0002B75E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = ViewletCreator/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		046A9D401DD76FB00002B75E /* UILabelViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelViewlet.swift; sourceTree = "<group>"; };
+		046A9D441DD76FFF0002B75E /* UIViewContainerViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewContainerViewlet.swift; sourceTree = "<group>"; };
+		046A9D461DD773B00002B75E /* UISwitchViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISwitchViewlet.swift; sourceTree = "<group>"; };
+		046A9D481DD7757D0002B75E /* UIViewViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewViewlet.swift; sourceTree = "<group>"; };
+		046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldViewlet.swift; sourceTree = "<group>"; };
+		046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonViewlet.swift; sourceTree = "<group>"; };
 		04C654431DD5DC520094C135 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		04C654451DD5F3940094C135 /* LiveJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveJson.swift; sourceTree = "<group>"; };
 		04C654471DD5F8860094C135 /* Data+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+MD5.swift"; sourceTree = "<group>"; };
@@ -45,7 +56,6 @@
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* ViewletCreator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewletCreator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +93,12 @@
 		0479BB571DD4F29700627171 /* Viewlets */ = {
 			isa = PBXGroup;
 			children = (
-				0479BB581DD4F29700627171 /* TextViewViewlet.swift */,
+				046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */,
+				046A9D401DD76FB00002B75E /* UILabelViewlet.swift */,
+				046A9D461DD773B00002B75E /* UISwitchViewlet.swift */,
+				046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */,
+				046A9D441DD76FFF0002B75E /* UIViewContainerViewlet.swift */,
+				046A9D481DD7757D0002B75E /* UIViewViewlet.swift */,
 			);
 			path = Viewlets;
 			sourceTree = "<group>";
@@ -119,7 +134,6 @@
 				04C654451DD5F3940094C135 /* LiveJson.swift */,
 				04C654431DD5DC520094C135 /* Settings.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -132,6 +146,7 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				046A9D3D1DD76D8C0002B75E /* Localizable.strings */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -274,7 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D9AEC91DD277740042B38F /* Layouts in Resources */,
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				046A9D3F1DD76D8C0002B75E /* Localizable.strings in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -387,11 +402,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0479BB591DD4F29700627171 /* TextViewViewlet.swift in Sources */,
+				046A9D471DD773B00002B75E /* UISwitchViewlet.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				04C654441DD5DC520094C135 /* Settings.swift in Sources */,
 				04C654461DD5F3940094C135 /* LiveJson.swift in Sources */,
+				046A9D451DD76FFF0002B75E /* UIViewContainerViewlet.swift in Sources */,
+				046A9D421DD76FB00002B75E /* UILabelViewlet.swift in Sources */,
 				04C654481DD5F8860094C135 /* Data+MD5.swift in Sources */,
+				046A9D4D1DD7AC200002B75E /* UIButtonViewlet.swift in Sources */,
+				046A9D491DD7757D0002B75E /* UIViewViewlet.swift in Sources */,
+				046A9D4B1DD77B7D0002B75E /* UITextFieldViewlet.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,12 +435,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
+		046A9D3D1DD76D8C0002B75E /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
+				046A9D3E1DD76D8C0002B75E /* Base */,
 			);
-			name = Main.storyboard;
+			name = Localizable.strings;
+			path = Viewlets;
 			sourceTree = "<group>";
 		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {

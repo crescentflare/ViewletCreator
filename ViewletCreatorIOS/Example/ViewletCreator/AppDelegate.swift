@@ -57,7 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // --
 
     func registerViewlets() {
-        ViewletCreator.register(name: "textView", viewlet: TextViewViewlet())
+        ViewletCreator.register(name: "view", viewlet: UIViewViewlet())
+        ViewletCreator.register(name: "viewContainer", viewlet: UIViewContainerViewlet())
+        ViewletCreator.register(name: "label", viewlet: UILabelViewlet())
+        ViewletCreator.register(name: "button", viewlet: UIButtonViewlet())
+        ViewletCreator.register(name: "textField", viewlet: UITextFieldViewlet())
+        ViewletCreator.register(name: "switch", viewlet: UISwitchViewlet())
     }
 
 }

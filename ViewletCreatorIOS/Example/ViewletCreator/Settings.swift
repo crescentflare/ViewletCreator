@@ -22,17 +22,26 @@ class Settings {
     // --
     // MARK: Settings access
     // --
-
-    func networkEnabled() -> Bool {
-        return true // Stub, replace with userdefaults
+    
+    var serverEnabled: Bool {
+        get { return UserDefaults.standard.bool(forKey: "serverEnabled") }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "serverEnabled")
+        }
     }
 
-    func autoRefresh() -> Bool {
-        return true // Stub, replace with userdefaults
+    var autoRefresh: Bool {
+        get { return UserDefaults.standard.bool(forKey: "autoRefresh") }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "autoRefresh")
+        }
     }
     
-    func serverAddress() -> String {
-        return "http://127.0.0.1:2233" // Stub, replace with userdefaults
+    var serverAddress: String {
+        get { return UserDefaults.standard.string(forKey: "serverAddress") ?? "http://127.0.0.1:2233" }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "serverAddress")
+        }
     }
 
 }

@@ -1,0 +1,14 @@
+//
+//  Localizable.strings
+//  Viewlet creator example
+//
+//  The strings table of the example application
+//
+
+"MAIN_MESSAGE" = "Example application demonstrating layouts created with viewlets and JSON. Configure the server below for real-time prototyping.";
+"MAIN_SERVER_CHECK" = "Server enabled";
+"MAIN_POLLING_CHECK" = "Polling enabled";
+"MAIN_SERVER_ADDRESS" = "Server address";
+"MAIN_SERVER_ADDRESS_PLACEHOLDER" = "URL";
+"MAIN_PLAYGROUND_BUTTON" = "Open playground";
+"MAIN_SERVER_FAILED" = "Can't load or update layout_main.json, make sure the viewlet server is running, is reachable, and the address is correct.";

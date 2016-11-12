@@ -71,7 +71,7 @@ class LiveJson {
     private func loadData() {
         if !obtainingData {
             obtainingData = true
-            Alamofire.request(Settings.shared.serverAddress() + "/layouts_ios/" + fileName).responseJSON { response in
+            Alamofire.request(Settings.shared.serverAddress + "/layouts_ios/" + fileName).responseJSON { response in
                 var success = false
                 self.obtainingData = false
                 if let newHash = response.data?.md5() {
