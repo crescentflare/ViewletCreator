@@ -17,17 +17,68 @@ public class ViewletConvUtil {
     
     
     // ---
-    // MARK: Dictionary conversion
-    // ---
-    
-    // TODO...
-    
-    
-    // ---
     // MARK: Array conversion
     // ---
 
-    // TODO...
+    public static func asStringArray(value: Any) -> [String] {
+        var array: [String] = []
+        if let valueArray = value as? [Any] {
+            for valueItem in valueArray {
+                if let stringValue = asString(value: valueItem) {
+                    array.append(stringValue)
+                }
+            }
+        }
+        return array
+    }
+    
+    public static func asDoubleArray(value: Any) -> [Double] {
+        var array: [Double] = []
+        if let valueArray = value as? [Any] {
+            for valueItem in valueArray {
+                if let doubleValue = asDouble(value: valueItem) {
+                    array.append(doubleValue)
+                }
+            }
+        }
+        return array
+    }
+
+    public static func asFloatArray(value: Any) -> [Float] {
+        var array: [Float] = []
+        if let valueArray = value as? [Any] {
+            for valueItem in valueArray {
+                if let floatValue = asFloat(value: valueItem) {
+                    array.append(floatValue)
+                }
+            }
+        }
+        return array
+    }
+    
+    public static func asIntArray(value: Any) -> [Int] {
+        var array: [Int] = []
+        if let valueArray = value as? [Any] {
+            for valueItem in valueArray {
+                if let intValue = asInt(value: valueItem) {
+                    array.append(intValue)
+                }
+            }
+        }
+        return array
+    }
+
+    public static func asBoolArray(value: Any) -> [Bool] {
+        var array: [Bool] = []
+        if let valueArray = value as? [Any] {
+            for valueItem in valueArray {
+                if let boolValue = asBool(value: valueItem) {
+                    array.append(boolValue)
+                }
+            }
+        }
+        return array
+    }
 
     
     // ---

@@ -5,6 +5,31 @@ import XCTest
 class Tests: XCTestCase {
     
     // ---
+    // MARK: Test array conversion
+    // ---
+
+    func testAsStringArray() {
+        XCTAssertEqual([ "10", "12", "99", "24" ], ViewletConvUtil.asStringArray(value: [ 10, 12, 99, 24 ]))
+    }
+
+    func testAsDoubleArray() {
+        XCTAssertEqual([ 4.22, 8.9, 19.1, 11 ], ViewletConvUtil.asDoubleArray(value: [ "4.22", "8.9", "19.1", "11" ]))
+    }
+
+    func testAsFloatArray() {
+        XCTAssertEqual([ 1.1, 5, 89.16, 2 ], ViewletConvUtil.asFloatArray(value: [ 1.1, 5, 89.16, 2 ]))
+    }
+
+    func testAsIntArray() {
+        XCTAssertEqual([ 6, 3, 12, 2150 ], ViewletConvUtil.asIntArray(value: [ 6.1, 3, 12, 2150.654 ]))
+    }
+
+    func testAsBoolArray() {
+        XCTAssertEqual([ true, true, false, true ], ViewletConvUtil.asBoolArray(value: [ "true", "true", "false", "true" ]))
+    }
+
+    
+    // ---
     // MARK: Test view related data conversion
     // ---
     
