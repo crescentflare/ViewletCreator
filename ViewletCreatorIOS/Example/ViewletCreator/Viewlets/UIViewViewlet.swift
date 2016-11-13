@@ -23,7 +23,7 @@ class UIViewViewlet: Viewlet {
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {
-        return true
+        return false
     }
     
     
