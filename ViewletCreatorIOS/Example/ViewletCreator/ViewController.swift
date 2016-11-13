@@ -129,7 +129,7 @@ class ViewController: UIViewController, LiveJsonDelegate, UITextFieldDelegate {
     }
     
     func jsonFailed(sender: LiveJson) {
-        if loadError?.isHidden ?? true {
+        if loadError?.isHidden ?? true && Settings.shared.serverEnabled {
             if let jsonData = ViewletLoader.attributesFrom(jsonFile: "Layouts/layout_main") {
                 layoutLoaded(jsonData: jsonData)
                 loadError?.isHidden = false
