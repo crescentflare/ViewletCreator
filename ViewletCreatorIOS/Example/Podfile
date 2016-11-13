@@ -6,7 +6,6 @@ target 'ViewletCreator_Example' do
 
   target 'ViewletCreator_Tests' do
     inherit! :search_paths
-
-    
+    pod 'ViewletCreator', :path => '../../'
   end
 end

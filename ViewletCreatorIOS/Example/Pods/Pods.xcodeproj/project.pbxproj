@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		076B9094B25837BCD729413ED8110A74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87882A1F5A92C8138D54545E51D51E6F /* Timeline.swift */; };
-		1B218948BB267D2D14499CE93577F166 /* Pods-ViewletCreator_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009A5AC3B64288B5DB2B3D8FEEE337C /* Pods-ViewletCreator_Tests-dummy.m */; };
 		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B44A27EFBB0DA84D738057B77F3413B1 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21B3C5D433B293621133A0929CC9DC45 /* ViewletLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D73466C907A59E9F67780E0D5EEE00 /* ViewletLoader.swift */; };
 		2D418640452E60C382A2E98F5E8E99A4 /* ViewletConvUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7F3C619A7FF0D7A70010246B80180 /* ViewletConvUtil.swift */; };
 		2E360242438CEB68096FC2625380EDB8 /* ViewletCreator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 779A167589D557C5EE6CADACCD9CCA10 /* ViewletCreator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F1ABDC615A8E34B59A89246770EEECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C037B4034EDA3D7955BC5E4E9D9D6 /* TaskDelegate.swift */; };
 		38E76C72878A201C315CA7907B2F341E /* ViewletCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEAF1EF8E19E9F9B1C4D5D41A02E860 /* ViewletCreator.swift */; };
 		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E230A0448B394DE26E688DAC8E6201E /* Request.swift */; };
@@ -27,7 +27,6 @@
 		A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A8AA5F9EDED0A0BDDE7E830BF4AEE0 /* NetworkReachabilityManager.swift */; };
 		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C1C119BCE81C53F76CAC2BE27C38E0 /* Alamofire-dummy.m */; };
-		AD8131FAFB45D59034F9129F7D018023 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDAC6C1187C5467E576980E1062C8B /* SessionManager.swift */; };
 		B4514FDB7132258F40C4F5E088C1D973 /* Pods-ViewletCreator_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1003D5F630E1E319748A74278E908728 /* Pods-ViewletCreator_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155538D91ACEEEDF82069ACF6C1A02E7 /* MultipartFormData.swift */; };
@@ -37,7 +36,8 @@
 		C19DCE2959E2BC3A0137C3EA40D7C5D8 /* Pods-ViewletCreator_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 686D6536A36B87253FE4DBF6B6E78EF6 /* Pods-ViewletCreator_Example-dummy.m */; };
 		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F47F5C9CDB035C5AFADEBA5BF44F1C /* Response.swift */; };
 		CFC3571E0CBF7E5B19F924C8AD46FBAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D461BF48830D0A4EB8FC805C600AE543 /* Pods-ViewletCreator_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 35DD968DDA58C33C985A49DDFEE87B51 /* Pods-ViewletCreator_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAB2BDD3A253507357FD73D9CDF01E54 /* Pods-ViewletCreator_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009A5AC3B64288B5DB2B3D8FEEE337C /* Pods-ViewletCreator_Tests-dummy.m */; };
+		DD4227C2B2C3B88E1B24307DF2BAE2A4 /* Pods-ViewletCreator_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 35DD968DDA58C33C985A49DDFEE87B51 /* Pods-ViewletCreator_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A46F517F0AF7E85A16D723F6406896 /* Notifications.swift */; };
 		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9510473F6FFD7AA66524DB16C2263 /* ResponseSerialization.swift */; };
 		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCB8C44DE758E906C0BCDA455937B85 /* Alamofire.swift */; };
@@ -45,6 +45,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		A67FCFF4FC5ED328D35F8831847A1564 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE8A41060AB6B0457BF3C947376128BB;
+			remoteInfo = ViewletCreator;
+		};
+		E53FCDABBCD5CD10391FAB0193997902 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -148,11 +155,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F5E161DB008838A798699540AFE489FB /* Frameworks */ = {
+		EE4885CE4939237CF9847EE0DF2B190D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8131FAFB45D59034F9129F7D018023 /* Foundation.framework in Frameworks */,
+				2F1ABDC615A8E34B59A89246770EEECA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,14 +382,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		08CB46ECA1E2A113ECF26DC9E4C51BE1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D461BF48830D0A4EB8FC805C600AE543 /* Pods-ViewletCreator_Tests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21B82FE768CB8A9147B886C7BC773322 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,9 +406,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D81EC61A7B8300E96B8014B38F89B9DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD4227C2B2C3B88E1B24307DF2BAE2A4 /* Pods-ViewletCreator_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		076B1FFA46BEABA50D4D91DDA5C0F2FC /* Pods-ViewletCreator_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9F1A6A09F86B5C0AF877EEF5777F265 /* Build configuration list for PBXNativeTarget "Pods-ViewletCreator_Tests" */;
+			buildPhases = (
+				F815CE6E71E560D94E787C1E217043A7 /* Sources */,
+				EE4885CE4939237CF9847EE0DF2B190D /* Frameworks */,
+				D81EC61A7B8300E96B8014B38F89B9DB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B424D749ABB3995FFEB73E32E3BA3DA /* PBXTargetDependency */,
+			);
+			name = "Pods-ViewletCreator_Tests";
+			productName = "Pods-ViewletCreator_Tests";
+			productReference = 3EFCE41313060AFD01100EC976B7BB67 /* Pods_ViewletCreator_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */;
@@ -463,23 +488,6 @@
 			productReference = A4298616AB13F7AD2E9161248824110D /* Pods_ViewletCreator_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FD982BA7EB7EAB2CCE05DDBCD4157690 /* Pods-ViewletCreator_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 98547476511F871A36A238BBE6325D50 /* Build configuration list for PBXNativeTarget "Pods-ViewletCreator_Tests" */;
-			buildPhases = (
-				92A6ED83F6EDAF473214B25FAA27D886 /* Sources */,
-				F5E161DB008838A798699540AFE489FB /* Frameworks */,
-				08CB46ECA1E2A113ECF26DC9E4C51BE1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-ViewletCreator_Tests";
-			productName = "Pods-ViewletCreator_Tests";
-			productReference = 3EFCE41313060AFD01100EC976B7BB67 /* Pods_ViewletCreator_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -503,7 +511,7 @@
 			targets = (
 				88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */,
 				DCE6778778D9BC7C1D5025DA1656FA73 /* Pods-ViewletCreator_Example */,
-				FD982BA7EB7EAB2CCE05DDBCD4157690 /* Pods-ViewletCreator_Tests */,
+				076B1FFA46BEABA50D4D91DDA5C0F2FC /* Pods-ViewletCreator_Tests */,
 				CE8A41060AB6B0457BF3C947376128BB /* ViewletCreator */,
 			);
 		};
@@ -548,14 +556,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92A6ED83F6EDAF473214B25FAA27D886 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B218948BB267D2D14499CE93577F166 /* Pods-ViewletCreator_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AF25ED9AF093A516B6B24823DD6D4BC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,9 +564,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F815CE6E71E560D94E787C1E217043A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAB2BDD3A253507357FD73D9CDF01E54 /* Pods-ViewletCreator_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4B424D749ABB3995FFEB73E32E3BA3DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ViewletCreator;
+			target = CE8A41060AB6B0457BF3C947376128BB /* ViewletCreator */;
+			targetProxy = E53FCDABBCD5CD10391FAB0193997902 /* PBXContainerItemProxy */;
+		};
 		9C6FFB02501EB3464A8579DE8AA73BE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
@@ -582,15 +596,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		157B531BEC0331D20D87536AB8E32230 /* Release */ = {
+		1EE7C7B11C06E5DF806E746F51086ADE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB37D82655356FA2501E7AC0156F0D78 /* Pods-ViewletCreator_Tests.release.xcconfig */;
+			baseConfigurationReference = 9772DB7710760C3699F5AF819FE48753 /* Pods-ViewletCreator_Tests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -603,7 +617,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -611,11 +625,12 @@
 				PRODUCT_NAME = Pods_ViewletCreator_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		39CC5CA0A4AEA9EF7331E927B315292A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -835,6 +850,41 @@
 			};
 			name = Release;
 		};
+		D7D503594BDA868384E9E4EE25E08322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB37D82655356FA2501E7AC0156F0D78 /* Pods-ViewletCreator_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ViewletCreator_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ViewletCreator_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		E00FC0D600242F22D176E52CE8AD6F98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B2D8433FC3CD00E435B5146170340503 /* ViewletCreator.xcconfig */;
@@ -866,41 +916,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		E55B3FCA3552BE4A4EFD4A1F1DD4549F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9772DB7710760C3699F5AF819FE48753 /* Pods-ViewletCreator_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ViewletCreator_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ViewletCreator_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		FCFDD8B55FA96C7AF22EFB5BDD6A8F27 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -967,11 +982,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		98547476511F871A36A238BBE6325D50 /* Build configuration list for PBXNativeTarget "Pods-ViewletCreator_Tests" */ = {
+		A9F1A6A09F86B5C0AF877EEF5777F265 /* Build configuration list for PBXNativeTarget "Pods-ViewletCreator_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E55B3FCA3552BE4A4EFD4A1F1DD4549F /* Debug */,
-				157B531BEC0331D20D87536AB8E32230 /* Release */,
+				1EE7C7B11C06E5DF806E746F51086ADE /* Debug */,
+				D7D503594BDA868384E9E4EE25E08322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

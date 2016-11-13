@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044046F01DD8C79F0088527F /* ViewletConvUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044046EF1DD8C79F0088527F /* ViewletConvUtilTests.swift */; };
 		046A9D3F1DD76D8C0002B75E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 046A9D3D1DD76D8C0002B75E /* Localizable.strings */; };
 		046A9D421DD76FB00002B75E /* UILabelViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D401DD76FB00002B75E /* UILabelViewlet.swift */; };
 		046A9D451DD76FFF0002B75E /* UIViewContainerViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D441DD76FFF0002B75E /* UIViewContainerViewlet.swift */; };
@@ -14,6 +15,7 @@
 		046A9D491DD7757D0002B75E /* UIViewViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D481DD7757D0002B75E /* UIViewViewlet.swift */; };
 		046A9D4B1DD77B7D0002B75E /* UITextFieldViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */; };
 		046A9D4D1DD7AC200002B75E /* UIButtonViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */; };
+		046A9D4F1DD7C31B0002B75E /* PlaygroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4E1DD7C31B0002B75E /* PlaygroundViewController.swift */; };
 		04C654441DD5DC520094C135 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654431DD5DC520094C135 /* Settings.swift */; };
 		04C654461DD5F3940094C135 /* LiveJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654451DD5F3940094C135 /* LiveJson.swift */; };
 		04C654481DD5F8860094C135 /* Data+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654471DD5F8860094C135 /* Data+MD5.swift */; };
@@ -23,7 +25,6 @@
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		875B32C262AF6D8E48418242 /* Pods_ViewletCreator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965C03C8D121193982510F0E /* Pods_ViewletCreator_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		03F52191BFDDE4F20EACF03C /* Pods-ViewletCreator_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewletCreator_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewletCreator_Example/Pods-ViewletCreator_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		044046EF1DD8C79F0088527F /* ViewletConvUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewletConvUtilTests.swift; sourceTree = "<group>"; };
 		046A9D3E1DD76D8C0002B75E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = ViewletCreator/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		046A9D401DD76FB00002B75E /* UILabelViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelViewlet.swift; sourceTree = "<group>"; };
 		046A9D441DD76FFF0002B75E /* UIViewContainerViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewContainerViewlet.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		046A9D481DD7757D0002B75E /* UIViewViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewViewlet.swift; sourceTree = "<group>"; };
 		046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldViewlet.swift; sourceTree = "<group>"; };
 		046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonViewlet.swift; sourceTree = "<group>"; };
+		046A9D4E1DD7C31B0002B75E /* PlaygroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundViewController.swift; sourceTree = "<group>"; };
 		04C654431DD5DC520094C135 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		04C654451DD5F3940094C135 /* LiveJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveJson.swift; sourceTree = "<group>"; };
 		04C654471DD5F8860094C135 /* Data+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+MD5.swift"; sourceTree = "<group>"; };
@@ -60,7 +63,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* ViewletCreator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewletCreator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		8BD95EC052B5AFEA7A982238 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		965C03C8D121193982510F0E /* Pods_ViewletCreator_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewletCreator_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F77A828CB197D46F3A060F7 /* Pods-ViewletCreator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewletCreator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				04C654471DD5F8860094C135 /* Data+MD5.swift */,
 				04C654451DD5F3940094C135 /* LiveJson.swift */,
+				046A9D4E1DD7C31B0002B75E /* PlaygroundViewController.swift */,
 				04C654431DD5DC520094C135 /* Settings.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -155,7 +158,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				044046EF1DD8C79F0088527F /* ViewletConvUtilTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -407,6 +410,7 @@
 				04C654441DD5DC520094C135 /* Settings.swift in Sources */,
 				04C654461DD5F3940094C135 /* LiveJson.swift in Sources */,
 				046A9D451DD76FFF0002B75E /* UIViewContainerViewlet.swift in Sources */,
+				046A9D4F1DD7C31B0002B75E /* PlaygroundViewController.swift in Sources */,
 				046A9D421DD76FB00002B75E /* UILabelViewlet.swift in Sources */,
 				04C654481DD5F8860094C135 /* Data+MD5.swift in Sources */,
 				046A9D4D1DD7AC200002B75E /* UIButtonViewlet.swift in Sources */,
@@ -420,7 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				044046F01DD8C79F0088527F /* ViewletConvUtilTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

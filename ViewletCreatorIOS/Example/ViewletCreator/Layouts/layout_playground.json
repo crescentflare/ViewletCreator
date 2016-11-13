@@ -1,0 +1,19 @@
+{
+  "subviews": [
+    {
+      "refId": "message",
+      "label": {
+        "text": "An area to test the viewlet creator library and play with its components and constraints. Make sure to run and enable the server and turn on polling."
+      }
+    }
+  ],
+  "constraints": {
+    "message": {
+      "alignToParent": {
+        "left": 16,
+        "top": 16,
+        "right": 16
+      }
+    }
+  }
+}

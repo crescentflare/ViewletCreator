@@ -69,7 +69,8 @@ class ViewController: UIViewController, LiveJsonDelegate, UITextFieldDelegate {
         // Inflation
         let binder = ViewletDictBinder()
         ViewletCreator.inflateOn(view: view, name: "viewContainer", attributes: jsonData, binder: binder)
-        
+        view.backgroundColor = UIColor(white: 1, alpha: 1)
+
         // Configure server address field
         serverAddressField = binder.findByReference("serverAddress") as? UITextField
         serverAddressField?.delegate = self
@@ -114,7 +115,7 @@ class ViewController: UIViewController, LiveJsonDelegate, UITextFieldDelegate {
     }
     
     func openPlayground(_ button: UIButton) {
-        //
+        navigationController?.pushViewController(PlaygroundViewController(), animated: true)
     }
     
     

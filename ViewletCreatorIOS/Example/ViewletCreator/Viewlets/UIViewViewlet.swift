@@ -19,9 +19,7 @@ class UIViewViewlet: Viewlet {
     }
     
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
-        if view is UIView {
-            UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
-        }
+        UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {
@@ -35,7 +33,7 @@ class UIViewViewlet: Viewlet {
     
     static func applyDefaultAttributes(view: UIView, attributes: [String: Any]) {
         view.backgroundColor = ViewletConvUtil.asColor(value: attributes["backgroundColor"] as Any) ?? UIColor.clear
-        view.isHidden = ViewletConvUtil.asBoolean(value: attributes["hidden"] as Any) ?? false
+        view.isHidden = ViewletConvUtil.asBool(value: attributes["hidden"] as Any) ?? false
     }
     
 }
