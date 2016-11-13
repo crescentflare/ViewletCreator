@@ -33,6 +33,18 @@ public class ViewletConvUtil {
     // ---
     // MARK: View related data conversion
     // ---
+    
+    public static func asPointValueArray(value: Any) -> [CGFloat] {
+        var array: [CGFloat] = []
+        if let valueArray = value as? [Any] {
+            for valueItem in valueArray {
+                if let pointValue = asPointValue(value: valueItem) {
+                    array.append(pointValue)
+                }
+            }
+        }
+        return array
+    }
 
     public static func asColor(value: Any) -> UIColor? {
         if let colorString = value as? String {
@@ -50,6 +62,26 @@ public class ViewletConvUtil {
             let green = Float((rgbValue & 0xff00) >> 8) / 255
             let blue = Float(rgbValue & 0xff) / 255
             return UIColor(colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
+        }
+        return nil
+    }
+    
+    public static func asPointValue(value: Any) -> CGFloat? {
+        if var stringValue = value as? String {
+            var multiplier: CGFloat = 1
+            if stringValue.hasSuffix("dp") || stringValue.hasSuffix("sp") {
+                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+            } else if stringValue.hasSuffix("px") {
+                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                multiplier = 1 / UIScreen.main.scale
+            }
+            if let floatValue = asFloat(value: stringValue) {
+                return CGFloat(floatValue) * multiplier
+            }
+            return nil
+        }
+        if let floatValue = asFloat(value: value) {
+            return CGFloat(floatValue)
         }
         return nil
     }

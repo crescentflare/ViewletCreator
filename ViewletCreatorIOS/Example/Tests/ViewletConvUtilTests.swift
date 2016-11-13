@@ -7,10 +7,21 @@ class Tests: XCTestCase {
     // ---
     // MARK: Test view related data conversion
     // ---
+    
+    func testAsPointValueArray() {
+        XCTAssertEqual([ 0.5, 10, 4, 9 ], ViewletConvUtil.asPointValueArray(value: [ "1px", "10dp", "4sp", "9dp" ]))
+    }
 
     func testAsColor() {
         XCTAssertEqual(UIColor.red, ViewletConvUtil.asColor(value: "#ff0000"))
         XCTAssertEqual(UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0), ViewletConvUtil.asColor(value: "#00000000"))
+    }
+    
+    func testAsPointValue() {
+        XCTAssertEqual(0.5, ViewletConvUtil.asPointValue(value: "1px"))
+        XCTAssertEqual(20, ViewletConvUtil.asPointValue(value: "20dp"))
+        XCTAssertEqual(12, ViewletConvUtil.asPointValue(value: "12sp"))
+        XCTAssertEqual(8, ViewletConvUtil.asPointValue(value: 8))
     }
     
 
