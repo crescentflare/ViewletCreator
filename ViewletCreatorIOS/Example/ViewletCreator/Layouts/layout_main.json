@@ -1,73 +1,63 @@
 {
+  "viewlet": "viewContainer",
   "subviews": [
     {
       "refId": "message",
-      "label": {
-        "text": "MAIN_MESSAGE"
-      }
+      "viewlet": "label",
+      "text": "MAIN_MESSAGE"
     },
     {
       "refId": "firstDividerLine",
-      "view": {
-        "backgroundColor": "#e0e0e0"
-      }
+      "viewlet": "view",
+      "backgroundColor": "#e0e0e0"
     },
     {
       "refId": "serverAddressLabel",
-      "label": {
-        "text": "MAIN_SERVER_ADDRESS",
-        "textSize": 12,
-        "font": "bold"
-      }
+      "viewlet": "label",
+      "text": "MAIN_SERVER_ADDRESS",
+      "textSize": 12,
+      "font": "bold"
     },
     {
       "refId": "serverAddress",
-      "textField": {
-        "placeholder": "MAIN_SERVER_ADDRESS_PLACEHOLDER",
-        "keyboardType": "url"
-      }
+      "viewlet": "textField",
+      "placeholder": "MAIN_SERVER_ADDRESS_PLACEHOLDER",
+      "keyboardType": "url"
     },
     {
       "refId": "secondDividerLine",
-      "view": {
-        "backgroundColor": "#e0e0e0"
-      }
+      "viewlet": "view",
+      "backgroundColor": "#e0e0e0"
     },
     {
       "refId": "serverSwitch",
-      "switch": {
-      }
+      "viewlet": "switch"
     },
     {
       "refId": "serverText",
-      "label": {
-        "text": "MAIN_SERVER_CHECK"
-      }
+      "viewlet": "label",
+      "text": "MAIN_SERVER_CHECK"
     },
     {
       "refId": "pollingSwitch",
-      "switch": {
-      }
+      "viewlet": "switch"
     },
     {
       "refId": "pollingText",
-      "label": {
-        "text": "MAIN_POLLING_CHECK"
-      }
+      "viewlet": "label",
+      "text": "MAIN_POLLING_CHECK"
     },
     {
       "refId": "playgroundButton",
-      "button": {
-        "text": "MAIN_PLAYGROUND_BUTTON"
-      }
+      "viewlet": "button",
+      "text": "MAIN_PLAYGROUND_BUTTON"
     },
     {
       "refId": "loadError",
-      "label": {
-        "text": "MAIN_SERVER_FAILED",
-        "textColor": "#ff0000",
-        "hidden": true
-      }
+      "viewlet": "label",
+      "text": "MAIN_SERVER_FAILED",
+      "textColor": "#ff0000",
+      "hidden": true
     }
   ],
   "constraints": {

@@ -68,7 +68,7 @@ class ViewController: UIViewController, LiveJsonDelegate, UITextFieldDelegate {
     func layoutLoaded(jsonData: [String: Any]) {
         // Inflation
         let binder = ViewletDictBinder()
-        ViewletCreator.inflateOn(view: view, name: "viewContainer", attributes: jsonData, binder: binder)
+        ViewletCreator.inflateOn(view: view, attributes: jsonData, binder: binder)
         view.backgroundColor = UIColor(white: 1, alpha: 1)
 
         // Configure server address field

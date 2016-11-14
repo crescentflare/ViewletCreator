@@ -34,10 +34,9 @@ class UIViewContainerViewlet: Viewlet {
             if let subviews = attributes["subviews"] as? [[String: Any]] {
                 for i in 0..<subviews.count {
                     let subview = subviews[i]
-                    let viewletName = ViewletCreator.findViewletNameInAttributes(subview)
-                    if viewletName != nil && i < views.count && ViewletCreator.canRecycle(view: views[i], attributes: subview) {
+                    if i < views.count && ViewletCreator.canRecycle(view: views[i], attributes: subview) {
                         removeViewletConstraints(view: views[i], constraints: views[i].constraints)
-                        ViewletCreator.inflateOn(view: views[i], name: viewletName!, attributes: subview[viewletName!] as? [String: Any], parent: view, binder: binder)
+                        ViewletCreator.inflateOn(view: views[i], attributes: subview, parent: view, binder: binder)
                         if let refId = subview["refId"] as? String {
                             internalBinder.onBind(refId: refId, view: views[i])
                             if binder != nil {
@@ -64,7 +63,7 @@ class UIViewContainerViewlet: Viewlet {
                 createdSubviews = subviews.count
             }
             views = view.subviews
-            for i in createdSubviews..<views.count {
+            for i in stride(from: createdSubviews, to: views.count, by: 1) {
                 views[i].removeFromSuperview()
             }
             

@@ -1,10 +1,10 @@
 {
+  "viewlet": "viewContainer",
   "subviews": [
     {
       "refId": "message",
-      "label": {
-        "text": "An area to test the viewlet creator library and play with its components and constraints. Make sure to run and enable the server and turn on polling."
-      }
+      "viewlet": "label",
+      "text": "An areas to test the viewlet creator library and play with its components and constraints. Make sure to run and enable the server and turn on polling."
     }
   ],
   "constraints": {

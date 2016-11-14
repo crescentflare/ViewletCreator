@@ -59,26 +59,22 @@ public class ViewletCreator {
     // ---
 
     public static func create(attributes: [String: Any], parent: UIView? = nil, binder: ViewletBinder? = nil) -> UIView? {
-        if let viewletName = findViewletNameInAttributes(attributes) {
-            if let viewlet = shared.registeredViewlets[viewletName] {
-                if let viewletAttributes = attributes[viewletName] as? [String: Any] {
-                    let view = viewlet.create()
-                    for styler in shared.registeredStylers {
-                        styler(view, viewletAttributes, parent)
-                    }
-                    viewlet.update(view: view, attributes: viewletAttributes, parent: parent, binder: binder)
-                    return view
-                }
+        if let viewlet = findViewletInAttributes(attributes) {
+            let view = viewlet.create()
+            for styler in shared.registeredStylers {
+                styler(view, attributes, parent)
             }
+            viewlet.update(view: view, attributes: attributes, parent: parent, binder: binder)
+            return view
         }
         return nil
     }
     
-    public static func inflateOn(view: UIView, name: String, attributes: [String: Any]?, parent: UIView? = nil, binder: ViewletBinder? = nil) {
+    public static func inflateOn(view: UIView, attributes: [String: Any]?, parent: UIView? = nil, binder: ViewletBinder? = nil) {
         if attributes == nil {
             return
         }
-        if let viewlet = shared.registeredViewlets[name] {
+        if let viewlet = findViewletInAttributes(attributes!) {
             for styler in shared.registeredStylers {
                 styler(view, attributes!, parent)
             }
@@ -88,40 +84,22 @@ public class ViewletCreator {
     
     public static func canRecycle(view: UIView?, attributes: [String: Any]?) -> Bool {
         if view != nil && attributes != nil {
-            var viewletName: String?
-            var viewlet: Viewlet?
-            for (key, _) in attributes! {
-                if shared.registeredViewlets[key] != nil {
-                    viewletName = key
-                    viewlet = shared.registeredViewlets[key]
-                    break
-                }
-            }
-            if viewletName != nil {
-                if let viewletAttributes = attributes![viewletName!] as? [String: Any] {
-                    return viewlet?.canRecycle(view: view!, attributes: viewletAttributes) ?? false
-                }
+            if let viewlet = findViewletInAttributes(attributes!) {
+                return viewlet.canRecycle(view: view!, attributes: attributes!)
             }
         }
         return false
     }
     
     public static func findViewletInAttributes(_ attributes: [String: Any]) -> Viewlet? {
-        for (key, _) in attributes {
-            if let viewlet = shared.registeredViewlets[key] {
-                return viewlet
-            }
+        if let viewletName = attributes["viewlet"] as? String {
+            return shared.registeredViewlets[viewletName]
         }
         return nil
     }
     
     public static func findViewletNameInAttributes(_ attributes: [String: Any]) -> String? {
-        for (key, _) in attributes {
-            if shared.registeredViewlets[key] != nil {
-                return key
-            }
-        }
-        return nil
+        return attributes["viewlet"] as? String
     }
     
 }
