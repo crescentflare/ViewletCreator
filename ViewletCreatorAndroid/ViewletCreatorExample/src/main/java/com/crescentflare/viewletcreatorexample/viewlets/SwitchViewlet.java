@@ -34,7 +34,7 @@ public class SwitchViewlet implements ViewletCreator.Viewlet
         {
             // Text
             SwitchCompat switchControl = (SwitchCompat)view;
-            switchControl.setText(translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "text", "")));
+            switchControl.setText(ViewViewlet.translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "text", "")));
 
             // State
             switchControl.setChecked(ViewletMapUtil.optionalBoolean(attributes, "on", false));
@@ -66,15 +66,5 @@ public class SwitchViewlet implements ViewletCreator.Viewlet
     public boolean canRecycle(View view, Map<String, Object> attributes)
     {
         return view instanceof SwitchCompat;
-    }
-
-    private String translatedText(Context context, String value)
-    {
-        int textIdentifier = context.getResources().getIdentifier(value, "string", context.getPackageName());
-        if (textIdentifier > 0)
-        {
-            return context.getResources().getString(textIdentifier);
-        }
-        return value;
     }
 }

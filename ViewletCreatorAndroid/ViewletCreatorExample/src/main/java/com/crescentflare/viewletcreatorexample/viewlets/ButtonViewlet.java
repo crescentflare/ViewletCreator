@@ -34,13 +34,7 @@ public class ButtonViewlet implements ViewletCreator.Viewlet
         {
             // Text
             Button button = (Button)view;
-            String text = ViewletMapUtil.optionalString(attributes, "text", "");
-            int textIdentifier = view.getContext().getResources().getIdentifier(text, "string", view.getContext().getPackageName());
-            if (textIdentifier > 0)
-            {
-                text = view.getContext().getResources().getString(textIdentifier);
-            }
-            button.setText(text);
+            button.setText(ViewViewlet.translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "text", "")));
 
             // Text style
             String typeface = ViewletMapUtil.optionalString(attributes, "typeface", "");

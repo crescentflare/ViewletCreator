@@ -48,6 +48,16 @@ public class ViewViewlet implements ViewletCreator.Viewlet
     // Shared
     // ---
 
+    public static String translatedText(Context context, String value)
+    {
+        int textIdentifier = context.getResources().getIdentifier(value, "string", context.getPackageName());
+        if (textIdentifier > 0)
+        {
+            return context.getResources().getString(textIdentifier);
+        }
+        return value;
+    }
+
     public static void applyDefaultAttributes(View view, Map<String, Object> attributes)
     {
         // Background color

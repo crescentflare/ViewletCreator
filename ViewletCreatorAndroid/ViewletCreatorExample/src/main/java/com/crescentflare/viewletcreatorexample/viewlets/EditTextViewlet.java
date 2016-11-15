@@ -35,8 +35,8 @@ public class EditTextViewlet implements ViewletCreator.Viewlet
         {
             // Pre-filled text and hint
             EditText editText = (EditText)view;
-            editText.setText(translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "text", "")));
-            editText.setHint(translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "hint", "")));
+            editText.setText(ViewViewlet.translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "text", "")));
+            editText.setHint(ViewViewlet.translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "hint", "")));
 
             // Set input mode
             String inputType = ViewletMapUtil.optionalString(attributes, "inputType", "");
@@ -80,15 +80,5 @@ public class EditTextViewlet implements ViewletCreator.Viewlet
     public boolean canRecycle(View view, Map<String, Object> attributes)
     {
         return view instanceof EditText;
-    }
-
-    private String translatedText(Context context, String value)
-    {
-        int textIdentifier = context.getResources().getIdentifier(value, "string", context.getPackageName());
-        if (textIdentifier > 0)
-        {
-            return context.getResources().getString(textIdentifier);
-        }
-        return value;
     }
 }

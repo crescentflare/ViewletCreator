@@ -37,13 +37,7 @@ public class TextViewViewlet implements ViewletCreator.Viewlet
         {
             // Text
             TextView textView = (TextView)view;
-            String text = ViewletMapUtil.optionalString(attributes, "text", "");
-            int textIdentifier = view.getContext().getResources().getIdentifier(text, "string", view.getContext().getPackageName());
-            if (textIdentifier > 0)
-            {
-                text = view.getContext().getResources().getString(textIdentifier);
-            }
-            textView.setText(text);
+            textView.setText(ViewViewlet.translatedText(view.getContext(), ViewletMapUtil.optionalString(attributes, "text", "")));
 
             // Text style
             String typeface = ViewletMapUtil.optionalString(attributes, "typeface", "");
