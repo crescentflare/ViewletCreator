@@ -122,6 +122,7 @@ public class LiveJson
                 public void onFailure(Call<Map<String, Object>> call, Throwable t)
                 {
                     obtainingData = false;
+                    currentHash = "_none_";
                     if (listener != null && listener.get() != null)
                     {
                         listener.get().jsonFailed(LiveJson.this);

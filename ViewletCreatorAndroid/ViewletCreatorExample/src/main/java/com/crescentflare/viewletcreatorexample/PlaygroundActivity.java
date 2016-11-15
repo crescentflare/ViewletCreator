@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -45,6 +46,11 @@ public class PlaygroundActivity extends AppCompatActivity implements LiveJson.Li
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playground);
         setTitle("Playground");
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
         // Live loading or file loading
         updateState();
@@ -73,6 +79,17 @@ public class PlaygroundActivity extends AppCompatActivity implements LiveJson.Li
         {
             liveLayout.setPollingEnabled(Settings.instance.isAutoRefresh());
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (item.getItemId() == android.R.id.home)
+        {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
