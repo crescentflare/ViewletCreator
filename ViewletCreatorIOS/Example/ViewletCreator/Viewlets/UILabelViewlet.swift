@@ -17,11 +17,11 @@ class UILabelViewlet: Viewlet {
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
         if let label = view as? UILabel {
             // Text
-            label.text = NSLocalizedString(attributes["text"] as? String ?? "", comment: "")
+            label.text = NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"] as Any) ?? "", comment: "")
             
             // Text style
-            let fontSize = attributes["textSize"] as? CGFloat ?? 17
-            if let font = attributes["font"] as? String {
+            let fontSize = ViewletConvUtil.asPointValue(value: attributes["textSize"] as Any) ?? 17
+            if let font = ViewletConvUtil.asString(value: attributes["font"] as Any) {
                 if font == "bold" {
                     label.font = UIFont.boldSystemFont(ofSize: fontSize)
                 } else if font == "italics" {
@@ -35,8 +35,8 @@ class UILabelViewlet: Viewlet {
             label.textColor = ViewletConvUtil.asColor(value: attributes["textColor"] as Any) ?? UIColor.darkText
             
             // Other properties
-            label.numberOfLines = attributes["maxLines"] as? Int ?? 0
-            if let textAlignment = attributes["textAlignment"] as? String {
+            label.numberOfLines = ViewletConvUtil.asInt(value: attributes["maxLines"] as Any) ?? 0
+            if let textAlignment = ViewletConvUtil.asString(value: attributes["textAlignment"] as Any) {
                 if textAlignment == "center" {
                     label.textAlignment = .center
                 } else if textAlignment == "right" {

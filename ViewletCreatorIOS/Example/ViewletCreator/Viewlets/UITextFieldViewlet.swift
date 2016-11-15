@@ -17,13 +17,13 @@ class UITextFieldViewlet: Viewlet {
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
         if let textField = view as? UITextField {
             // Prefilled text and placeholder
-            textField.text = attributes["text"] as? String
-            textField.placeholder = NSLocalizedString(attributes["placeholder"] as? String ?? "", comment: "")
+            textField.text = ViewletConvUtil.asString(value: attributes["text"] as Any)
+            textField.placeholder = NSLocalizedString(ViewletConvUtil.asString(value: attributes["placeholder"] as Any) ?? "", comment: "")
             
             // Set keyboard mode
             textField.keyboardType = .default
             textField.autocapitalizationType = .sentences
-            if let keyboardType = attributes["keyboardType"] as? String {
+            if let keyboardType = ViewletConvUtil.asString(value: attributes["keyboardType"] as Any) {
                 if keyboardType == "email" {
                     textField.keyboardType = .emailAddress
                     textField.autocapitalizationType = .none
@@ -34,8 +34,8 @@ class UITextFieldViewlet: Viewlet {
             }
             
             // Text style
-            let fontSize = attributes["textSize"] as? CGFloat ?? 17
-            if let font = attributes["font"] as? String {
+            let fontSize = ViewletConvUtil.asPointValue(value: attributes["textSize"] as Any) ?? 17
+            if let font = ViewletConvUtil.asString(value: attributes["font"] as Any) {
                 if font == "bold" {
                     textField.font = UIFont.boldSystemFont(ofSize: fontSize)
                 } else if font == "italics" {

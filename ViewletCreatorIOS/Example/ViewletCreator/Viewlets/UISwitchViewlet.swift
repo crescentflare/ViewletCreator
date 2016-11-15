@@ -17,7 +17,7 @@ class UISwitchViewlet: Viewlet {
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
         if let switchControl = view as? UISwitch {
             // Default state
-            switchControl.setOn(attributes["on"] as? Bool ?? false, animated: false)
+            switchControl.setOn(ViewletConvUtil.asBool(value: attributes["on"] as Any) ?? false, animated: false)
 
             // Standard view attributes
             UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)

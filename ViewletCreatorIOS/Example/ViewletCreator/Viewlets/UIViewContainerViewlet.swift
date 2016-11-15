@@ -104,14 +104,14 @@ class UIViewContainerViewlet: Viewlet {
             if let relatedView = boundViews.findByReference(widthRelatedConstraint) {
                 view.addConstraint(ViewletConstraint(item: constraintView, attribute: .width, relatedBy: .equal, toItem: relatedView, attribute: .width, multiplier: 1, constant: 0))
             }
-        } else if let widthConstraint = constraints["width"] as? CGFloat {
+        } else if let widthConstraint = ViewletConvUtil.asPointValue(value: constraints["width"] as Any) {
             constraintView.addConstraint(ViewletConstraint(item: constraintView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: widthConstraint))
         }
         if let heightRelatedConstraint = constraints["height"] as? String {
             if let relatedView = boundViews.findByReference(heightRelatedConstraint) {
                 view.addConstraint(ViewletConstraint(item: constraintView, attribute: .height, relatedBy: .equal, toItem: relatedView, attribute: .height, multiplier: 1, constant: 0))
             }
-        } else if let heightConstraint = constraints["height"] as? CGFloat {
+        } else if let heightConstraint = ViewletConvUtil.asPointValue(value: constraints["height"] as Any) {
             constraintView.addConstraint(ViewletConstraint(item: constraintView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightConstraint))
         }
         
@@ -135,17 +135,17 @@ class UIViewContainerViewlet: Viewlet {
                     view.addConstraint(ViewletConstraint(item: constraintView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
                 }
             }
-        } else if let superviewAlignmentOffsets = constraints["alignToParent"] as? [String: CGFloat] {
-            if let leftAlignment = superviewAlignmentOffsets["left"] {
+        } else if let superviewAlignmentOffsets = constraints["alignToParent"] as? [String: Any] {
+            if let leftAlignment = ViewletConvUtil.asPointValue(value: superviewAlignmentOffsets["left"] as Any) {
                 view.addConstraint(ViewletConstraint(item: constraintView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: leftAlignment))
             }
-            if let topAlignment = superviewAlignmentOffsets["top"] {
+            if let topAlignment = ViewletConvUtil.asPointValue(value: superviewAlignmentOffsets["top"] as Any) {
                 view.addConstraint(ViewletConstraint(item: constraintView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: topAlignment))
             }
-            if let rightAlignment = superviewAlignmentOffsets["right"] {
+            if let rightAlignment = ViewletConvUtil.asPointValue(value: superviewAlignmentOffsets["right"] as Any) {
                 view.addConstraint(ViewletConstraint(item: constraintView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -rightAlignment))
             }
-            if let bottomAlignment = superviewAlignmentOffsets["bottom"] {
+            if let bottomAlignment = ViewletConvUtil.asPointValue(value: superviewAlignmentOffsets["bottom"] as Any) {
                 view.addConstraint(ViewletConstraint(item: constraintView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -bottomAlignment))
             }
         }
@@ -168,28 +168,28 @@ class UIViewContainerViewlet: Viewlet {
         if let siblingAlignmentOffsets = constraints["alignToSibling"] as? [String: [String: Any]] {
             for (siblingKey, edges) in siblingAlignmentOffsets {
                 if let siblingView = boundViews.findByReference(siblingKey) {
-                    if let leftOffset = edges["toLeft"] as? CGFloat {
+                    if let leftOffset = ViewletConvUtil.asPointValue(value: edges["toLeft"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .right, relatedBy: .equal, toItem: siblingView, attribute: .left, multiplier: 1, constant: -leftOffset))
                     }
-                    if let topOffset = edges["toTop"] as? CGFloat {
+                    if let topOffset = ViewletConvUtil.asPointValue(value: edges["toTop"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .bottom, relatedBy: .equal, toItem: siblingView, attribute: .top, multiplier: 1, constant: -topOffset))
                     }
-                    if let rightOffset = edges["toRight"] as? CGFloat {
+                    if let rightOffset = ViewletConvUtil.asPointValue(value: edges["toRight"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .left, relatedBy: .equal, toItem: siblingView, attribute: .right, multiplier: 1, constant: rightOffset))
                     }
-                    if let bottomOffset = edges["toBottom"] as? CGFloat {
+                    if let bottomOffset = ViewletConvUtil.asPointValue(value: edges["toBottom"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .top, relatedBy: .equal, toItem: siblingView, attribute: .bottom, multiplier: 1, constant: bottomOffset))
                     }
-                    if let leftOffset = edges["atLeft"] as? CGFloat {
+                    if let leftOffset = ViewletConvUtil.asPointValue(value: edges["atLeft"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .left, relatedBy: .equal, toItem: siblingView, attribute: .left, multiplier: 1, constant: leftOffset))
                     }
-                    if let topOffset = edges["atTop"] as? CGFloat {
+                    if let topOffset = ViewletConvUtil.asPointValue(value: edges["atTop"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .top, relatedBy: .equal, toItem: siblingView, attribute: .top, multiplier: 1, constant: topOffset))
                     }
-                    if let rightOffset = edges["atRight"] as? CGFloat {
+                    if let rightOffset = ViewletConvUtil.asPointValue(value: edges["atRight"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .right, relatedBy: .equal, toItem: siblingView, attribute: .right, multiplier: 1, constant: rightOffset))
                     }
-                    if let bottomOffset = edges["atBottom"] as? CGFloat {
+                    if let bottomOffset = ViewletConvUtil.asPointValue(value: edges["atBottom"] as Any) {
                         view.addConstraint(ViewletConstraint(item: constraintView, attribute: .bottom, relatedBy: .equal, toItem: siblingView, attribute: .bottom, multiplier: 1, constant: bottomOffset))
                     }
                 }
