@@ -1,5 +1,6 @@
 package com.crescentflare.viewletcreator.utility;
 
+import android.content.res.ObbInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.text.TextUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Viewlet creator utility: map access
@@ -46,6 +48,27 @@ public class ViewletMapUtil
     // ---
     // Fetch and convert lists
     // ---
+
+    @SuppressWarnings("unchecked")
+    public static List<Object> optionalObjectList(Map<String, Object> map, String key)
+    {
+        if (map != null)
+        {
+            Object object = map.get(key);
+            if (object != null && object instanceof List<?>)
+            {
+                List<?> list = (List<?>)object;
+                if (list.size() > 0)
+                {
+                    if (list.get(0) instanceof Object)
+                    {
+                        return (List<Object>)object;
+                    }
+                }
+            }
+        }
+        return new ArrayList<>();
+    }
 
     @SuppressWarnings("unchecked")
     public static List<String> optionalStringList(Map<String, Object> map, String key)

@@ -74,14 +74,14 @@ public class ViewletCreator
     // Create and update
     // ---
 
-    public static View create(Context context, String name, Map<String, Object> attributes, ViewGroup addToParent)
+    public static View create(Context context, Map<String, Object> attributes, ViewGroup addToParent)
     {
-        return create(context, name, attributes, addToParent, null);
+        return create(context, attributes, addToParent, null);
     }
 
-    public static View create(Context context, String name, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public static View create(Context context, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
-        Viewlet viewlet = instance.registeredViewlets.get(name);
+        Viewlet viewlet = findViewletInAttributes(attributes);
         if (viewlet != null)
         {
             View view = viewlet.create(context);
@@ -98,25 +98,21 @@ public class ViewletCreator
         return null;
     }
 
-    public static void inflateOn(View view, String name, Map<String, Object> attributes, ViewGroup parent)
+    public static void inflateOn(View view, Map<String, Object> attributes, ViewGroup parent)
     {
-        inflateOn(view, name, attributes, parent, null);
+        inflateOn(view, attributes, parent, null);
     }
 
-    public static void inflateOn(View view, String name, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public static void inflateOn(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
-        Map<String, Object> viewletAttributes = ViewletMapUtil.asStringObjectMap(attributes.get(name));
-        if (viewletAttributes != null)
+        Viewlet viewlet = findViewletInAttributes(attributes);
+        if (viewlet != null)
         {
-            Viewlet viewlet = instance.registeredViewlets.get(name);
-            if (viewlet != null)
+            for (ViewletStyler styler : instance.registeredStylers)
             {
-                for (ViewletStyler styler : instance.registeredStylers)
-                {
-                    styler.update(view, viewletAttributes, parent);
-                }
-                viewlet.update(view, viewletAttributes, parent, binder);
+                styler.update(view, attributes, parent);
             }
+            viewlet.update(view, attributes, parent, binder);
         }
     }
 
@@ -124,24 +120,10 @@ public class ViewletCreator
     {
         if (view != null && attributes != null)
         {
-            String viewletName = null;
-            Viewlet viewlet = null;
-            for (String key : attributes.keySet())
+            Viewlet viewlet = findViewletInAttributes(attributes);
+            if (viewlet != null)
             {
-                viewlet = instance.registeredViewlets.get(key);
-                if (viewlet != null)
-                {
-                    viewletName = key;
-                    break;
-                }
-            }
-            if (viewletName != null)
-            {
-                Map<String, Object> viewletAttributes = ViewletMapUtil.asStringObjectMap(attributes.get(viewletName));
-                if (viewletAttributes != null)
-                {
-                    return viewlet.canRecycle(view, viewletAttributes);
-                }
+                return viewlet.canRecycle(view, attributes);
             }
         }
         return false;
@@ -149,28 +131,17 @@ public class ViewletCreator
 
     public static Viewlet findViewletInAttributes(Map<String, Object> attributes)
     {
-        for (String key : attributes.keySet())
+        String viewletName = ViewletMapUtil.optionalString(attributes, "viewlet", null);
+        if (viewletName != null)
         {
-            Viewlet viewlet = instance.registeredViewlets.get(key);
-            if (viewlet != null)
-            {
-                return viewlet;
-            }
+            return instance.registeredViewlets.get(viewletName);
         }
         return null;
     }
 
     public static String findViewletNameInAttributes(Map<String, Object> attributes)
     {
-        for (String key : attributes.keySet())
-        {
-            Viewlet viewlet = instance.registeredViewlets.get(key);
-            if (viewlet != null)
-            {
-                return key;
-            }
-        }
-        return null;
+        return ViewletMapUtil.optionalString(attributes, "viewlet", null);
     }
 
 
