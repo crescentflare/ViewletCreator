@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;
@@ -30,29 +29,56 @@ public class LinearLayoutViewlet implements ViewletCreator.Viewlet
     {
         if (view instanceof LinearLayout)
         {
-            // First remove all children
+            // Add or recycle children
             LinearLayout container = (LinearLayout)view;
-            container.removeAllViews();
-
-            // Add children
+            int childCount = container.getChildCount();
+            int currentViewChild = 0;
             List<Object> children = ViewletMapUtil.optionalObjectList(attributes, "children");
-            for (Object child : children)
+            for (int i = 0; i < children.size(); i++)
             {
-                Map<String, Object> viewAttributes = ViewletMapUtil.asStringObjectMap(child);
-                View createdView = ViewletCreator.create(view.getContext(), viewAttributes, container);
-                if (createdView != null)
+                Map<String, Object> child = ViewletMapUtil.asStringObjectMap(children.get(i));
+                if (currentViewChild < childCount && ViewletCreator.canRecycle(container.getChildAt(currentViewChild), child))
                 {
-                    container.addView(createdView);
-                    ViewViewlet.applyLayoutAttributes(createdView, viewAttributes);
+                    ViewletCreator.inflateOn(container.getChildAt(currentViewChild), child, container, binder);
+                    ViewViewlet.applyLayoutAttributes(container.getChildAt(currentViewChild), child);
                     if (binder != null)
                     {
-                        String refId = ViewletMapUtil.optionalString(viewAttributes, "refId", null);
+                        String refId = ViewletMapUtil.optionalString(child, "refId", null);
                         if (refId != null)
                         {
-                            binder.onBind(refId, createdView);
+                            binder.onBind(refId, container.getChildAt(currentViewChild));
                         }
                     }
+                    currentViewChild++;
                 }
+                else
+                {
+                    if (currentViewChild < childCount)
+                    {
+                        container.removeViewAt(currentViewChild);
+                        childCount--;
+                    }
+                    View createdView = ViewletCreator.create(view.getContext(), child, container);
+                    if (createdView != null)
+                    {
+                        container.addView(createdView, currentViewChild);
+                        ViewViewlet.applyLayoutAttributes(createdView, child);
+                        if (binder != null)
+                        {
+                            String refId = ViewletMapUtil.optionalString(child, "refId", null);
+                            if (refId != null)
+                            {
+                                binder.onBind(refId, createdView);
+                            }
+                        }
+                        currentViewChild++;
+                        childCount++;
+                    }
+                }
+            }
+            for (int i = childCount - 1; i >= currentViewChild; i--)
+            {
+                container.removeViewAt(i);
             }
 
             // Standard view attributes

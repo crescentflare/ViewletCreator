@@ -2,12 +2,12 @@ package com.crescentflare.viewletcreatorexample.viewlets;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.SwitchCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;
@@ -78,6 +78,6 @@ public class ButtonViewlet implements ViewletCreator.Viewlet
     @Override
     public boolean canRecycle(View view, Map<String, Object> attributes)
     {
-        return view instanceof Button;
+        return view instanceof Button && !(view instanceof SwitchCompat);
     }
 }

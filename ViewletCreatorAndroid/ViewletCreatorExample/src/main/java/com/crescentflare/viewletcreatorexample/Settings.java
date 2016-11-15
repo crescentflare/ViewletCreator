@@ -1,12 +1,7 @@
 package com.crescentflare.viewletcreatorexample;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import com.crescentflare.viewletcreator.ViewletCreator;
-import com.crescentflare.viewletcreatorexample.viewlets.TextViewViewlet;
 
 /**
  * An easy way to handle settings for the viewlet example

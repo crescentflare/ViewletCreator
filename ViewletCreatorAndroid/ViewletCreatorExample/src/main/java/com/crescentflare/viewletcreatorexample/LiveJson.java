@@ -1,14 +1,6 @@
 package com.crescentflare.viewletcreatorexample;
 
-import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.crescentflare.viewletcreator.ViewletCreator;
-import com.crescentflare.viewletcreator.ViewletLoader;
-import com.crescentflare.viewletcreator.utility.ViewletMapUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
@@ -16,9 +8,6 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Url;
 
 /**
  * Synchronizes (and optionally polls) a JSON file from the mock server and notify for updates

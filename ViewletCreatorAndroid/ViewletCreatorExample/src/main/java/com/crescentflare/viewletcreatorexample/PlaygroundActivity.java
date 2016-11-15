@@ -1,25 +1,16 @@
 package com.crescentflare.viewletcreatorexample;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SwitchCompat;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.ViewletLoader;
 import com.crescentflare.viewletcreator.binder.ViewletAnnotationBinder;
-import com.crescentflare.viewletcreator.binder.ViewletRef;
 
 import java.util.Map;
 

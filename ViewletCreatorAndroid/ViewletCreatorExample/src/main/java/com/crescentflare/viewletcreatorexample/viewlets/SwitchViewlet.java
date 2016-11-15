@@ -3,11 +3,9 @@ package com.crescentflare.viewletcreatorexample.viewlets;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.SwitchCompat;
-import android.text.InputType;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;

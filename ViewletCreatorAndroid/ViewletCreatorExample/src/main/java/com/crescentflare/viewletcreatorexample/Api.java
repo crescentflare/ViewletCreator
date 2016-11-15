@@ -1,8 +1,5 @@
 package com.crescentflare.viewletcreatorexample;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

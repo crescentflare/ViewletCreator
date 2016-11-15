@@ -1,14 +1,11 @@
 package com.crescentflare.viewletcreator.utility;
 
-import android.content.res.ObbInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Viewlet creator utility: map access

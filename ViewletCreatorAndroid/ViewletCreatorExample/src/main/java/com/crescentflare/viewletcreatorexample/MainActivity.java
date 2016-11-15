@@ -2,13 +2,11 @@ package com.crescentflare.viewletcreatorexample;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -20,7 +18,6 @@ import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.ViewletLoader;
 import com.crescentflare.viewletcreator.binder.ViewletAnnotationBinder;
 import com.crescentflare.viewletcreator.binder.ViewletRef;
-import com.crescentflare.viewletcreator.utility.ViewletMapUtil;
 
 import java.util.Map;
 
@@ -136,6 +133,20 @@ public class MainActivity extends AppCompatActivity implements LiveJson.LiveJson
 
     private void layoutLoaded(Map<String, Object> attributes)
     {
+        // First remove all listeners
+        if (serverAddressField != null)
+        {
+            serverAddressField.setOnEditorActionListener(null);
+        }
+        if (serverEnabledSwitch != null)
+        {
+            serverEnabledSwitch.setOnCheckedChangeListener(null);
+        }
+        if (pollingEnabledSwitch != null)
+        {
+            pollingEnabledSwitch.setOnCheckedChangeListener(null);
+        }
+
         // Inflation
         View view = findViewById(R.id.activity_main_container);
         ViewletCreator.inflateOn(view, attributes, null, new ViewletAnnotationBinder(this));
