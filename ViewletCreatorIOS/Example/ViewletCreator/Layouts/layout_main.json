@@ -1,0 +1,177 @@
+{
+  "viewlet": "viewContainer",
+  "subviews": [
+    {
+      "refId": "message",
+      "viewlet": "label",
+      "text": "MAIN_MESSAGE"
+    },
+    {
+      "refId": "firstDividerLine",
+      "viewlet": "view",
+      "backgroundColor": "#e0e0e0"
+    },
+    {
+      "refId": "serverAddressLabel",
+      "viewlet": "label",
+      "text": "MAIN_SERVER_ADDRESS",
+      "textSize": 12,
+      "font": "bold"
+    },
+    {
+      "refId": "serverAddress",
+      "viewlet": "textField",
+      "placeholder": "MAIN_SERVER_ADDRESS_PLACEHOLDER",
+      "keyboardType": "url"
+    },
+    {
+      "refId": "secondDividerLine",
+      "viewlet": "view",
+      "backgroundColor": "#e0e0e0"
+    },
+    {
+      "refId": "serverSwitch",
+      "viewlet": "switch"
+    },
+    {
+      "refId": "serverText",
+      "viewlet": "label",
+      "text": "MAIN_SERVER_CHECK"
+    },
+    {
+      "refId": "pollingSwitch",
+      "viewlet": "switch"
+    },
+    {
+      "refId": "pollingText",
+      "viewlet": "label",
+      "text": "MAIN_POLLING_CHECK"
+    },
+    {
+      "refId": "playgroundButton",
+      "viewlet": "button",
+      "text": "MAIN_PLAYGROUND_BUTTON"
+    },
+    {
+      "refId": "loadError",
+      "viewlet": "label",
+      "text": "MAIN_SERVER_FAILED",
+      "textColor": "#ff0000",
+      "hidden": true
+    }
+  ],
+  "constraints": {
+    "message": {
+      "alignToParent": {
+        "left": 10,
+        "top": 10,
+        "right": 10
+      }
+    },
+    "firstDividerLine": {
+      "alignToParent": ["left", "right"],
+      "height": 1,
+      "alignToSibling": {
+        "message": {
+          "toBottom": 12
+        }
+      }
+    },
+    "serverAddressLabel": {
+      "alignToParent": {
+        "left": 10,
+        "right": 10
+      },
+      "alignToSibling": {
+        "firstDividerLine": {
+          "toBottom": 12
+        }
+      }
+    },
+    "serverAddress": {
+      "alignToParent": {
+        "left": 10,
+        "right": 10
+      },
+      "alignToSibling": {
+        "serverAddressLabel": "toBottom"
+      }
+    },
+    "secondDividerLine": {
+      "alignToParent": ["left", "right"],
+      "height": 1,
+      "alignToSibling": {
+        "serverAddress": {
+          "toBottom": 12
+        }
+      }
+    },
+    "serverSwitch": {
+      "alignToParent": {
+        "left": 10
+      },
+      "alignToSibling": {
+        "secondDividerLine": {
+          "toBottom": 12
+        }
+      }
+    },
+    "serverText": {
+      "alignToParent": {
+        "right": 10
+      },
+      "height": "serverSwitch",
+      "alignToSibling": {
+        "secondDividerLine": {
+          "toBottom": 12
+        },
+        "serverSwitch": {
+          "toRight": 10
+        }
+      }
+    },
+    "pollingSwitch": {
+      "alignToParent": {
+        "left": 10
+      },
+      "alignToSibling": {
+        "serverSwitch": {
+          "toBottom": 8
+        }
+      }
+    },
+    "pollingText": {
+      "alignToParent": {
+        "right": 10
+      },
+      "height": "pollingSwitch",
+      "alignToSibling": {
+        "serverSwitch": {
+          "toBottom": 8,
+          "toRight": 10
+        }
+      }
+    },
+    "playgroundButton": {
+      "alignToParent": {
+        "left": 10
+      },
+      "alignToSibling": {
+        "pollingSwitch": {
+          "toBottom": 16
+        }
+      }
+    },
+    "loadError": {
+      "alignToParent": {
+        "left": 10,
+        "right": 10
+      },
+      "alignToSibling": {
+        "playgroundButton": {
+          "toBottom": 10
+        }
+      }
+    }
+  }
+}

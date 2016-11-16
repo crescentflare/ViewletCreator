@@ -1,0 +1,73 @@
+{
+  "viewlet": "linearLayout",
+  "paddingTop": "10dp",
+  "paddingBottom": "10dp",
+  "children": [
+    {
+      "viewlet": "textView",
+      "paddingLeft": "10dp",
+      "paddingRight": "10dp",
+      "text": "main_message"
+    },
+    {
+      "viewlet": "view",
+      "width": "matchParent",
+      "height": 1,
+      "marginTop": "12dp",
+      "marginBottom": "12dp",
+      "backgroundColor": "#e0e0e0"
+    },
+    {
+      "viewlet": "textView",
+      "paddingLeft": "10dp",
+      "paddingRight": "10dp",
+      "text": "main_server_address",
+      "textSize": "12sp",
+      "typeface": "bold"
+    },
+    {
+      "refId": "serverAddress",
+      "viewlet": "editText",
+      "width": "matchParent",
+      "marginLeft": "6dp",
+      "marginRight": "6dp",
+      "inputType": "url",
+      "hint": "main_server_address_hint"
+    },
+    {
+      "refId": "serverSwitch",
+      "viewlet": "switch",
+      "width": "matchParent",
+      "marginLeft": "10dp",
+      "marginTop": "10dp",
+      "text": "main_server_check"
+    },
+    {
+      "refId": "pollingSwitch",
+      "viewlet": "switch",
+      "width": "matchParent",
+      "marginLeft": "10dp",
+      "marginTop": "8dp",
+      "text": "main_polling_check"
+    },
+    {
+      "refId": "playgroundButton",
+      "viewlet": "button",
+      "marginTop": "8dp",
+      "marginLeft": "7dp",
+      "paddingLeft": "14dp",
+      "paddingRight": "14dp",
+      "text": "main_playground_button"
+    },
+    {
+      "refId": "loadError",
+      "viewlet": "textView",
+      "paddingLeft": "10dp",
+      "paddingRight": "10dp",
+      "paddingTop": "14dp",
+      "text": "main_server_failed",
+      "textColor": "#ff0000",
+      "visibility": "gone"
+    }
+  ]
+}

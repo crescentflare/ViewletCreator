@@ -1,0 +1,13 @@
+{
+  "viewlet": "linearLayout",
+  "paddingTop": "10dp",
+  "paddingBottom": "10dp",
+  "children": [
+    {
+      "viewlet": "textView",
+      "paddingLeft": "10dp",
+      "paddingRight": "10dp",
+      "text": "An area to test the viewlet creator library and play with its components and constraints. Make sure to run and enable the server and turn on polling."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "endPoints": "layouts",
+  "port": 2233,
+  "externalIp": false
+}

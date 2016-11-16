@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Example viewlet creator</string>
+    <string name="main_title">Viewlet example</string>
+    <string name="main_message">Example application demonstrating layouts created with viewlets and JSON. Configure the server below for real-time prototyping.</string>
+    <string name="main_server_check">Server enabled</string>
+    <string name="main_polling_check">Polling enabled</string>
+    <string name="main_server_address">Server address</string>
+    <string name="main_server_address_hint">URL</string>
+    <string name="main_playground_button">Open playground</string>
+    <string name="main_server_failed">Can\'t load or update layout_main.json, make sure the viewlet server is running, is reachable, and the address is correct.</string>
+</resources>

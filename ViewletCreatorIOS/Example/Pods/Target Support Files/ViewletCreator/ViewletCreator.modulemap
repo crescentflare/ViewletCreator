@@ -1,0 +1,6 @@
+framework module ViewletCreator {
+  umbrella header "ViewletCreator-umbrella.h"
+
+  export *
+  module * { export * }
+}

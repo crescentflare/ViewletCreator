@@ -1,0 +1,19 @@
+PODS:
+  - Alamofire (4.0.1)
+  - ViewletCreator (0.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - ViewletCreator (from `../../`)
+
+EXTERNAL SOURCES:
+  ViewletCreator:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  ViewletCreator: 37a0c36e9eaa7cf359d2edc464a5ce769d7853dd
+
+PODFILE CHECKSUM: a40713f54993a32c57b1a25fcfe329f9b9a961de
+
+COCOAPODS: 1.1.1
