@@ -14,6 +14,18 @@ import java.util.Map;
 public class ViewletMapUtil
 {
     // ---
+    // Lookups
+    // ---
+
+    private static ViewletColorLookup colorLookup = null;
+
+    public static void setColorLookup(ViewletColorLookup lookup)
+    {
+        colorLookup = lookup;
+    }
+
+
+    // ---
     // Map conversion
     // ---
 
@@ -445,6 +457,18 @@ public class ViewletMapUtil
         String result = optionalString(map, key, null);
         if (result != null)
         {
+            if (result.startsWith("$"))
+            {
+                if (colorLookup != null)
+                {
+                    Integer foundColor = colorLookup.getColor(result.substring(1));
+                    if (foundColor != null)
+                    {
+                        return foundColor;
+                    }
+                }
+                return defaultValue;
+            }
             if (result.length() > 0 && result.charAt(0) != '#')
             {
                 result = "#" + result;

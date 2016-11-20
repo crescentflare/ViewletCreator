@@ -17,6 +17,13 @@ public class ViewletConvUtil {
     
     
     // ---
+    // MARK: Lookups
+    // ---
+    
+    public static var colorLookup: ViewletColorLookup?
+    
+
+    // ---
     // MARK: Array conversion
     // ---
 
@@ -99,6 +106,9 @@ public class ViewletConvUtil {
 
     public static func asColor(value: Any) -> UIColor? {
         if let colorString = value as? String {
+            if colorString.hasPrefix("$") {
+                return colorLookup?.getColor(refId: colorString.substring(from: colorString.index(after: colorString.startIndex)))
+            }
             var rgbValue: UInt32 = 0
             let scanner = Scanner(string: colorString)
             var alpha: Float = 1
