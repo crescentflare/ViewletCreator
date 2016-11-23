@@ -69,14 +69,19 @@ public class ViewletCreator
         }
     }
 
+    public static List<String> registeredViewletNames()
+    {
+        return new ArrayList<>(instance.registeredViewlets.keySet());
+    }
+
 
     // ---
     // Create and update
     // ---
 
-    public static View create(Context context, Map<String, Object> attributes, ViewGroup addToParent)
+    public static View create(Context context, Map<String, Object> attributes, ViewGroup parent)
     {
-        return create(context, attributes, addToParent, null);
+        return create(context, attributes, parent, null);
     }
 
     public static View create(Context context, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)

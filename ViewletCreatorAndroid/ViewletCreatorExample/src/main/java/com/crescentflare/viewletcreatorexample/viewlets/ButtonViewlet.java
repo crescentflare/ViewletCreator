@@ -39,7 +39,7 @@ public class ButtonViewlet implements ViewletCreator.Viewlet
             // Text style
             String typeface = ViewletMapUtil.optionalString(attributes, "typeface", "");
             int defaultSize = (int)(view.getContext().getResources().getDisplayMetrics().scaledDensity * 17);
-            button.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDensityInt(attributes, "textSize", defaultSize));
+            button.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDimension(attributes, "textSize", defaultSize));
             if (typeface.equals("bold"))
             {
                 button.setTypeface(null, Typeface.BOLD);

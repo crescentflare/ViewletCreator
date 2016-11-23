@@ -17,6 +17,14 @@ public class ViewletConvUtil {
     
     
     // ---
+    // MARK: Lookups
+    // ---
+    
+    public static var colorLookup: ViewletColorLookup?
+    public static var dimensionLookup: ViewletDimensionLookup?
+    
+
+    // ---
     // MARK: Array conversion
     // ---
 
@@ -85,11 +93,11 @@ public class ViewletConvUtil {
     // MARK: View related data conversion
     // ---
     
-    public static func asPointValueArray(value: Any) -> [CGFloat] {
+    public static func asDimensionArray(value: Any) -> [CGFloat] {
         var array: [CGFloat] = []
         if let valueArray = value as? [Any] {
             for valueItem in valueArray {
-                if let pointValue = asPointValue(value: valueItem) {
+                if let pointValue = asDimension(value: valueItem) {
                     array.append(pointValue)
                 }
             }
@@ -99,6 +107,9 @@ public class ViewletConvUtil {
 
     public static func asColor(value: Any) -> UIColor? {
         if let colorString = value as? String {
+            if colorString.hasPrefix("$") {
+                return colorLookup?.getColor(refId: colorString.substring(from: colorString.index(after: colorString.startIndex)))
+            }
             var rgbValue: UInt32 = 0
             let scanner = Scanner(string: colorString)
             var alpha: Float = 1
@@ -117,9 +128,12 @@ public class ViewletConvUtil {
         return nil
     }
     
-    public static func asPointValue(value: Any) -> CGFloat? {
+    public static func asDimension(value: Any) -> CGFloat? {
         if var stringValue = value as? String {
             var multiplier: CGFloat = 1
+            if stringValue.hasPrefix("$") {
+                return dimensionLookup?.getDimension(refId: stringValue.substring(from: stringValue.index(after: stringValue.startIndex)))
+            }
             if stringValue.hasSuffix("dp") || stringValue.hasSuffix("sp") {
                 stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
             } else if stringValue.hasSuffix("px") {

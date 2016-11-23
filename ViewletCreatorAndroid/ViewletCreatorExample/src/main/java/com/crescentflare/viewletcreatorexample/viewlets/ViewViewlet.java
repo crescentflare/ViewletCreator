@@ -82,7 +82,7 @@ public class ViewViewlet implements ViewletCreator.Viewlet
         // Padding
         if (!(view instanceof EditText))
         {
-            List<Integer> paddingList = ViewletMapUtil.optionalDensityIntList(attributes, "padding");
+            List<Integer> paddingList = ViewletMapUtil.optionalDimensionList(attributes, "padding");
             if (paddingList.size() == 4)
             {
                 view.setPadding(paddingList.get(0), paddingList.get(1), paddingList.get(2), paddingList.get(3));
@@ -90,10 +90,10 @@ public class ViewViewlet implements ViewletCreator.Viewlet
             else
             {
                 view.setPadding(
-                        ViewletMapUtil.optionalDensityInt(attributes, "paddingLeft", 0),
-                        ViewletMapUtil.optionalDensityInt(attributes, "paddingTop", 0),
-                        ViewletMapUtil.optionalDensityInt(attributes, "paddingRight", 0),
-                        ViewletMapUtil.optionalDensityInt(attributes, "paddingBottom", 0)
+                        ViewletMapUtil.optionalDimension(attributes, "paddingLeft", 0),
+                        ViewletMapUtil.optionalDimension(attributes, "paddingTop", 0),
+                        ViewletMapUtil.optionalDimension(attributes, "paddingRight", 0),
+                        ViewletMapUtil.optionalDimension(attributes, "paddingBottom", 0)
                 );
             }
         }
@@ -119,7 +119,7 @@ public class ViewViewlet implements ViewletCreator.Viewlet
         }
         else
         {
-            view.getLayoutParams().width = ViewletMapUtil.optionalDensityInt(attributes, "width", ViewGroup.LayoutParams.WRAP_CONTENT);
+            view.getLayoutParams().width = ViewletMapUtil.optionalDimension(attributes, "width", ViewGroup.LayoutParams.WRAP_CONTENT);
         }
 
         // Height
@@ -134,14 +134,14 @@ public class ViewViewlet implements ViewletCreator.Viewlet
         }
         else
         {
-            view.getLayoutParams().height = ViewletMapUtil.optionalDensityInt(attributes, "height", ViewGroup.LayoutParams.WRAP_CONTENT);
+            view.getLayoutParams().height = ViewletMapUtil.optionalDimension(attributes, "height", ViewGroup.LayoutParams.WRAP_CONTENT);
         }
 
         // Margin
         if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)
         {
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams)view.getLayoutParams();
-            List<Integer> marginList = ViewletMapUtil.optionalDensityIntList(attributes, "margin");
+            List<Integer> marginList = ViewletMapUtil.optionalDimensionList(attributes, "margin");
             if (marginList.size() == 4)
             {
                 marginLayoutParams.setMargins(marginList.get(0), marginList.get(1), marginList.get(2), marginList.get(3));
@@ -149,10 +149,10 @@ public class ViewViewlet implements ViewletCreator.Viewlet
             else
             {
                 marginLayoutParams.setMargins(
-                        ViewletMapUtil.optionalDensityInt(attributes, "marginLeft", 0),
-                        ViewletMapUtil.optionalDensityInt(attributes, "marginTop", 0),
-                        ViewletMapUtil.optionalDensityInt(attributes, "marginRight", 0),
-                        ViewletMapUtil.optionalDensityInt(attributes, "marginBottom", 0)
+                        ViewletMapUtil.optionalDimension(attributes, "marginLeft", 0),
+                        ViewletMapUtil.optionalDimension(attributes, "marginTop", 0),
+                        ViewletMapUtil.optionalDimension(attributes, "marginRight", 0),
+                        ViewletMapUtil.optionalDimension(attributes, "marginBottom", 0)
                 );
             }
         }

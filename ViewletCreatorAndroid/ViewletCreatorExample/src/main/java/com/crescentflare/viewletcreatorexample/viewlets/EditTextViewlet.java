@@ -54,7 +54,7 @@ public class EditTextViewlet implements ViewletCreator.Viewlet
             // Text style
             String typeface = ViewletMapUtil.optionalString(attributes, "typeface", "");
             int defaultSize = (int)(view.getContext().getResources().getDisplayMetrics().scaledDensity * 17);
-            editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDensityInt(attributes, "textSize", defaultSize));
+            editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDimension(attributes, "textSize", defaultSize));
             if (typeface.equals("bold"))
             {
                 editText.setTypeface(null, Typeface.BOLD);

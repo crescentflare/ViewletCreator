@@ -53,6 +53,10 @@ public class ViewletCreator {
         shared.registeredStylers.append(updater)
     }
     
+    public static func registeredViewletNames() -> [String] {
+        return shared.registeredViewlets.keys.map({ $0 })
+    }
+    
 
     // ---
     // MARK: Create and update

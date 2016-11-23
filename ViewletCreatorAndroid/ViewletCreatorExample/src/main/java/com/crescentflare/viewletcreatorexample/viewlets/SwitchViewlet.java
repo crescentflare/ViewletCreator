@@ -40,7 +40,7 @@ public class SwitchViewlet implements ViewletCreator.Viewlet
             // Text style
             String typeface = ViewletMapUtil.optionalString(attributes, "typeface", "");
             int defaultSize = (int)(view.getContext().getResources().getDisplayMetrics().scaledDensity * 17);
-            switchControl.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDensityInt(attributes, "textSize", defaultSize));
+            switchControl.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDimension(attributes, "textSize", defaultSize));
             if (typeface.equals("bold"))
             {
                 switchControl.setTypeface(null, Typeface.BOLD);

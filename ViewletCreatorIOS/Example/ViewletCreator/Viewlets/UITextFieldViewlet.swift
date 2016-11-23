@@ -34,7 +34,7 @@ class UITextFieldViewlet: Viewlet {
             }
             
             // Text style
-            let fontSize = ViewletConvUtil.asPointValue(value: attributes["textSize"] as Any) ?? 17
+            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"] as Any) ?? 17
             if let font = ViewletConvUtil.asString(value: attributes["font"] as Any) {
                 if font == "bold" {
                     textField.font = UIFont.boldSystemFont(ofSize: fontSize)

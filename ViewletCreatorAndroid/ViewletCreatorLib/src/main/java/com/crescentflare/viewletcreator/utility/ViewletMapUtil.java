@@ -6,6 +6,7 @@ import android.graphics.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Viewlet creator utility: map access
@@ -13,6 +14,24 @@ import java.util.Map;
  */
 public class ViewletMapUtil
 {
+    // ---
+    // Lookups
+    // ---
+
+    private static ViewletColorLookup colorLookup = null;
+    private static ViewletDimensionLookup dimensionLookup = null;
+
+    public static void setColorLookup(ViewletColorLookup lookup)
+    {
+        colorLookup = lookup;
+    }
+
+    public static void setDimensionLookup(ViewletDimensionLookup lookup)
+    {
+        dimensionLookup = lookup;
+    }
+
+
     // ---
     // Map conversion
     // ---
@@ -367,7 +386,7 @@ public class ViewletMapUtil
     // ---
 
     @SuppressWarnings("unchecked")
-    public static List<Integer> optionalDensityIntList(Map<String, Object> map, String key)
+    public static List<Integer> optionalDimensionList(Map<String, Object> map, String key)
     {
         if (map != null)
         {
@@ -378,59 +397,12 @@ public class ViewletMapUtil
                 if (list.size() > 0)
                 {
                     List<Integer> convertedList = new ArrayList<>();
-                    if (list.get(0) instanceof String)
+                    for (Object item : list)
                     {
-                        for (String item : (List<String>)object)
+                        Integer result = objectToDimension(item);
+                        if (result != null)
                         {
-                            String densityString = item;
-                            float density;
-                            if (densityString.endsWith("sp"))
-                            {
-                                densityString = densityString.substring(0, densityString.length() - 2);
-                                density = Resources.getSystem().getDisplayMetrics().scaledDensity;
-                            }
-                            else if (densityString.endsWith("dp"))
-                            {
-                                densityString = densityString.substring(0, densityString.length() - 2);
-                                density = Resources.getSystem().getDisplayMetrics().density;
-                            }
-                            else if (densityString.endsWith("px"))
-                            {
-                                densityString = densityString.substring(0, densityString.length() - 2);
-                                density = 1;
-                            }
-                            else
-                            {
-                                density = Resources.getSystem().getDisplayMetrics().density;
-                            }
-                            try
-                            {
-                                convertedList.add((int)(Double.parseDouble(densityString) * density));
-                            }
-                            catch (IllegalArgumentException ignored)
-                            {
-                            }
-                        }
-                    }
-                    else if (list.get(0) instanceof Double)
-                    {
-                        for (Double item : (List<Double>)object)
-                        {
-                            convertedList.add((int)(item * Resources.getSystem().getDisplayMetrics().density));
-                        }
-                    }
-                    else if (list.get(0) instanceof Float)
-                    {
-                        for (Float item : (List<Float>)object)
-                        {
-                            convertedList.add((int)(item * Resources.getSystem().getDisplayMetrics().density));
-                        }
-                    }
-                    else if (list.get(0) instanceof Integer)
-                    {
-                        for (Integer item : (List<Integer>)object)
-                        {
-                            convertedList.add((int)(item * Resources.getSystem().getDisplayMetrics().density));
+                            convertedList.add(result);
                         }
                     }
                     return convertedList;
@@ -445,6 +417,18 @@ public class ViewletMapUtil
         String result = optionalString(map, key, null);
         if (result != null)
         {
+            if (result.startsWith("$"))
+            {
+                if (colorLookup != null)
+                {
+                    Integer foundColor = colorLookup.getColor(result.substring(1));
+                    if (foundColor != null)
+                    {
+                        return foundColor;
+                    }
+                }
+                return defaultValue;
+            }
             if (result.length() > 0 && result.charAt(0) != '#')
             {
                 result = "#" + result;
@@ -460,56 +444,77 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static int optionalDensityInt(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalDimension(Map<String, Object> map, String key, int defaultValue)
     {
         if (map != null)
         {
-            Object object = map.get(key);
-            if (object instanceof String)
+            Integer result = objectToDimension(map.get(key));
+            if (result != null)
             {
-                String densityString = (String)object;
-                float density;
-                if (densityString.endsWith("sp"))
-                {
-                    densityString = densityString.substring(0, densityString.length() - 2);
-                    density = Resources.getSystem().getDisplayMetrics().scaledDensity;
-                }
-                else if (densityString.endsWith("dp"))
-                {
-                    densityString = densityString.substring(0, densityString.length() - 2);
-                    density = Resources.getSystem().getDisplayMetrics().density;
-                }
-                else if (densityString.endsWith("px"))
-                {
-                    densityString = densityString.substring(0, densityString.length() - 2);
-                    density = 1;
-                }
-                else
-                {
-                    density = Resources.getSystem().getDisplayMetrics().density;
-                }
-                try
-                {
-                    return (int)(Double.parseDouble(densityString) * density);
-                }
-                catch (IllegalArgumentException ignored)
-                {
-                }
-            }
-            else if (object instanceof Double)
-            {
-                return (int)((Double)object * Resources.getSystem().getDisplayMetrics().density);
-            }
-            else if (object instanceof Float)
-            {
-                return (int)((Float)object * Resources.getSystem().getDisplayMetrics().density);
-            }
-            else if (object instanceof Integer)
-            {
-                return (int)((Integer)object * Resources.getSystem().getDisplayMetrics().density);
+                return result;
             }
         }
         return defaultValue;
+    }
+
+    private static Integer objectToDimension(Object object)
+    {
+        if (object instanceof String)
+        {
+            String densityString = (String)object;
+            float density;
+            if (densityString.startsWith("$"))
+            {
+                if (dimensionLookup != null)
+                {
+                    Integer foundDimension = dimensionLookup.getDimension(densityString.substring(1));
+                    if (foundDimension != null)
+                    {
+                        return foundDimension;
+                    }
+                }
+                return null;
+            }
+            if (densityString.endsWith("sp"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 2);
+                density = Resources.getSystem().getDisplayMetrics().scaledDensity;
+            }
+            else if (densityString.endsWith("dp"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 2);
+                density = Resources.getSystem().getDisplayMetrics().density;
+            }
+            else if (densityString.endsWith("px"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 2);
+                density = 1;
+            }
+            else
+            {
+                density = Resources.getSystem().getDisplayMetrics().density;
+            }
+            try
+            {
+                return (int)(Double.parseDouble(densityString) * density);
+            }
+            catch (IllegalArgumentException ignored)
+            {
+            }
+        }
+        else if (object instanceof Double)
+        {
+            return (int)((Double)object * Resources.getSystem().getDisplayMetrics().density);
+        }
+        else if (object instanceof Float)
+        {
+            return (int)((Float)object * Resources.getSystem().getDisplayMetrics().density);
+        }
+        else if (object instanceof Integer)
+        {
+            return (int)((Integer)object * Resources.getSystem().getDisplayMetrics().density);
+        }
+        return null;
     }
 
 

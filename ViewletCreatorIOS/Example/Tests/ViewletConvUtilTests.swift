@@ -34,7 +34,7 @@ class Tests: XCTestCase {
     // ---
     
     func testAsPointValueArray() {
-        XCTAssertEqual([ 0.5, 10, 4, 9 ], ViewletConvUtil.asPointValueArray(value: [ "1px", "10dp", "4sp", "9dp" ]))
+        XCTAssertEqual([ 0.5, 10, 4, 9 ], ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp" ]))
     }
 
     func testAsColor() {
@@ -43,10 +43,10 @@ class Tests: XCTestCase {
     }
     
     func testAsPointValue() {
-        XCTAssertEqual(0.5, ViewletConvUtil.asPointValue(value: "1px"))
-        XCTAssertEqual(20, ViewletConvUtil.asPointValue(value: "20dp"))
-        XCTAssertEqual(12, ViewletConvUtil.asPointValue(value: "12sp"))
-        XCTAssertEqual(8, ViewletConvUtil.asPointValue(value: 8))
+        XCTAssertEqual(0.5, ViewletConvUtil.asDimension(value: "1px"))
+        XCTAssertEqual(20, ViewletConvUtil.asDimension(value: "20dp"))
+        XCTAssertEqual(12, ViewletConvUtil.asDimension(value: "12sp"))
+        XCTAssertEqual(8, ViewletConvUtil.asDimension(value: 8))
     }
     
 
