@@ -43,15 +43,15 @@ public class TextViewViewlet implements ViewletCreator.Viewlet
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, ViewletMapUtil.optionalDimension(attributes, "textSize", defaultSize));
             if (typeface.equals("bold"))
             {
-                textView.setTypeface(null, Typeface.BOLD);
+                textView.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
             }
             else if (typeface.equals("italics"))
             {
-                textView.setTypeface(null, Typeface.ITALIC);
+                textView.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.ITALIC));
             }
             else
             {
-                textView.setTypeface(Typeface.DEFAULT);
+                textView.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
             }
             textView.setTextColor(ViewletMapUtil.optionalColor(attributes, "textColor", 0xFF101010));
 
