@@ -111,4 +111,61 @@ public class ViewletMapUtilTest
         Assert.assertEquals(Arrays.asList(false, true, true), ViewletMapUtil.optionalBooleanList(map, "ints"));
         Assert.assertEquals(Arrays.asList(false, false, true), ViewletMapUtil.optionalBooleanList(map, "booleans"));
     }
+
+
+    // ---
+    // Fetch and convert basic values
+    // ---
+
+    @Test
+    public void optionalString() throws Exception
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("string", "text");
+        map.put("int", 20);
+        Assert.assertEquals("text", ViewletMapUtil.optionalString(map, "string", null));
+        Assert.assertEquals("20", ViewletMapUtil.optionalString(map, "int", null));
+        Assert.assertEquals("default", ViewletMapUtil.optionalString(map, "invalid", "default"));
+        Assert.assertNull(ViewletMapUtil.optionalString(map, "invalid", null));
+    }
+
+    @Test
+    public void optionalDouble() throws Exception
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("string", "4.142");
+        map.put("double", 8.9);
+        Assert.assertEquals(4.142, ViewletMapUtil.optionalDouble(map, "string", 0));
+        Assert.assertEquals(8.9, ViewletMapUtil.optionalDouble(map, "double", 0));
+    }
+
+    @Test
+    public void optionalFloat() throws Exception
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("int", 8);
+        map.put("float", 5.156f);
+        Assert.assertEquals(8.0f, ViewletMapUtil.optionalFloat(map, "int", 0));
+        Assert.assertEquals(5.156f, ViewletMapUtil.optionalFloat(map, "float", 0));
+    }
+
+    @Test
+    public void optionalInteger() throws Exception
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("int", 78465);
+        map.put("string", "5.8");
+        Assert.assertEquals(78465, ViewletMapUtil.optionalInteger(map, "int", 0));
+        Assert.assertEquals(5, ViewletMapUtil.optionalInteger(map, "string", 0));
+    }
+
+    @Test
+    public void optionalBoolean() throws Exception
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("int", 0);
+        map.put("boolean", true);
+        Assert.assertFalse(ViewletMapUtil.optionalBoolean(map, "int", true));
+        Assert.assertTrue(ViewletMapUtil.optionalBoolean(map, "boolean", false));
+    }
 }
