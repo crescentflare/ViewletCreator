@@ -86,7 +86,6 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    @SuppressWarnings("unchecked")
     public static List<String> optionalStringList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -97,50 +96,22 @@ public class ViewletMapUtil
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof String)
+                    List<String> convertedList = new ArrayList<>();
+                    for (Object item : list)
                     {
-                        return (List<String>)object;
+                        String result = objectToString(item);
+                        if (result != null)
+                        {
+                            convertedList.add(result);
+                        }
                     }
-                    else
-                    {
-                        List<String> convertedList = new ArrayList<>();
-                        if (list.get(0) instanceof Double)
-                        {
-                            for (Double item : (List<Double>)object)
-                            {
-                                convertedList.add("" + item);
-                            }
-                        }
-                        else if (list.get(0) instanceof Float)
-                        {
-                            for (Float item : (List<Float>)object)
-                            {
-                                convertedList.add("" + item);
-                            }
-                        }
-                        else if (list.get(0) instanceof Integer)
-                        {
-                            for (Integer item : (List<Integer>)object)
-                            {
-                                convertedList.add("" + item);
-                            }
-                        }
-                        else if (list.get(0) instanceof Boolean)
-                        {
-                            for (Boolean item : (List<Boolean>)object)
-                            {
-                                convertedList.add(item ? "true" : "false");
-                            }
-                        }
-                        return convertedList;
-                    }
+                    return convertedList;
                 }
             }
         }
         return new ArrayList<>();
     }
 
-    @SuppressWarnings("unchecked")
     public static List<Double> optionalDoubleList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -151,56 +122,22 @@ public class ViewletMapUtil
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof Double)
+                    List<Double> convertedList = new ArrayList<>();
+                    for (Object item : list)
                     {
-                        return (List<Double>)object;
+                        Double result = objectToDouble(item);
+                        if (result != null)
+                        {
+                            convertedList.add(result);
+                        }
                     }
-                    else
-                    {
-                        List<Double> convertedList = new ArrayList<>();
-                        if (list.get(0) instanceof String)
-                        {
-                            for (String item : (List<String>)object)
-                            {
-                                try
-                                {
-                                    convertedList.add(Double.parseDouble(item));
-                                }
-                                catch (IllegalArgumentException ignored)
-                                {
-                                }
-                            }
-                        }
-                        else if (list.get(0) instanceof Float)
-                        {
-                            for (Float item : (List<Float>)object)
-                            {
-                                convertedList.add(item.doubleValue());
-                            }
-                        }
-                        else if (list.get(0) instanceof Integer)
-                        {
-                            for (Integer item : (List<Integer>)object)
-                            {
-                                convertedList.add(item.doubleValue());
-                            }
-                        }
-                        else if (list.get(0) instanceof Boolean)
-                        {
-                            for (Boolean item : (List<Boolean>)object)
-                            {
-                                convertedList.add(item ? 1.0 : 0.0);
-                            }
-                        }
-                        return convertedList;
-                    }
+                    return convertedList;
                 }
             }
         }
         return new ArrayList<>();
     }
 
-    @SuppressWarnings("unchecked")
     public static List<Float> optionalFloatList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -211,56 +148,22 @@ public class ViewletMapUtil
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof Float)
+                    List<Float> convertedList = new ArrayList<>();
+                    for (Object item : list)
                     {
-                        return (List<Float>)object;
+                        Float result = objectToFloat(item);
+                        if (result != null)
+                        {
+                            convertedList.add(result);
+                        }
                     }
-                    else
-                    {
-                        List<Float> convertedList = new ArrayList<>();
-                        if (list.get(0) instanceof String)
-                        {
-                            for (String item : (List<String>)object)
-                            {
-                                try
-                                {
-                                    convertedList.add(Float.parseFloat(item));
-                                }
-                                catch (IllegalArgumentException ignored)
-                                {
-                                }
-                            }
-                        }
-                        else if (list.get(0) instanceof Double)
-                        {
-                            for (Double item : (List<Double>)object)
-                            {
-                                convertedList.add(item.floatValue());
-                            }
-                        }
-                        else if (list.get(0) instanceof Integer)
-                        {
-                            for (Integer item : (List<Integer>)object)
-                            {
-                                convertedList.add(item.floatValue());
-                            }
-                        }
-                        else if (list.get(0) instanceof Boolean)
-                        {
-                            for (Boolean item : (List<Boolean>)object)
-                            {
-                                convertedList.add(item ? 1.0f : 0.0f);
-                            }
-                        }
-                        return convertedList;
-                    }
+                    return convertedList;
                 }
             }
         }
         return new ArrayList<>();
     }
 
-    @SuppressWarnings("unchecked")
     public static List<Integer> optionalIntegerList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -271,56 +174,22 @@ public class ViewletMapUtil
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof Integer)
+                    List<Integer> convertedList = new ArrayList<>();
+                    for (Object item : list)
                     {
-                        return (List<Integer>)object;
+                        Integer result = objectToInteger(item);
+                        if (result != null)
+                        {
+                            convertedList.add(result);
+                        }
                     }
-                    else
-                    {
-                        List<Integer> convertedList = new ArrayList<>();
-                        if (list.get(0) instanceof String)
-                        {
-                            for (String item : (List<String>)object)
-                            {
-                                try
-                                {
-                                    convertedList.add(Integer.parseInt(item));
-                                }
-                                catch (IllegalArgumentException ignored)
-                                {
-                                }
-                            }
-                        }
-                        else if (list.get(0) instanceof Double)
-                        {
-                            for (Double item : (List<Double>)object)
-                            {
-                                convertedList.add(item.intValue());
-                            }
-                        }
-                        else if (list.get(0) instanceof Float)
-                        {
-                            for (Float item : (List<Float>)object)
-                            {
-                                convertedList.add(item.intValue());
-                            }
-                        }
-                        else if (list.get(0) instanceof Boolean)
-                        {
-                            for (Boolean item : (List<Boolean>)object)
-                            {
-                                convertedList.add(item ? 1 : 0);
-                            }
-                        }
-                        return convertedList;
-                    }
+                    return convertedList;
                 }
             }
         }
         return new ArrayList<>();
     }
 
-    @SuppressWarnings("unchecked")
     public static List<Boolean> optionalBooleanList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -331,49 +200,16 @@ public class ViewletMapUtil
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof Boolean)
+                    List<Boolean> convertedList = new ArrayList<>();
+                    for (Object item : list)
                     {
-                        return (List<Boolean>)object;
+                        Boolean result = objectToBoolean(item);
+                        if (result != null)
+                        {
+                            convertedList.add(result);
+                        }
                     }
-                    else
-                    {
-                        List<Boolean> convertedList = new ArrayList<>();
-                        if (list.get(0) instanceof String)
-                        {
-                            for (String item : (List<String>)object)
-                            {
-                                try
-                                {
-                                    convertedList.add(Boolean.parseBoolean(item));
-                                }
-                                catch (IllegalArgumentException ignored)
-                                {
-                                }
-                            }
-                        }
-                        else if (list.get(0) instanceof Double)
-                        {
-                            for (Double item : (List<Double>)object)
-                            {
-                                convertedList.add(item > 0);
-                            }
-                        }
-                        else if (list.get(0) instanceof Float)
-                        {
-                            for (Float item : (List<Float>)object)
-                            {
-                                convertedList.add(item > 0);
-                            }
-                        }
-                        else if (list.get(0) instanceof Integer)
-                        {
-                            for (Integer item : (List<Integer>)object)
-                            {
-                                convertedList.add(item > 0);
-                            }
-                        }
-                        return convertedList;
-                    }
+                    return convertedList;
                 }
             }
         }
@@ -385,7 +221,32 @@ public class ViewletMapUtil
     // Fetch and convert view-related values
     // ---
 
-    @SuppressWarnings("unchecked")
+    public static List<Integer> optionalColorList(Map<String, Object> map, String key)
+    {
+        if (map != null)
+        {
+            Object object = map.get(key);
+            if (object != null && object instanceof List<?>)
+            {
+                List<?> list = (List<?>)object;
+                if (list.size() > 0)
+                {
+                    List<Integer> convertedList = new ArrayList<>();
+                    for (Object item : list)
+                    {
+                        Integer result = objectToColor(item);
+                        if (result != null)
+                        {
+                            convertedList.add(result);
+                        }
+                    }
+                    return convertedList;
+                }
+            }
+        }
+        return new ArrayList<>();
+    }
+
     public static List<Integer> optionalDimensionList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -414,31 +275,12 @@ public class ViewletMapUtil
 
     public static int optionalColor(Map<String, Object> map, String key, int defaultValue)
     {
-        String result = optionalString(map, key, null);
-        if (result != null)
+        if (map != null)
         {
-            if (result.startsWith("$"))
+            Integer result = objectToColor(map.get(key));
+            if (result != null)
             {
-                if (colorLookup != null)
-                {
-                    Integer foundColor = colorLookup.getColor(result.substring(1));
-                    if (foundColor != null)
-                    {
-                        return foundColor;
-                    }
-                }
-                return defaultValue;
-            }
-            if (result.length() > 0 && result.charAt(0) != '#')
-            {
-                result = "#" + result;
-            }
-            try
-            {
-                return Color.parseColor(result);
-            }
-            catch (IllegalArgumentException ignored)
-            {
+                return result;
             }
         }
         return defaultValue;
@@ -456,6 +298,81 @@ public class ViewletMapUtil
         }
         return defaultValue;
     }
+
+
+    // ---
+    // Fetch and convert basic values
+    // ---
+
+    public static String optionalString(Map<String, Object> map, String key, String defaultValue)
+    {
+        if (map != null)
+        {
+            String result = objectToString(map.get(key));
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return defaultValue;
+    }
+
+    public static double optionalDouble(Map<String, Object> map, String key, double defaultValue)
+    {
+        if (map != null)
+        {
+            Double result = objectToDouble(map.get(key));
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return defaultValue;
+    }
+
+    public static float optionalFloat(Map<String, Object> map, String key, float defaultValue)
+    {
+        if (map != null)
+        {
+            Float result = objectToFloat(map.get(key));
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return defaultValue;
+    }
+
+    public static int optionalInteger(Map<String, Object> map, String key, int defaultValue)
+    {
+        if (map != null)
+        {
+            Integer result = objectToInteger(map.get(key));
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return defaultValue;
+    }
+
+    public static boolean optionalBoolean(Map<String, Object> map, String key, boolean defaultValue)
+    {
+        if (map != null)
+        {
+            Boolean result = objectToBoolean(map.get(key));
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return defaultValue;
+    }
+
+
+    // ---
+    // Internal object conversion
+    // ---
 
     private static Integer objectToDimension(Object object)
     {
@@ -517,165 +434,180 @@ public class ViewletMapUtil
         return null;
     }
 
-
-    // ---
-    // Fetch and convert basic values
-    // ---
-
-    public static String optionalString(Map<String, Object> map, String key, String defaultValue)
+    private static Integer objectToColor(Object object)
     {
-        if (map != null)
+        if (object instanceof String)
         {
-            Object object = map.get(key);
-            if (object instanceof String)
+            String colorString = (String)object;
+            if (colorString.startsWith("$"))
             {
-                return (String)object;
+                if (colorLookup != null)
+                {
+                    Integer foundColor = colorLookup.getColor(colorString.substring(1));
+                    if (foundColor != null)
+                    {
+                        return foundColor;
+                    }
+                }
+                return null;
             }
-            else if (object instanceof Double || object instanceof Float || object instanceof Integer || object instanceof Boolean)
+            if (colorString.length() > 0 && colorString.charAt(0) != '#')
             {
-                return object.toString();
+                colorString = "#" + colorString;
+            }
+            try
+            {
+                return Color.parseColor(colorString);
+            }
+            catch (IllegalArgumentException ignored)
+            {
             }
         }
-        return defaultValue;
+        return null;
     }
 
-    public static double optionalDouble(Map<String, Object> map, String key, double defaultValue)
+    private static String objectToString(Object object)
     {
-        if (map != null)
+        if (object instanceof String)
         {
-            Object object = map.get(key);
-            if (object instanceof String)
-            {
-                try
-                {
-                    return Double.parseDouble((String)object);
-                }
-                catch (IllegalArgumentException ignored)
-                {
-                }
-            }
-            else if (object instanceof Double)
-            {
-                return (Double)object;
-            }
-            else if (object instanceof Float)
-            {
-                return (Float)object;
-            }
-            else if (object instanceof Integer)
-            {
-                return (Integer)object;
-            }
-            else if (object instanceof Boolean)
-            {
-                return ((Boolean)object) ? 1.0 : 0.0;
-            }
+            return (String)object;
         }
-        return defaultValue;
+        else if (object instanceof Double || object instanceof Float || object instanceof Integer || object instanceof Boolean)
+        {
+            return object.toString();
+        }
+        return null;
     }
 
-    public static float optionalFloat(Map<String, Object> map, String key, float defaultValue)
+    private static Double objectToDouble(Object object)
     {
-        if (map != null)
+        if (object instanceof String)
         {
-            Object object = map.get(key);
-            if (object instanceof String)
+            try
             {
-                try
-                {
-                    return Float.parseFloat((String)object);
-                }
-                catch (IllegalArgumentException ignored)
-                {
-                }
+                return Double.parseDouble((String)object);
             }
-            else if (object instanceof Double)
+            catch (IllegalArgumentException ignored)
             {
-                return ((Double)object).floatValue();
-            }
-            else if (object instanceof Float)
-            {
-                return (Float)object;
-            }
-            else if (object instanceof Integer)
-            {
-                return (Integer)object;
-            }
-            else if (object instanceof Boolean)
-            {
-                return ((Boolean)object) ? 1.0f : 0.0f;
             }
         }
-        return defaultValue;
+        else if (object instanceof Double)
+        {
+            return (Double)object;
+        }
+        else if (object instanceof Float)
+        {
+            return ((Float)object).doubleValue();
+        }
+        else if (object instanceof Integer)
+        {
+            return ((Integer)object).doubleValue();
+        }
+        else if (object instanceof Boolean)
+        {
+            return ((Boolean)object) ? 1.0 : 0.0;
+        }
+        return null;
     }
 
-    public static int optionalInteger(Map<String, Object> map, String key, int defaultValue)
+    private static Float objectToFloat(Object object)
     {
-        if (map != null)
+        if (object instanceof String)
         {
-            Object object = map.get(key);
-            if (object instanceof String)
+            try
             {
-                try
-                {
-                    return Integer.parseInt((String)object);
-                }
-                catch (IllegalArgumentException ignored)
-                {
-                }
+                return Float.parseFloat((String)object);
             }
-            else if (object instanceof Double)
+            catch (IllegalArgumentException ignored)
             {
-                return ((Double)object).intValue();
-            }
-            else if (object instanceof Float)
-            {
-                return ((Float)object).intValue();
-            }
-            else if (object instanceof Integer)
-            {
-                return (Integer)object;
-            }
-            else if (object instanceof Boolean)
-            {
-                return ((Boolean)object) ? 1 : 0;
             }
         }
-        return defaultValue;
+        else if (object instanceof Double)
+        {
+            return ((Double)object).floatValue();
+        }
+        else if (object instanceof Float)
+        {
+            return (Float)object;
+        }
+        else if (object instanceof Integer)
+        {
+            return ((Integer)object).floatValue();
+        }
+        else if (object instanceof Boolean)
+        {
+            return ((Boolean)object) ? 1.0f : 0.0f;
+        }
+        return null;
     }
 
-    public static boolean optionalBoolean(Map<String, Object> map, String key, boolean defaultValue)
+    private static Integer objectToInteger(Object object)
     {
-        if (map != null)
+        if (object instanceof String)
         {
-            Object object = map.get(key);
-            if (object instanceof String)
+            try
             {
-                try
-                {
-                    return Boolean.parseBoolean((String)object);
-                }
-                catch (IllegalArgumentException ignored)
-                {
-                }
+                return Integer.parseInt((String)object);
             }
-            else if (object instanceof Double)
+            catch (IllegalArgumentException ignored)
             {
-                return (Double)object > 0;
             }
-            else if (object instanceof Float)
+            try
             {
-                return (Float)object > 0;
+                Double result = Double.parseDouble((String)object);
+                return result.intValue();
             }
-            else if (object instanceof Integer)
+            catch (IllegalArgumentException ignored)
             {
-                return (Integer)object > 0;
-            }
-            else if (object instanceof Boolean)
-            {
-                return (Boolean)object;
             }
         }
-        return defaultValue;
+        else if (object instanceof Double)
+        {
+            return ((Double)object).intValue();
+        }
+        else if (object instanceof Float)
+        {
+            return ((Float)object).intValue();
+        }
+        else if (object instanceof Integer)
+        {
+            return (Integer)object;
+        }
+        else if (object instanceof Boolean)
+        {
+            return ((Boolean)object) ? 1 : 0;
+        }
+        return null;
+    }
+
+    private static Boolean objectToBoolean(Object object)
+    {
+        if (object instanceof String)
+        {
+            try
+            {
+                return Boolean.parseBoolean((String)object);
+            }
+            catch (IllegalArgumentException ignored)
+            {
+            }
+        }
+        else if (object instanceof Double)
+        {
+            return (Double)object > 0;
+        }
+        else if (object instanceof Float)
+        {
+            return (Float)object > 0;
+        }
+        else if (object instanceof Integer)
+        {
+            return (Integer)object > 0;
+        }
+        else if (object instanceof Boolean)
+        {
+            return (Boolean)object;
+        }
+        return null;
     }
 }
