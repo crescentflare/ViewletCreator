@@ -322,6 +322,7 @@ public class ViewletMapUtil
                 List<String> formatterList = new ArrayList<>(Arrays.asList(
                         "yyyy-MM-dd'T'HH:mm:ss'Z'",
                         "yyyy-MM-dd'T'HH:mm:ssX",
+                        "yyyy-MM-dd'T'HH:mm:ssZ",
                         "yyyy-MM-dd'T'HH:mm:ss",
                         "yyyy-MM-dd"
                 ));
@@ -330,13 +331,13 @@ public class ViewletMapUtil
                     try
                     {
                         DateFormat dateFormatter = new SimpleDateFormat(formatter, Locale.US);
-                        if (formatter.endsWith("'Z'") || formatter.endsWith("X"))
+                        if (formatter.endsWith("'Z'") || formatter.endsWith("Z") || formatter.endsWith("X"))
                         {
                             dateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
                         }
                         return dateFormatter.parse(stringDate);
                     }
-                    catch (ParseException ignored)
+                    catch (Exception ignored)
                     {
                     }
                 }
