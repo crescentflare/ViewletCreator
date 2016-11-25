@@ -6,11 +6,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import static org.junit.Assert.*;
 
@@ -118,6 +120,20 @@ public class ViewletMapUtilTest
     // ---
 
     @Test
+    public void optionalDate() throws Exception
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("first", "2016-08-19");
+        map.put("second", "2016-05-16T01:10:28");
+        map.put("third", "2016-02-27T12:24:11Z");
+        map.put("fourth", "2016-02-27T19:00:00+02:00");
+        Assert.assertEquals(dateFrom(2016, 8, 19).toString(), ViewletMapUtil.optionalDate(map, "first", null).toString());
+        Assert.assertEquals(dateFrom(2016, 5, 16, 1, 10, 28).toString(), ViewletMapUtil.optionalDate(map, "second", null).toString());
+        Assert.assertEquals(utcDateFrom(2016, 2, 27, 12, 24, 11).toString(), ViewletMapUtil.optionalDate(map, "third", null).toString());
+        Assert.assertEquals(utcDateFrom(2016, 2, 27, 17, 0, 0).toString(), ViewletMapUtil.optionalDate(map, "fourth", null).toString());
+    }
+
+    @Test
     public void optionalString() throws Exception
     {
         Map<String, Object> map = new HashMap<>();
@@ -167,5 +183,35 @@ public class ViewletMapUtilTest
         map.put("boolean", true);
         Assert.assertFalse(ViewletMapUtil.optionalBoolean(map, "int", true));
         Assert.assertTrue(ViewletMapUtil.optionalBoolean(map, "boolean", false));
+    }
+
+
+    // ---
+    // Helpers
+    // ---
+
+    public Date dateFrom(int year, int month, int day)
+    {
+        return dateFrom(year, month, day, 0, 0, 0);
+    }
+
+    public Date dateFrom(int year, int month, int day, int hour, int minute, int second)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month - 1, day, hour, minute, second);
+        return calendar.getTime();
+    }
+
+    public Date utcDateFrom(int year, int month, int day)
+    {
+        return utcDateFrom(year, month, day, 0, 0, 0);
+    }
+
+    public Date utcDateFrom(int year, int month, int day, int hour, int minute, int second)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month - 1, day, hour, minute, second);
+        calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return calendar.getTime();
     }
 }

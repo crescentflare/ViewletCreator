@@ -3,10 +3,17 @@ package com.crescentflare.viewletcreator.utility;
 import android.content.res.Resources;
 import android.graphics.Color;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TimeZone;
 
 /**
  * Viewlet creator utility: map access
@@ -303,6 +310,40 @@ public class ViewletMapUtil
     // ---
     // Fetch and convert basic values
     // ---
+
+    public static Date optionalDate(Map<String, Object> map, String key, Date defaultValue)
+    {
+        if (map != null)
+        {
+            Object object = map.get(key);
+            if (object instanceof String)
+            {
+                String stringDate = (String)object;
+                List<String> formatterList = new ArrayList<>(Arrays.asList(
+                        "yyyy-MM-dd'T'HH:mm:ss'Z'",
+                        "yyyy-MM-dd'T'HH:mm:ssX",
+                        "yyyy-MM-dd'T'HH:mm:ss",
+                        "yyyy-MM-dd"
+                ));
+                for (String formatter : formatterList)
+                {
+                    try
+                    {
+                        DateFormat dateFormatter = new SimpleDateFormat(formatter, Locale.US);
+                        if (formatter.endsWith("'Z'") || formatter.endsWith("X"))
+                        {
+                            dateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        }
+                        return dateFormatter.parse(stringDate);
+                    }
+                    catch (ParseException ignored)
+                    {
+                    }
+                }
+            }
+        }
+        return defaultValue;
+    }
 
     public static String optionalString(Map<String, Object> map, String key, String defaultValue)
     {

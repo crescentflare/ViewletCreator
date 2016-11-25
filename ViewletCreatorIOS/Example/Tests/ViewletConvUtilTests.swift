@@ -9,23 +9,29 @@ class Tests: XCTestCase {
     // ---
 
     func testAsStringArray() {
+        XCTAssertEqual([ "first", "second" ], ViewletConvUtil.asStringArray(value: [ "first", "second" ]))
         XCTAssertEqual([ "10", "12", "99", "24" ], ViewletConvUtil.asStringArray(value: [ 10, 12, 99, 24 ]))
     }
 
     func testAsDoubleArray() {
         XCTAssertEqual([ 4.22, 8.9, 19.1, 11 ], ViewletConvUtil.asDoubleArray(value: [ "4.22", "8.9", "19.1", "11" ]))
+        XCTAssertEqual([ 3.11, 16 ], ViewletConvUtil.asDoubleArray(value: [ 3.11, 16 ]))
     }
 
     func testAsFloatArray() {
         XCTAssertEqual([ 1.1, 5, 89.16, 2 ], ViewletConvUtil.asFloatArray(value: [ 1.1, 5, 89.16, 2 ]))
+        XCTAssertEqual([ 67, 11 ], ViewletConvUtil.asFloatArray(value: [ 67, 11 ]))
     }
 
     func testAsIntArray() {
-        XCTAssertEqual([ 6, 3, 12, 2150 ], ViewletConvUtil.asIntArray(value: [ 6.1, 3, 12, 2150.654 ]))
+        XCTAssertEqual([ 325, -23 ], ViewletConvUtil.asIntArray(value: [ 325, -23 ]))
+        XCTAssertEqual([ 6, 3, 12, 2150 ], ViewletConvUtil.asIntArray(value: [ "6.1", "3", "12", "2150.654" ]))
     }
 
     func testAsBoolArray() {
         XCTAssertEqual([ true, true, false, true ], ViewletConvUtil.asBoolArray(value: [ "true", "true", "false", "true" ]))
+        XCTAssertEqual([ true, false, true ], ViewletConvUtil.asBoolArray(value: [ 12, 0, 1 ]))
+        XCTAssertEqual([ false, true ], ViewletConvUtil.asBoolArray(value: [ false, true ]))
     }
 
     
@@ -54,6 +60,13 @@ class Tests: XCTestCase {
     // MARK: Test basic value conversion
     // ---
     
+    func testAsDate() {
+        XCTAssertEqual(dateFrom(year: 2016, month: 8, day: 19), ViewletConvUtil.asDate(value: "2016-08-19"))
+        XCTAssertEqual(dateFrom(year: 2016, month: 5, day: 16, hour: 1, minute: 10, second: 28), ViewletConvUtil.asDate(value: "2016-05-16T01:10:28"))
+        XCTAssertEqual(utcDateFrom(year: 2016, month: 2, day: 27, hour: 12, minute: 24, second: 11), ViewletConvUtil.asDate(value: "2016-02-27T12:24:11Z"))
+        XCTAssertEqual(utcDateFrom(year: 2016, month: 2, day: 27, hour: 17, minute: 0, second: 0), ViewletConvUtil.asDate(value: "2016-02-27T19:00:00+02:00"))
+    }
+    
     func testAsString() {
         XCTAssertEqual("test", ViewletConvUtil.asString(value: "test"))
         XCTAssertEqual("12", ViewletConvUtil.asString(value: 12))
@@ -79,6 +92,36 @@ class Tests: XCTestCase {
     func testAsBool() {
         XCTAssertEqual(false, ViewletConvUtil.asBool(value: "false"))
         XCTAssertEqual(true, ViewletConvUtil.asBool(value: 2))
+    }
+
+
+    // ---
+    // MARK: Helper
+    // ---
+    
+    func dateFrom(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
+        let calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        return calendar.date(from: components)!
+    }
+
+    func utcDateFrom(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
+        var calendar = Calendar(identifier: .gregorian)
+        var components = DateComponents()
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        return calendar.date(from: components)!
     }
 
 }
