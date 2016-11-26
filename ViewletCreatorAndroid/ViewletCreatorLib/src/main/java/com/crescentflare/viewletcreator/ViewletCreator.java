@@ -214,6 +214,47 @@ public class ViewletCreator
 
 
     // ---
+    // Sub-viewlet utilities
+    // ---
+
+    public static Map<String, Object> attributesForSubViewlet(Object subViewletItem)
+    {
+        Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(subViewletItem);
+        if (attributes != null)
+        {
+            String viewletName = findViewletNameInAttributes(attributes);
+            if (viewletName != null)
+            {
+                return mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+            }
+        }
+        return null;
+    }
+
+    public static List<Map<String, Object>> attributesForSubViewletList(Object subViewletItemList)
+    {
+        List<Map<String, Object>> viewletItemList = new ArrayList<>();
+        if (subViewletItemList != null && subViewletItemList instanceof List<?>)
+        {
+            List<?> itemList = (List<?>) subViewletItemList;
+            for (Object item : itemList)
+            {
+                Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(item);
+                if (attributes != null)
+                {
+                    String viewletName = findViewletNameInAttributes(attributes);
+                    if (viewletName != null)
+                    {
+                        viewletItemList.add(mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null))));
+                    }
+                }
+            }
+        }
+        return viewletItemList;
+    }
+
+
+    // ---
     // The viewlet creation and updating interface
     // ---
 
