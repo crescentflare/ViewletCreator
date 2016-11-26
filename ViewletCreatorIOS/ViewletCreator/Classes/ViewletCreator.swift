@@ -147,5 +147,33 @@ public class ViewletCreator {
         }
         return merged
     }
+
     
+    // ---
+    // MARK: Sub-viewlet utilities
+    // ---
+    
+    public static func attributesForSubViewlet(_ subViewletItem: Any) -> [String: Any]? {
+        if let attributes = subViewletItem as? [String: Any] {
+            if let viewletName = findViewletNameInAttributes(attributes) {
+                return mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"])))
+            }
+        }
+        return nil
+    }
+
+    public static func attributesForSubViewletList(_ subViewletItemList: Any) -> [[String: Any]] {
+        var viewletItemList: [[String: Any]] = []
+        if let itemList = subViewletItemList as? [[String: Any]] {
+            for item in itemList {
+                if let viewletName = findViewletNameInAttributes(item) {
+                    if let resultAttributes = mergedAttributes(given: item, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: item["viewletStyle"]))) {
+                        viewletItemList.append(resultAttributes)
+                    }
+                }
+            }
+        }
+        return viewletItemList
+    }
+
 }
