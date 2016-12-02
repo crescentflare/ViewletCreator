@@ -164,7 +164,7 @@ public class ViewletConvUtil {
                 "yyyy-MM-dd"
             ]
             for format in formats {
-                var dateFormatter = DateFormatter()
+                let dateFormatter = DateFormatter()
                 if format.hasSuffix("Z") {
                     dateFormatter.timeZone = TimeZone(identifier: "UTC")
                 }
