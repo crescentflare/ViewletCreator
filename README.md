@@ -16,6 +16,7 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 * Register viewlets in the viewlet creator to allow viewlets within viewlets
 * Adds utilities to safely fetch view properties from a JSON structure with data conversion
 * Share colors and coordinates/sizes by using color and dimension tables
+* Define styles with default attributes to fall back on for each viewlet
 
 
 ### iOS integration guide
@@ -23,7 +24,7 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile.
 
 ```ruby
-pod "ViewletCreator", '~> 0.2.0'
+pod "ViewletCreator", '~> 0.3.0'
 ```
 
 
@@ -32,7 +33,7 @@ pod "ViewletCreator", '~> 0.2.0'
 When using gradle, the library can easily be imported into the build.gradle file of your project. Add the following dependency:
 
 ```
-compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.2.0'
+compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.3.0'
 ```
 
 Make sure that jcenter is added as a repository.
