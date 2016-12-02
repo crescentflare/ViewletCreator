@@ -30,7 +30,7 @@ public class ViewletCreator
     // ---
 
     private Map<String, Viewlet> registeredViewlets = new HashMap<>();
-    private List<ViewletStyler> registeredStylers = new ArrayList<>();
+    private Map<String, Map<String, Map<String, Object>>> registeredStyles = new HashMap<>();
 
 
     // ---
@@ -61,11 +61,27 @@ public class ViewletCreator
         }
     }
 
-    public static void registerStyler(ViewletStyler styler)
+    public static void registerStyle(String viewletName, String styleName, Map<String, Object> styleAttributes)
     {
-        if (styler != null)
+        if (viewletName != null && styleName != null)
         {
-            instance.registeredStylers.add(styler);
+            // First register that viewlet has styles (if not present)
+            Map<String, Map<String, Object>> viewletStyles = instance.registeredStyles.get(viewletName);
+            if (viewletStyles == null)
+            {
+                viewletStyles = new HashMap<>();
+                instance.registeredStyles.put(viewletName, viewletStyles);
+            }
+
+            // Register or remove style
+            if (styleAttributes != null)
+            {
+                viewletStyles.put(styleName, styleAttributes);
+            }
+            else
+            {
+                viewletStyles.remove(styleName);
+            }
         }
     }
 
@@ -86,19 +102,20 @@ public class ViewletCreator
 
     public static View create(Context context, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
-        Viewlet viewlet = findViewletInAttributes(attributes);
-        if (viewlet != null)
+        String viewletName = findViewletNameInAttributes(attributes);
+        if (viewletName != null)
         {
-            View view = viewlet.create(context);
-            if (view != null)
+            Viewlet viewlet = instance.registeredViewlets.get(viewletName);
+            if (viewlet != null)
             {
-                for (ViewletStyler styler : instance.registeredStylers)
+                View view = viewlet.create(context);
+                if (view != null)
                 {
-                    styler.update(view, attributes, parent);
+                    Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+                    viewlet.update(view, mergedAttributes, parent, binder);
                 }
-                viewlet.update(view, attributes, parent, binder);
+                return view;
             }
-            return view;
         }
         return null;
     }
@@ -110,14 +127,15 @@ public class ViewletCreator
 
     public static void inflateOn(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
-        Viewlet viewlet = findViewletInAttributes(attributes);
-        if (viewlet != null)
+        String viewletName = findViewletNameInAttributes(attributes);
+        if (viewletName != null)
         {
-            for (ViewletStyler styler : instance.registeredStylers)
+            Viewlet viewlet = instance.registeredViewlets.get(viewletName);
+            if (viewlet != null)
             {
-                styler.update(view, attributes, parent);
+                Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+                viewlet.update(view, mergedAttributes, parent, binder);
             }
-            viewlet.update(view, attributes, parent, binder);
         }
     }
 
@@ -149,9 +167,95 @@ public class ViewletCreator
         return ViewletMapUtil.optionalString(attributes, "viewlet", null);
     }
 
+    private static Map<String, Object> attributesForStyle(String viewletName, String styleName)
+    {
+        if (viewletName != null)
+        {
+            Map<String, Map<String, Object>> viewletStyles = instance.registeredStyles.get(viewletName);
+            if (viewletStyles != null)
+            {
+                if (styleName != null && styleName.equals("default"))
+                {
+                    return viewletStyles.get(styleName);
+                }
+                return mergeAttributes(viewletStyles.get(styleName), viewletStyles.get("default"));
+            }
+        }
+        return null;
+    }
+
+    private static Map<String, Object> mergeAttributes(Map<String, Object> givenAttributes, Map<String, Object> fallbackAttributes)
+    {
+        // Just return one of the attributes if the other is null
+        if (fallbackAttributes == null)
+        {
+            return givenAttributes;
+        }
+        else if (givenAttributes == null)
+        {
+            return fallbackAttributes;
+        }
+
+        // Merge and return without modifying the originals
+        Map<String, Object> mergedAttributes = new HashMap<>();
+        for (String key : givenAttributes.keySet())
+        {
+            mergedAttributes.put(key, givenAttributes.get(key));
+        }
+        for (String key : fallbackAttributes.keySet())
+        {
+            if (!mergedAttributes.containsKey(key))
+            {
+                mergedAttributes.put(key, fallbackAttributes.get(key));
+            }
+        }
+        return mergedAttributes;
+    }
+
 
     // ---
-    // The viewlet creation and updating interfaces
+    // Sub-viewlet utilities
+    // ---
+
+    public static Map<String, Object> attributesForSubViewlet(Object subViewletItem)
+    {
+        Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(subViewletItem);
+        if (attributes != null)
+        {
+            String viewletName = findViewletNameInAttributes(attributes);
+            if (viewletName != null)
+            {
+                return mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+            }
+        }
+        return null;
+    }
+
+    public static List<Map<String, Object>> attributesForSubViewletList(Object subViewletItemList)
+    {
+        List<Map<String, Object>> viewletItemList = new ArrayList<>();
+        if (subViewletItemList != null && subViewletItemList instanceof List<?>)
+        {
+            List<?> itemList = (List<?>) subViewletItemList;
+            for (Object item : itemList)
+            {
+                Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(item);
+                if (attributes != null)
+                {
+                    String viewletName = findViewletNameInAttributes(attributes);
+                    if (viewletName != null)
+                    {
+                        viewletItemList.add(mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null))));
+                    }
+                }
+            }
+        }
+        return viewletItemList;
+    }
+
+
+    // ---
+    // The viewlet creation and updating interface
     // ---
 
     public interface Viewlet
@@ -159,10 +263,5 @@ public class ViewletCreator
         View create(Context context);
         void update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder);
         boolean canRecycle(View view, Map<String, Object> attributes);
-    }
-
-    public interface ViewletStyler
-    {
-        void update(View view, Map<String, Object> attributes, ViewGroup parent);
     }
 }

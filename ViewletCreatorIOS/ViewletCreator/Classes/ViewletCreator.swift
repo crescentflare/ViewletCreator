@@ -30,7 +30,7 @@ public class ViewletCreator {
     // ---
 
     private var registeredViewlets: [String: Viewlet] = [:]
-    private var registeredStylers: [(_ view: UIView, _ attributes: [String: Any], _ parent: UIView?) -> Void] = []
+    private var registeredStyles: [String: [String: [String: Any]]] = [:]
     
 
     // ---
@@ -49,8 +49,17 @@ public class ViewletCreator {
         shared.registeredViewlets[name] = viewlet
     }
     
-    public static func registerStyler(updater: @escaping (_ view: UIView, _ attributes: [String: Any], _ parent: UIView?) -> Void) {
-        shared.registeredStylers.append(updater)
+    public static func registerStyle(viewletName: String, styleName: String, styleAttributes: [String: Any]?) {
+        var viewletStyle = shared.registeredStyles[viewletName]
+        if viewletStyle == nil {
+            viewletStyle = [:]
+        }
+        if styleAttributes == nil {
+            let _ = viewletStyle?.removeValue(forKey: styleName)
+        } else {
+            viewletStyle?[styleName] = styleAttributes
+        }
+        shared.registeredStyles[viewletName] = viewletStyle!
     }
     
     public static func registeredViewletNames() -> [String] {
@@ -63,13 +72,14 @@ public class ViewletCreator {
     // ---
 
     public static func create(attributes: [String: Any], parent: UIView? = nil, binder: ViewletBinder? = nil) -> UIView? {
-        if let viewlet = findViewletInAttributes(attributes) {
-            let view = viewlet.create()
-            for styler in shared.registeredStylers {
-                styler(view, attributes, parent)
+        if let viewletName = findViewletNameInAttributes(attributes) {
+            if let viewlet = shared.registeredViewlets[viewletName] {
+                let view = viewlet.create()
+                if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"] as Any))) {
+                    viewlet.update(view: view, attributes: mergedAttributes, parent: parent, binder: binder)
+                }
+                return view
             }
-            viewlet.update(view: view, attributes: attributes, parent: parent, binder: binder)
-            return view
         }
         return nil
     }
@@ -78,11 +88,12 @@ public class ViewletCreator {
         if attributes == nil {
             return
         }
-        if let viewlet = findViewletInAttributes(attributes!) {
-            for styler in shared.registeredStylers {
-                styler(view, attributes!, parent)
+        if let viewletName = findViewletNameInAttributes(attributes!) {
+            if let viewlet = shared.registeredViewlets[viewletName] {
+                if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes?["viewletStyle"] as Any))) {
+                    viewlet.update(view: view, attributes: mergedAttributes, parent: parent, binder: binder)
+                }
             }
-            viewlet.update(view: view, attributes: attributes!, parent: parent, binder: binder)
         }
     }
     
@@ -106,4 +117,63 @@ public class ViewletCreator {
         return attributes["viewlet"] as? String
     }
     
+    private static func attributesForStyle(viewletName: String, styleName: String?) -> [String: Any]? {
+        if let viewletStyles = shared.registeredStyles[viewletName] {
+            if styleName == "default" {
+                return viewletStyles[styleName!]
+            }
+            return mergedAttributes(given: viewletStyles[styleName ?? ""], fallback: viewletStyles["default"])
+        }
+        return nil
+    }
+    
+    private static func mergedAttributes(given: [String: Any]?, fallback: [String: Any]?) -> [String: Any]? {
+        // Just return one of the attributes if the other is null
+        if fallback == nil {
+            return given
+        } else if given == nil {
+            return fallback
+        }
+        
+        // Merge and return without modifying the originals
+        var merged: [String: Any] = [:]
+        for (key, value) in given! {
+            merged[key] = value
+        }
+        for (key, value) in fallback! {
+            if merged[key] == nil {
+                merged[key] = value
+            }
+        }
+        return merged
+    }
+
+    
+    // ---
+    // MARK: Sub-viewlet utilities
+    // ---
+    
+    public static func attributesForSubViewlet(_ subViewletItem: Any) -> [String: Any]? {
+        if let attributes = subViewletItem as? [String: Any] {
+            if let viewletName = findViewletNameInAttributes(attributes) {
+                return mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"] as Any)))
+            }
+        }
+        return nil
+    }
+
+    public static func attributesForSubViewletList(_ subViewletItemList: Any) -> [[String: Any]] {
+        var viewletItemList: [[String: Any]] = []
+        if let itemList = subViewletItemList as? [[String: Any]] {
+            for item in itemList {
+                if let viewletName = findViewletNameInAttributes(item) {
+                    if let resultAttributes = mergedAttributes(given: item, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: item["viewletStyle"] as Any))) {
+                        viewletItemList.append(resultAttributes)
+                    }
+                }
+            }
+        }
+        return viewletItemList
+    }
+
 }

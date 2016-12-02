@@ -31,37 +31,36 @@ class UIViewContainerViewlet: Viewlet {
             var views = view.subviews
             let internalBinder = ViewletDictBinder()
             removeViewletConstraints(view: view, constraints: view.constraints)
-            if let subviews = attributes["subviews"] as? [[String: Any]] {
-                for i in 0..<subviews.count {
-                    let subview = subviews[i]
-                    if i < views.count && ViewletCreator.canRecycle(view: views[i], attributes: subview) {
-                        removeViewletConstraints(view: views[i], constraints: views[i].constraints)
-                        ViewletCreator.inflateOn(view: views[i], attributes: subview, parent: view, binder: binder)
+            let subviews = ViewletCreator.attributesForSubViewletList(attributes["subviews"] as Any)
+            for i in 0..<subviews.count {
+                let subview = subviews[i]
+                if i < views.count && ViewletCreator.canRecycle(view: views[i], attributes: subview) {
+                    removeViewletConstraints(view: views[i], constraints: views[i].constraints)
+                    ViewletCreator.inflateOn(view: views[i], attributes: subview, parent: view, binder: binder)
+                    if let refId = subview["refId"] as? String {
+                        internalBinder.onBind(refId: refId, view: views[i])
+                        if binder != nil {
+                            binder?.onBind(refId: refId, view: views[i])
+                        }
+                    }
+                    createdSubviews += 1
+                } else {
+                    if i < views.count {
+                        views[i].removeFromSuperview()
+                    }
+                    if let createdSubview = ViewletCreator.create(attributes: subview, parent: view, binder: binder) {
+                        view.insertSubview(createdSubview, at: createdSubviews)
                         if let refId = subview["refId"] as? String {
-                            internalBinder.onBind(refId: refId, view: views[i])
+                            internalBinder.onBind(refId: refId, view: createdSubview)
                             if binder != nil {
-                                binder?.onBind(refId: refId, view: views[i])
+                                binder?.onBind(refId: refId, view: createdSubview)
                             }
                         }
                         createdSubviews += 1
-                    } else {
-                        if i < views.count {
-                            views[i].removeFromSuperview()
-                        }
-                        if let createdSubview = ViewletCreator.create(attributes: subview, parent: view, binder: binder) {
-                            view.insertSubview(createdSubview, at: createdSubviews)
-                            if let refId = subview["refId"] as? String {
-                                internalBinder.onBind(refId: refId, view: createdSubview)
-                                if binder != nil {
-                                    binder?.onBind(refId: refId, view: createdSubview)
-                                }
-                            }
-                            createdSubviews += 1
-                        }
                     }
                 }
-                createdSubviews = subviews.count
             }
+            createdSubviews = subviews.count
             views = view.subviews
             for i in stride(from: createdSubviews, to: views.count, by: 1) {
                 views[i].removeFromSuperview()

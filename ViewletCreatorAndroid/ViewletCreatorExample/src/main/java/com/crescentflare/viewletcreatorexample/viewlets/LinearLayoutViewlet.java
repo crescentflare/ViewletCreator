@@ -33,10 +33,10 @@ public class LinearLayoutViewlet implements ViewletCreator.Viewlet
             LinearLayout container = (LinearLayout)view;
             int childCount = container.getChildCount();
             int currentViewChild = 0;
-            List<Object> children = ViewletMapUtil.optionalObjectList(attributes, "children");
+            List<Map<String, Object>> children = ViewletCreator.attributesForSubViewletList(attributes.get("children"));
             for (int i = 0; i < children.size(); i++)
             {
-                Map<String, Object> child = ViewletMapUtil.asStringObjectMap(children.get(i));
+                Map<String, Object> child = children.get(i);
                 if (currentViewChild < childCount && ViewletCreator.canRecycle(container.getChildAt(currentViewChild), child))
                 {
                     ViewletCreator.inflateOn(container.getChildAt(currentViewChild), child, container, binder);

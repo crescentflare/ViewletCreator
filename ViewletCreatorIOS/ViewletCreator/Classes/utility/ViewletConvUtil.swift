@@ -156,6 +156,27 @@ public class ViewletConvUtil {
     // MARK: Basic value conversion
     // ---
     
+    public static func asDate(value: Any) -> Date? {
+        if let stringDate = value as? String {
+            let formats = [
+                "yyyy-MM-dd'T'HH:mm:ssZZZZ",
+                "yyyy-MM-dd'T'HH:mm:ss",
+                "yyyy-MM-dd"
+            ]
+            for format in formats {
+                let dateFormatter = DateFormatter()
+                if format.hasSuffix("Z") {
+                    dateFormatter.timeZone = TimeZone(identifier: "UTC")
+                }
+                dateFormatter.dateFormat = format
+                if let date = dateFormatter.date(from: stringDate) {
+                    return date
+                }
+            }
+        }
+        return nil
+    }
+    
     public static func asString(value: Any) -> String? {
         if value is String {
             return value as? String
@@ -203,7 +224,12 @@ public class ViewletConvUtil {
 
     public static func asInt(value: Any) -> Int? {
         if let stringValue = value as? String {
-            return Int(stringValue)
+            if let intValue = Int(stringValue) {
+                return intValue
+            }
+            if let doubleValue = Double(stringValue) {
+                return Int(doubleValue)
+            }
         } else if let doubleValue = value as? Double {
             return Int(doubleValue)
         } else if let floatValue = value as? Float {
