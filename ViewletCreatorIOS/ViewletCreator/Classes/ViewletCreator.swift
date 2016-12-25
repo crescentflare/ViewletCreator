@@ -75,7 +75,7 @@ public class ViewletCreator {
         if let viewletName = findViewletNameInAttributes(attributes) {
             if let viewlet = shared.registeredViewlets[viewletName] {
                 let view = viewlet.create()
-                if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"] as Any))) {
+                if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"]))) {
                     viewlet.update(view: view, attributes: mergedAttributes, parent: parent, binder: binder)
                 }
                 return view
@@ -90,7 +90,7 @@ public class ViewletCreator {
         }
         if let viewletName = findViewletNameInAttributes(attributes!) {
             if let viewlet = shared.registeredViewlets[viewletName] {
-                if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes?["viewletStyle"] as Any))) {
+                if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes?["viewletStyle"]))) {
                     viewlet.update(view: view, attributes: mergedAttributes, parent: parent, binder: binder)
                 }
             }
@@ -153,21 +153,21 @@ public class ViewletCreator {
     // MARK: Sub-viewlet utilities
     // ---
     
-    public static func attributesForSubViewlet(_ subViewletItem: Any) -> [String: Any]? {
+    public static func attributesForSubViewlet(_ subViewletItem: Any?) -> [String: Any]? {
         if let attributes = subViewletItem as? [String: Any] {
             if let viewletName = findViewletNameInAttributes(attributes) {
-                return mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"] as Any)))
+                return mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes["viewletStyle"])))
             }
         }
         return nil
     }
 
-    public static func attributesForSubViewletList(_ subViewletItemList: Any) -> [[String: Any]] {
+    public static func attributesForSubViewletList(_ subViewletItemList: Any?) -> [[String: Any]] {
         var viewletItemList: [[String: Any]] = []
         if let itemList = subViewletItemList as? [[String: Any]] {
             for item in itemList {
                 if let viewletName = findViewletNameInAttributes(item) {
-                    if let resultAttributes = mergedAttributes(given: item, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: item["viewletStyle"] as Any))) {
+                    if let resultAttributes = mergedAttributes(given: item, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: item["viewletStyle"]))) {
                         viewletItemList.append(resultAttributes)
                     }
                 }

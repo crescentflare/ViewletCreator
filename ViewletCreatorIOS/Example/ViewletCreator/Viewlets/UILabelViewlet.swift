@@ -17,11 +17,11 @@ class UILabelViewlet: Viewlet {
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
         if let label = view as? UILabel {
             // Text
-            label.text = NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"] as Any) ?? "", comment: "")
+            label.text = NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"]) ?? "", comment: "")
             
             // Text style
-            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"] as Any) ?? 17
-            if let font = ViewletConvUtil.asString(value: attributes["font"] as Any) {
+            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"]) ?? 17
+            if let font = ViewletConvUtil.asString(value: attributes["font"]) {
                 if font == "bold" {
                     label.font = UIFont.boldSystemFont(ofSize: fontSize)
                 } else if font == "italics" {
@@ -32,11 +32,11 @@ class UILabelViewlet: Viewlet {
             } else {
                 label.font = UIFont.systemFont(ofSize: fontSize)
             }
-            label.textColor = ViewletConvUtil.asColor(value: attributes["textColor"] as Any) ?? UIColor.darkText
+            label.textColor = ViewletConvUtil.asColor(value: attributes["textColor"]) ?? UIColor.darkText
             
             // Other properties
-            label.numberOfLines = ViewletConvUtil.asInt(value: attributes["maxLines"] as Any) ?? 0
-            if let textAlignment = ViewletConvUtil.asString(value: attributes["textAlignment"] as Any) {
+            label.numberOfLines = ViewletConvUtil.asInt(value: attributes["maxLines"]) ?? 0
+            if let textAlignment = ViewletConvUtil.asString(value: attributes["textAlignment"]) {
                 if textAlignment == "center" {
                     label.textAlignment = .center
                 } else if textAlignment == "right" {

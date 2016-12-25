@@ -32,8 +32,8 @@ class UIViewViewlet: Viewlet {
     // --
     
     static func applyDefaultAttributes(view: UIView, attributes: [String: Any]) {
-        view.backgroundColor = ViewletConvUtil.asColor(value: attributes["backgroundColor"] as Any) ?? UIColor.clear
-        view.isHidden = ViewletConvUtil.asBool(value: attributes["hidden"] as Any) ?? false
+        view.backgroundColor = ViewletConvUtil.asColor(value: attributes["backgroundColor"]) ?? UIColor.clear
+        view.isHidden = ViewletConvUtil.asBool(value: attributes["hidden"]) ?? false
     }
     
 }
