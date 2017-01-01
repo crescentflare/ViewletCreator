@@ -17,13 +17,13 @@ class UITextFieldViewlet: Viewlet {
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
         if let textField = view as? UITextField {
             // Prefilled text and placeholder
-            textField.text = ViewletConvUtil.asString(value: attributes["text"] as Any)
-            textField.placeholder = NSLocalizedString(ViewletConvUtil.asString(value: attributes["placeholder"] as Any) ?? "", comment: "")
+            textField.text = ViewletConvUtil.asString(value: attributes["text"])
+            textField.placeholder = NSLocalizedString(ViewletConvUtil.asString(value: attributes["placeholder"]) ?? "", comment: "")
             
             // Set keyboard mode
             textField.keyboardType = .default
             textField.autocapitalizationType = .sentences
-            if let keyboardType = ViewletConvUtil.asString(value: attributes["keyboardType"] as Any) {
+            if let keyboardType = ViewletConvUtil.asString(value: attributes["keyboardType"]) {
                 if keyboardType == "email" {
                     textField.keyboardType = .emailAddress
                     textField.autocapitalizationType = .none
@@ -34,8 +34,8 @@ class UITextFieldViewlet: Viewlet {
             }
             
             // Text style
-            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"] as Any) ?? 17
-            if let font = ViewletConvUtil.asString(value: attributes["font"] as Any) {
+            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"]) ?? 17
+            if let font = ViewletConvUtil.asString(value: attributes["font"]) {
                 if font == "bold" {
                     textField.font = UIFont.boldSystemFont(ofSize: fontSize)
                 } else if font == "italics" {

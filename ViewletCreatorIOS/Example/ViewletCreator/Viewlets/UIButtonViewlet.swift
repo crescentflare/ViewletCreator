@@ -17,11 +17,11 @@ class UIButtonViewlet: Viewlet {
     func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
         if let button = view as? UIButton {
             // Text
-            button.setTitle(NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"] as Any) ?? "", comment: ""), for: .normal)
+            button.setTitle(NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"]) ?? "", comment: ""), for: .normal)
             
             // Text style
-            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"] as Any) ?? 17
-            if let font = ViewletConvUtil.asString(value: attributes["font"] as Any) {
+            let fontSize = ViewletConvUtil.asDimension(value: attributes["textSize"]) ?? 17
+            if let font = ViewletConvUtil.asString(value: attributes["font"]) {
                 if font == "bold" {
                     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
                 } else if font == "italics" {
@@ -32,7 +32,7 @@ class UIButtonViewlet: Viewlet {
             } else {
                 button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
             }
-            button.setTitleColor(ViewletConvUtil.asColor(value: attributes["textColor"] as Any) ?? view.tintColor, for: .normal)
+            button.setTitleColor(ViewletConvUtil.asColor(value: attributes["textColor"]) ?? view.tintColor, for: .normal)
             
             // Standard view attributes
             UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
