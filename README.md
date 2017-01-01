@@ -24,7 +24,7 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile.
 
 ```ruby
-pod "ViewletCreator", '~> 0.3.0'
+pod "ViewletCreator", '~> 0.3.1'
 ```
 
 
