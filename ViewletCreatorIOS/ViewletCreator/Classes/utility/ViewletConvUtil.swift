@@ -136,6 +136,12 @@ public class ViewletConvUtil {
             }
             if stringValue.hasSuffix("dp") || stringValue.hasSuffix("sp") {
                 stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+            } else if stringValue.hasSuffix("wp") {
+                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                multiplier = UIScreen.main.bounds.width / 100
+            } else if stringValue.hasSuffix("hp") {
+                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                multiplier = UIScreen.main.bounds.height / 100
             } else if stringValue.hasSuffix("px") {
                 stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
                 multiplier = 1 / UIScreen.main.scale

@@ -444,6 +444,16 @@ public class ViewletMapUtil
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = Resources.getSystem().getDisplayMetrics().density;
             }
+            else if (densityString.endsWith("wp"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 2);
+                density = (float)Resources.getSystem().getDisplayMetrics().widthPixels / 100;
+            }
+            else if (densityString.endsWith("hp"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 2);
+                density = (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100;
+            }
             else if (densityString.endsWith("px"))
             {
                 densityString = densityString.substring(0, densityString.length() - 2);
