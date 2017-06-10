@@ -40,7 +40,10 @@ class Tests: XCTestCase {
     // ---
     
     func testAsPointValueArray() {
-        XCTAssertEqual([ 0.5, 10, 4, 9 ], ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp" ]))
+        let pixel = 1 / UIScreen.main.scale
+        let widthPoint = UIScreen.main.bounds.width / 100
+        let heightPoint = UIScreen.main.bounds.height / 100
+        XCTAssertEqual([ pixel, 10, 4, 9, widthPoint * 10, heightPoint * 5.2 ], ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp", "10wp", "5.2hp" ]))
     }
 
     func testAsColor() {
@@ -49,10 +52,15 @@ class Tests: XCTestCase {
     }
     
     func testAsPointValue() {
-        XCTAssertEqual(0.5, ViewletConvUtil.asDimension(value: "1px"))
+        let pixel = 1 / UIScreen.main.scale
+        let widthPoint = UIScreen.main.bounds.width / 100
+        let heightPoint = UIScreen.main.bounds.height / 100
+        XCTAssertEqual(pixel, ViewletConvUtil.asDimension(value: "1px"))
         XCTAssertEqual(20, ViewletConvUtil.asDimension(value: "20dp"))
         XCTAssertEqual(12, ViewletConvUtil.asDimension(value: "12sp"))
         XCTAssertEqual(8, ViewletConvUtil.asDimension(value: 8))
+        XCTAssertEqual(widthPoint * 12.5, ViewletConvUtil.asDimension(value: "12.5wp"))
+        XCTAssertEqual(heightPoint * 99, ViewletConvUtil.asDimension(value: "99hp"))
     }
     
 
