@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.0.1)
-  - ViewletCreator (0.3.1)
+  - ViewletCreator (0.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -12,8 +12,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  ViewletCreator: 29cebfb367137d7fdfcf2bc2b6d9a07706c7196a
+  ViewletCreator: a524cab4a6fa65207f5a4cbb5f44c7f0d9705c32
 
 PODFILE CHECKSUM: a40713f54993a32c57b1a25fcfe329f9b9a961de
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
