@@ -24,7 +24,7 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile.
 
 ```ruby
-pod "ViewletCreator", '~> 0.3.1'
+pod "ViewletCreator", '~> 0.3.2'
 ```
 
 
@@ -33,7 +33,7 @@ pod "ViewletCreator", '~> 0.3.1'
 When using gradle, the library can easily be imported into the build.gradle file of your project. Add the following dependency:
 
 ```
-compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.3.0'
+compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.3.2'
 ```
 
 Make sure that jcenter is added as a repository.
@@ -46,4 +46,4 @@ The provided example shows how to create viewlets, register them and use them to
 
 ### Status
 
-The library is in its initial state but has basic functionality which can already be useful. However, there may be bugs. More features and utilities will be added in the future.
+The library is new but already provides a range of useful functionality. More features may be added in the future.
