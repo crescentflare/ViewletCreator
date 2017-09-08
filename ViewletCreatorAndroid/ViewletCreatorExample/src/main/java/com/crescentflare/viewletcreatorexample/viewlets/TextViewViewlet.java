@@ -29,7 +29,7 @@ public class TextViewViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public void update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public boolean update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
         if (view instanceof TextView)
         {
@@ -73,7 +73,9 @@ public class TextViewViewlet implements ViewletCreator.Viewlet
 
             // Standard view attributes
             ViewViewlet.applyDefaultAttributes(view, attributes);
+            return true;
         }
+        return false;
     }
 
     @Override

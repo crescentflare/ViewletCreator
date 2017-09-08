@@ -14,7 +14,7 @@ class UIButtonViewlet: Viewlet {
         return UIButton()
     }
     
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
+    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool {
         if let button = view as? UIButton {
             // Text
             button.setTitle(NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"]) ?? "", comment: ""), for: .normal)
@@ -36,7 +36,9 @@ class UIButtonViewlet: Viewlet {
             
             // Standard view attributes
             UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
+            return true
         }
+        return false
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {

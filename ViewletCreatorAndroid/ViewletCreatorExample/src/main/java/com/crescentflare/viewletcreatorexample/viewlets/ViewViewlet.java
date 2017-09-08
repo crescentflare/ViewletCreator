@@ -30,9 +30,10 @@ public class ViewViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public void update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public boolean update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
         applyDefaultAttributes(view, attributes);
+        return true;
     }
 
     @Override

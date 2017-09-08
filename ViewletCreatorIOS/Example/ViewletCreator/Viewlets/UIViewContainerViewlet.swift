@@ -24,7 +24,7 @@ class UIViewContainerViewlet: Viewlet {
         return UIViewContainer()
     }
     
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
+    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool {
         if view is UIViewContainer {
             // Add or recycle subviews
             var createdSubviews = 0
@@ -84,7 +84,9 @@ class UIViewContainerViewlet: Viewlet {
             
             // Standard view attributes
             UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
+            return true
         }
+        return false
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {

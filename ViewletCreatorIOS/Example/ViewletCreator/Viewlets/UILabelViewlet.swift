@@ -14,7 +14,7 @@ class UILabelViewlet: Viewlet {
         return UILabel()
     }
     
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
+    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool {
         if let label = view as? UILabel {
             // Text
             label.text = NSLocalizedString(ViewletConvUtil.asString(value: attributes["text"]) ?? "", comment: "")
@@ -46,7 +46,9 @@ class UILabelViewlet: Viewlet {
 
             // Standard view attributes
             UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
+            return true
         }
+        return false
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {

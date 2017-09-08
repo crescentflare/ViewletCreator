@@ -11,7 +11,7 @@ import UIKit
 public protocol Viewlet {
     
     func create() -> UIView
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?)
+    @discardableResult func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool
     func canRecycle(view: UIView, attributes: [String: Any]) -> Bool
     
 }
@@ -84,17 +84,19 @@ public class ViewletCreator {
         return nil
     }
     
-    public static func inflateOn(view: UIView, attributes: [String: Any]?, parent: UIView? = nil, binder: ViewletBinder? = nil) {
+    @discardableResult
+    public static func inflateOn(view: UIView, attributes: [String: Any]?, parent: UIView? = nil, binder: ViewletBinder? = nil) -> Bool {
         if attributes == nil {
-            return
+            return false
         }
         if let viewletName = findViewletNameInAttributes(attributes!) {
             if let viewlet = shared.registeredViewlets[viewletName] {
                 if let mergedAttributes = mergedAttributes(given: attributes, fallback: attributesForStyle(viewletName: viewletName, styleName: ViewletConvUtil.asString(value: attributes?["viewletStyle"]))) {
-                    viewlet.update(view: view, attributes: mergedAttributes, parent: parent, binder: binder)
+                    return viewlet.update(view: view, attributes: mergedAttributes, parent: parent, binder: binder)
                 }
             }
         }
+        return false
     }
     
     public static func canRecycle(view: UIView?, attributes: [String: Any]?) -> Bool {

@@ -120,12 +120,12 @@ public class ViewletCreator
         return null;
     }
 
-    public static void inflateOn(View view, Map<String, Object> attributes, ViewGroup parent)
+    public static boolean inflateOn(View view, Map<String, Object> attributes, ViewGroup parent)
     {
-        inflateOn(view, attributes, parent, null);
+        return inflateOn(view, attributes, parent, null);
     }
 
-    public static void inflateOn(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public static boolean inflateOn(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
         String viewletName = findViewletNameInAttributes(attributes);
         if (viewletName != null)
@@ -134,9 +134,10 @@ public class ViewletCreator
             if (viewlet != null)
             {
                 Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
-                viewlet.update(view, mergedAttributes, parent, binder);
+                return viewlet.update(view, mergedAttributes, parent, binder);
             }
         }
+        return false;
     }
 
     public static boolean canRecycle(View view, Map<String, Object> attributes)
@@ -261,7 +262,7 @@ public class ViewletCreator
     public interface Viewlet
     {
         View create(Context context);
-        void update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder);
+        boolean update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder);
         boolean canRecycle(View view, Map<String, Object> attributes);
     }
 }
