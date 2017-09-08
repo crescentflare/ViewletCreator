@@ -14,7 +14,7 @@ class UITextFieldViewlet: Viewlet {
         return UITextField()
     }
     
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
+    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool {
         if let textField = view as? UITextField {
             // Prefilled text and placeholder
             textField.text = ViewletConvUtil.asString(value: attributes["text"])
@@ -49,7 +49,9 @@ class UITextFieldViewlet: Viewlet {
             
             // Standard view attributes
             UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
+            return true
         }
+        return false
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {

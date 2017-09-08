@@ -18,8 +18,9 @@ class UIViewViewlet: Viewlet {
         return UIView()
     }
     
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) {
+    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool {
         UIViewViewlet.applyDefaultAttributes(view: view, attributes: attributes)
+        return true
     }
     
     func canRecycle(view: UIView, attributes: [String : Any]) -> Bool {
