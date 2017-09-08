@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.0.1)
-  - ViewletCreator (0.3.2)
+  - ViewletCreator (0.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -8,11 +8,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ViewletCreator:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  ViewletCreator: a524cab4a6fa65207f5a4cbb5f44c7f0d9705c32
+  ViewletCreator: de884218f272a89eac2ff3e1022d4674a15b056d
 
 PODFILE CHECKSUM: a40713f54993a32c57b1a25fcfe329f9b9a961de
 
