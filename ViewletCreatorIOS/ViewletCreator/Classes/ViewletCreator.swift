@@ -11,7 +11,7 @@ import UIKit
 public protocol Viewlet {
     
     func create() -> UIView
-    func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool
+    @discardableResult func update(view: UIView, attributes: [String: Any], parent: UIView?, binder: ViewletBinder?) -> Bool
     func canRecycle(view: UIView, attributes: [String: Any]) -> Bool
     
 }
