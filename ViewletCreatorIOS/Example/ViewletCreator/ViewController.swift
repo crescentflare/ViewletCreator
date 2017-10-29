@@ -104,17 +104,17 @@ class ViewController: UIViewController, LiveJsonDelegate, UITextFieldDelegate {
         return true
     }
     
-    func serverEnabledChanged(_ switchControl: UISwitch) {
+    @objc func serverEnabledChanged(_ switchControl: UISwitch) {
         Settings.shared.serverEnabled = switchControl.isOn
         updateState()
     }
 
-    func pollingEnabledChanged(_ switchControl: UISwitch) {
+    @objc func pollingEnabledChanged(_ switchControl: UISwitch) {
         Settings.shared.autoRefresh = switchControl.isOn
         updateState()
     }
     
-    func openPlayground(_ button: UIButton) {
+    @objc func openPlayground(_ button: UIButton) {
         navigationController?.pushViewController(PlaygroundViewController(), animated: true)
     }
     

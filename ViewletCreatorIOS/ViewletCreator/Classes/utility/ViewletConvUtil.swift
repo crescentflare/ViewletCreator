@@ -108,22 +108,22 @@ public class ViewletConvUtil {
     public static func asColor(value: Any?) -> UIColor? {
         if let colorString = value as? String {
             if colorString.hasPrefix("$") {
-                return colorLookup?.getColor(refId: colorString.substring(from: colorString.index(after: colorString.startIndex)))
+                return colorLookup?.getColor(refId: String(colorString[colorString.index(after: colorString.startIndex)...]))
             }
             var rgbValue: UInt32 = 0
             let scanner = Scanner(string: colorString)
-            var alpha: Float = 1
+            var alpha: CGFloat = 1
             if colorString.hasPrefix("#") {
                 scanner.scanLocation = 1
             }
             scanner.scanHexInt32(&rgbValue)
             if colorString.characters.count >= 8 {
-                alpha = Float((rgbValue & 0xff000000) >> 24) / 255
+                alpha = CGFloat((rgbValue & 0xff000000) >> 24) / 255
             }
-            let red = Float((rgbValue & 0xff0000) >> 16) / 255
-            let green = Float((rgbValue & 0xff00) >> 8) / 255
-            let blue = Float(rgbValue & 0xff) / 255
-            return UIColor(colorLiteralRed: red, green: green, blue: blue, alpha: alpha)
+            let red = CGFloat((rgbValue & 0xff0000) >> 16) / 255
+            let green = CGFloat((rgbValue & 0xff00) >> 8) / 255
+            let blue = CGFloat(rgbValue & 0xff) / 255
+            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
         }
         return nil
     }
@@ -132,18 +132,18 @@ public class ViewletConvUtil {
         if var stringValue = value as? String {
             var multiplier: CGFloat = 1
             if stringValue.hasPrefix("$") {
-                return dimensionLookup?.getDimension(refId: stringValue.substring(from: stringValue.index(after: stringValue.startIndex)))
+                return dimensionLookup?.getDimension(refId: String(stringValue[stringValue.index(after: stringValue.startIndex)...]))
             }
             if stringValue.hasSuffix("dp") || stringValue.hasSuffix("sp") {
-                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
             } else if stringValue.hasSuffix("wp") {
-                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.width / 100
             } else if stringValue.hasSuffix("hp") {
-                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.height / 100
             } else if stringValue.hasSuffix("px") {
-                stringValue = stringValue.substring(to: stringValue.index(stringValue.endIndex, offsetBy: -2))
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = 1 / UIScreen.main.scale
             }
             if let floatValue = asFloat(value: stringValue) {

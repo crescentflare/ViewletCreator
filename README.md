@@ -21,7 +21,15 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 
 ### iOS integration guide
 
-The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile.
+The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+Swift 4:
+
+```ruby
+pod "ViewletCreator", '~> 0.4.1'
+```
+
+Swift 3:
 
 ```ruby
 pod "ViewletCreator", '~> 0.4.0'
