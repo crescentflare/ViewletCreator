@@ -117,7 +117,7 @@ public class ViewletConvUtil {
                 scanner.scanLocation = 1
             }
             scanner.scanHexInt32(&rgbValue)
-            if colorString.characters.count >= 8 {
+            if colorString.count >= 8 {
                 alpha = CGFloat((rgbValue & 0xff000000) >> 24) / 255
             }
             let red = CGFloat((rgbValue & 0xff0000) >> 16) / 255
