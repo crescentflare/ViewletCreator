@@ -17,7 +17,7 @@ extension Data {
             CC_MD5_Update(context, body, CC_LONG(self.count))
         }
         CC_MD5_Final(&digest, context)
-        context.deallocate(capacity: 1)
+        context.deallocate()
         var hexString = ""
         for byte in digest {
             hexString += String(format:"%02x", byte)
