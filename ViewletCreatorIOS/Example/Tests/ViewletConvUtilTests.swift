@@ -41,9 +41,9 @@ class Tests: XCTestCase {
     
     func testAsPointValueArray() {
         let pixel = 1 / UIScreen.main.scale
-        let widthPoint = UIScreen.main.bounds.width / 100
-        let heightPoint = UIScreen.main.bounds.height / 100
-        XCTAssertEqual([ pixel, 10, 4, 9, widthPoint * 10, heightPoint * 5.2 ], ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp", "10wp", "5.2hp" ]))
+        let widthPoint = CGFloat(UIScreen.main.bounds.width / 100)
+        let heightPoint = CGFloat(UIScreen.main.bounds.height / 100)
+        XCTAssertEqual([ pixel, 10, 4, 9, CGFloat(Float(10)) * widthPoint, CGFloat(Float(5.2)) * heightPoint], ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp", "10wp", "5.2hp" ]))
     }
 
     func testAsColor() {
