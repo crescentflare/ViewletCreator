@@ -24,10 +24,11 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod "ViewletCreator", '~> 0.4.2'
+pod "ViewletCreator", '~> 0.4.3'
 ```
 
-The above version is for Swift 4.1. For older Swift versions use the following:
+The above version is for Swift 4.2. For older Swift versions use the following:
+- Swift 4.1: ViewletCreator 0.4.2
 - Swift 4.0: ViewletCreator 0.4.1
 - Swift 3: ViewletCreator 0.4.0
 
