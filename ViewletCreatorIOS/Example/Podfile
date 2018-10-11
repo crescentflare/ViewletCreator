@@ -1,11 +1,12 @@
 use_frameworks!
 
+platform :ios, '8.0'
+
 target 'ViewletCreator_Example' do
   pod 'ViewletCreator', :path => '../../'
-  pod 'Alamofire', '~> 4.0'
+  pod 'Alamofire', '~> 4.7.0'
 
   target 'ViewletCreator_Tests' do
     inherit! :search_paths
-    pod 'ViewletCreator', :path => '../../'
   end
 end
