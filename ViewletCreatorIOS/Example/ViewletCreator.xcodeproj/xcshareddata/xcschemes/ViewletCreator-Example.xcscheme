@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BlueprintIdentifier = "04A11103216FDF68009A7A27"
                BuildableName = "ViewletCreator_Tests.xctest"
                BlueprintName = "ViewletCreator_Tests"
                ReferencedContainer = "container:ViewletCreator.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BlueprintIdentifier = "04A11103216FDF68009A7A27"
                BuildableName = "ViewletCreator_Tests.xctest"
                BlueprintName = "ViewletCreator_Tests"
                ReferencedContainer = "container:ViewletCreator.xcodeproj">

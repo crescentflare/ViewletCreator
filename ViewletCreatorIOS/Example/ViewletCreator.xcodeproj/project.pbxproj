@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		044046F01DD8C79F0088527F /* ViewletConvUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044046EF1DD8C79F0088527F /* ViewletConvUtilTests.swift */; };
 		046A9D3F1DD76D8C0002B75E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 046A9D3D1DD76D8C0002B75E /* Localizable.strings */; };
 		046A9D421DD76FB00002B75E /* UILabelViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D401DD76FB00002B75E /* UILabelViewlet.swift */; };
 		046A9D451DD76FFF0002B75E /* UIViewContainerViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D441DD76FFF0002B75E /* UIViewContainerViewlet.swift */; };
@@ -16,6 +15,7 @@
 		046A9D4B1DD77B7D0002B75E /* UITextFieldViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */; };
 		046A9D4D1DD7AC200002B75E /* UIButtonViewlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */; };
 		046A9D4F1DD7C31B0002B75E /* PlaygroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A9D4E1DD7C31B0002B75E /* PlaygroundViewController.swift */; };
+		04A1110E216FDFA5009A7A27 /* ViewletConvUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044046EF1DD8C79F0088527F /* ViewletConvUtilTests.swift */; };
 		04C654441DD5DC520094C135 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654431DD5DC520094C135 /* Settings.swift */; };
 		04C654461DD5F3940094C135 /* LiveJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654451DD5F3940094C135 /* LiveJson.swift */; };
 		04C654481DD5F8860094C135 /* Data+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C654471DD5F8860094C135 /* Data+MD5.swift */; };
@@ -25,16 +25,16 @@
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		875B32C262AF6D8E48418242 /* Pods_ViewletCreator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965C03C8D121193982510F0E /* Pods_ViewletCreator_Tests.framework */; };
+		E5434894ADC456BCDFC80D2F /* Pods_ViewletCreator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965C03C8D121193982510F0E /* Pods_ViewletCreator_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
+		04A11109216FDF68009A7A27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = ViewletCreator;
+			remoteInfo = ViewletCreator_Example;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,6 +49,7 @@
 		046A9D4A1DD77B7D0002B75E /* UITextFieldViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldViewlet.swift; sourceTree = "<group>"; };
 		046A9D4C1DD7AC200002B75E /* UIButtonViewlet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonViewlet.swift; sourceTree = "<group>"; };
 		046A9D4E1DD7C31B0002B75E /* PlaygroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundViewController.swift; sourceTree = "<group>"; };
+		04A11104216FDF68009A7A27 /* ViewletCreator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewletCreator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C654431DD5DC520094C135 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		04C654451DD5F3940094C135 /* LiveJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveJson.swift; sourceTree = "<group>"; };
 		04C654471DD5F8860094C135 /* Data+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+MD5.swift"; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* ViewletCreator_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewletCreator_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BD95EC052B5AFEA7A982238 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		965C03C8D121193982510F0E /* Pods_ViewletCreator_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewletCreator_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,19 +73,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		04A11101216FDF68009A7A27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5434894ADC456BCDFC80D2F /* Pods_ViewletCreator_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCD1AFB9204008FA782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4E82F7CB92433BEC94E64BB3 /* Pods_ViewletCreator_Example.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		607FACE21AFB9204008FA782 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				875B32C262AF6D8E48418242 /* Pods_ViewletCreator_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* ViewletCreator_Example.app */,
-				607FACE51AFB9204008FA782 /* ViewletCreator_Tests.xctest */,
+				04A11104216FDF68009A7A27 /* ViewletCreator_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,6 +205,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		04A11103216FDF68009A7A27 /* ViewletCreator_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04A1110B216FDF68009A7A27 /* Build configuration list for PBXNativeTarget "ViewletCreator_Tests" */;
+			buildPhases = (
+				875966017C0749292194B8CB /* [CP] Check Pods Manifest.lock */,
+				04A11100216FDF68009A7A27 /* Sources */,
+				04A11101216FDF68009A7A27 /* Frameworks */,
+				04A11102216FDF68009A7A27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04A1110A216FDF68009A7A27 /* PBXTargetDependency */,
+			);
+			name = ViewletCreator_Tests;
+			productName = ViewletCreator_Tests;
+			productReference = 04A11104216FDF68009A7A27 /* ViewletCreator_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		607FACCF1AFB9204008FA782 /* ViewletCreator_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ViewletCreator_Example" */;
@@ -214,7 +233,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				CA619A8F37D61D77AA1D10C2 /* [CP] Embed Pods Frameworks */,
-				59C96226A50EB2C606262B3B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -225,45 +243,24 @@
 			productReference = 607FACD01AFB9204008FA782 /* ViewletCreator_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* ViewletCreator_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ViewletCreator_Tests" */;
-			buildPhases = (
-				1EB3010DEC52E1BB0809D22F /* [CP] Check Pods Manifest.lock */,
-				607FACE11AFB9204008FA782 /* Sources */,
-				607FACE21AFB9204008FA782 /* Frameworks */,
-				607FACE31AFB9204008FA782 /* Resources */,
-				A428FBEC88F55FABF948A953 /* [CP] Embed Pods Frameworks */,
-				1646691E49AE823B9AEDA469 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
-			);
-			name = ViewletCreator_Tests;
-			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* ViewletCreator_Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
+					04A11103216FDF68009A7A27 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-					};
-					607FACE41AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-						TestTargetID = 607FACCF1AFB9204008FA782;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -281,12 +278,19 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* ViewletCreator_Example */,
-				607FACE41AFB9204008FA782 /* ViewletCreator_Tests */,
+				04A11103216FDF68009A7A27 /* ViewletCreator_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		04A11102216FDF68009A7A27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCE1AFB9204008FA782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,64 +302,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE31AFB9204008FA782 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1646691E49AE823B9AEDA469 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1EB3010DEC52E1BB0809D22F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ViewletCreator_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59C96226A50EB2C606262B3B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViewletCreator_Example/Pods-ViewletCreator_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		685AA8A55DD95FDF0A961434 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,22 +323,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A428FBEC88F55FABF948A953 /* [CP] Embed Pods Frameworks */ = {
+		875966017C0749292194B8CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ViewletCreator/ViewletCreator.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewletCreator.framework",
+				"$(DERIVED_FILE_DIR)/Pods-ViewletCreator_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViewletCreator_Tests/Pods-ViewletCreator_Tests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA619A8F37D61D77AA1D10C2 /* [CP] Embed Pods Frameworks */ = {
@@ -415,6 +364,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		04A11100216FDF68009A7A27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A1110E216FDFA5009A7A27 /* ViewletConvUtilTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCC1AFB9204008FA782 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,21 +391,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE11AFB9204008FA782 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				044046F01DD8C79F0088527F /* ViewletConvUtilTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
+		04A1110A216FDF68009A7A27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* ViewletCreator_Example */;
-			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+			targetProxy = 04A11109216FDF68009A7A27 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -473,6 +422,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		04A1110C216FDF68009A7A27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFEBD2F28216A2647CF931E7 /* Pods-ViewletCreator_Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.crescentflare.ViewletCreator-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewletCreator_Example.app/ViewletCreator_Example";
+			};
+			name = Debug;
+		};
+		04A1110D216FDF68009A7A27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F77A828CB197D46F3A060F7 /* Pods-ViewletCreator_Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.crescentflare.ViewletCreator-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewletCreator_Example.app/ViewletCreator_Example";
+			};
+			name = Release;
+		};
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -520,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -569,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -591,8 +594,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ViewletCreator/ViewletCreator_Example-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -608,52 +610,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ViewletCreator/ViewletCreator_Example-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		607FACF31AFB9204008FA782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFEBD2F28216A2647CF931E7 /* Pods-ViewletCreator_Tests.debug.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		607FACF41AFB9204008FA782 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F77A828CB197D46F3A060F7 /* Pods-ViewletCreator_Tests.release.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		04A1110B216FDF68009A7A27 /* Build configuration list for PBXNativeTarget "ViewletCreator_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A1110C216FDF68009A7A27 /* Debug */,
+				04A1110D216FDF68009A7A27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "ViewletCreator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -668,15 +640,6 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ViewletCreator_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				607FACF31AFB9204008FA782 /* Debug */,
-				607FACF41AFB9204008FA782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

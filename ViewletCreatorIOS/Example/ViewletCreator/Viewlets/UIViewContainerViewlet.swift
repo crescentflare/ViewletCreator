@@ -267,7 +267,7 @@ class UIViewContainerViewlet: Viewlet {
         return boundViews.findByReference(ref!)
     }
     
-    private func constraintAttributeFrom(string: String?) -> NSLayoutAttribute {
+    private func constraintAttributeFrom(string: String?) -> NSLayoutConstraint.Attribute {
         if string != nil {
             if string! == "left" {
                 return .left
@@ -314,7 +314,7 @@ class UIViewContainerViewlet: Viewlet {
         return .notAnAttribute
     }
     
-    private func constraintRelatedByFrom(string: String?) -> NSLayoutRelation {
+    private func constraintRelatedByFrom(string: String?) -> NSLayoutConstraint.Relation {
         if string != nil {
             if string! == "greaterThanOrEqual" {
                 return .greaterThanOrEqual
