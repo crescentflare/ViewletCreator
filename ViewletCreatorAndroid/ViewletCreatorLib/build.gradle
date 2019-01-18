@@ -25,11 +25,11 @@ ext {
 }
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 22
+        targetSdkVersion 28
         versionCode 1
         versionName "0.4.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

@@ -1,7 +1,7 @@
 package com.crescentflare.viewletcreator.utility;
 
 import android.content.Context;
-import android.view.View;
+import android.os.Build;
 
 import javax.annotation.Nullable;
 
@@ -19,13 +19,14 @@ public class ViewletResourceColorLookup implements ViewletColorLookup
     }
 
     @Nullable
+    @SuppressWarnings("deprecation")
     @Override
     public Integer getColor(String refId)
     {
         int identifier = resourceContext.getResources().getIdentifier(refId, "color", resourceContext.getPackageName());
         if (identifier > 0)
         {
-            return resourceContext.getResources().getColor(identifier);
+            return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ? resourceContext.getResources().getColor(identifier) : resourceContext.getResources().getColor(identifier, null);
         }
         return null;
     }

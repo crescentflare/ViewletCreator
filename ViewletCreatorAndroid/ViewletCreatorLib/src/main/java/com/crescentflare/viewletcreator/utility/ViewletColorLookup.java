@@ -1,7 +1,5 @@
 package com.crescentflare.viewletcreator.utility;
 
-import android.view.View;
-
 import javax.annotation.Nullable;
 
 /**
