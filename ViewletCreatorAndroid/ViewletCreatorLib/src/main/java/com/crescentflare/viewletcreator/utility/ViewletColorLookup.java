@@ -1,6 +1,6 @@
 package com.crescentflare.viewletcreator.utility;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Viewlet creator utility: interface for color lookup

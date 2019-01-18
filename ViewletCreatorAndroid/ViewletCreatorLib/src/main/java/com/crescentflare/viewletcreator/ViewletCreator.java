@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;
 import com.crescentflare.viewletcreator.utility.ViewletMapUtil;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Nullable;
 
 /**
  * Viewlet creator: manages viewlets

@@ -3,7 +3,7 @@ package com.crescentflare.viewletcreator.utility;
 import android.content.Context;
 import android.os.Build;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Viewlet creator utility: color lookup through resource ID

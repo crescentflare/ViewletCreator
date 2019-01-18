@@ -2,10 +2,10 @@ package com.crescentflare.viewletcreator.binder;
 
 import android.view.View;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.annotation.Nullable;
 
 /**
  * Viewlet creator binder: view map

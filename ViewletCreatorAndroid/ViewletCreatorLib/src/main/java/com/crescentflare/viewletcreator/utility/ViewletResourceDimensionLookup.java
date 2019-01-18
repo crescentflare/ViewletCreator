@@ -2,7 +2,7 @@ package com.crescentflare.viewletcreator.utility;
 
 import android.content.Context;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Viewlet creator utility: dimension lookup through resource ID
