@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 /**
  * Viewlet creator: manages viewlets
  * The main interface to register and create new view components
@@ -95,11 +97,13 @@ public class ViewletCreator
     // Create and update
     // ---
 
+    @Nullable
     public static View create(Context context, Map<String, Object> attributes, ViewGroup parent)
     {
         return create(context, attributes, parent, null);
     }
 
+    @Nullable
     public static View create(Context context, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
     {
         String viewletName = findViewletNameInAttributes(attributes);
@@ -153,6 +157,7 @@ public class ViewletCreator
         return false;
     }
 
+    @Nullable
     public static Viewlet findViewletInAttributes(Map<String, Object> attributes)
     {
         String viewletName = ViewletMapUtil.optionalString(attributes, "viewlet", null);
@@ -163,11 +168,13 @@ public class ViewletCreator
         return null;
     }
 
+    @Nullable
     public static String findViewletNameInAttributes(Map<String, Object> attributes)
     {
         return ViewletMapUtil.optionalString(attributes, "viewlet", null);
     }
 
+    @Nullable
     private static Map<String, Object> attributesForStyle(String viewletName, String styleName)
     {
         if (viewletName != null)
@@ -185,6 +192,7 @@ public class ViewletCreator
         return null;
     }
 
+    @Nullable
     private static Map<String, Object> mergeAttributes(Map<String, Object> givenAttributes, Map<String, Object> fallbackAttributes)
     {
         // Just return one of the attributes if the other is null
@@ -218,6 +226,7 @@ public class ViewletCreator
     // Sub-viewlet utilities
     // ---
 
+    @Nullable
     public static Map<String, Object> attributesForSubViewlet(Object subViewletItem)
     {
         Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(subViewletItem);

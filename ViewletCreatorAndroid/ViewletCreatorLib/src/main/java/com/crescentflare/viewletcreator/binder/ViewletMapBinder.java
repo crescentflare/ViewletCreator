@@ -5,6 +5,8 @@ import android.view.View;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 /**
  * Viewlet creator binder: view map
  * A viewlet binder implementation which contains a map of all referenced views
@@ -22,6 +24,7 @@ public class ViewletMapBinder implements ViewletBinder
         }
     }
 
+    @Nullable
     public View findByReference(String refId)
     {
         return boundViews.get(refId);

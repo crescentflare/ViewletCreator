@@ -3,6 +3,8 @@ package com.crescentflare.viewletcreator.utility;
 import android.content.Context;
 import android.view.View;
 
+import javax.annotation.Nullable;
+
 /**
  * Viewlet creator utility: color lookup through resource ID
  * A color lookup implementation fetching colors through the app color resources defined in XML
@@ -16,6 +18,7 @@ public class ViewletResourceColorLookup implements ViewletColorLookup
         this.resourceContext = resourceContext;
     }
 
+    @Nullable
     @Override
     public Integer getColor(String refId)
     {

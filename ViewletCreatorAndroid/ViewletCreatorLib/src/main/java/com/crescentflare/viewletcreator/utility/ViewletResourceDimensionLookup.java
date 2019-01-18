@@ -2,6 +2,8 @@ package com.crescentflare.viewletcreator.utility;
 
 import android.content.Context;
 
+import javax.annotation.Nullable;
+
 /**
  * Viewlet creator utility: dimension lookup through resource ID
  * A dimension lookup implementation fetching dimensions through the app dimension resources defined in XML
@@ -15,6 +17,7 @@ public class ViewletResourceDimensionLookup implements ViewletDimensionLookup
         this.resourceContext = resourceContext;
     }
 
+    @Nullable
     @Override
     public Integer getDimension(String refId)
     {

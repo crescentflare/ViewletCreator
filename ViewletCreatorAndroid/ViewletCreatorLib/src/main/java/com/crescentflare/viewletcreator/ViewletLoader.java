@@ -13,6 +13,8 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 /**
  * Viewlet creator: loading viewlet properties
  * Load viewlet property definitions from JSON and parses them to attributes (to be used for creation or inflation)
@@ -46,6 +48,7 @@ public class ViewletLoader
     // Loading
     // ---
 
+    @Nullable
     public static Map<String, Object> loadAttributes(Context context, int rawResourceId)
     {
         // Obtain cached item if possible

@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TimeZone;
 
+import javax.annotation.Nullable;
+
 /**
  * Viewlet creator utility: map access
  * Access values from a dynamic map easily and safely with data conversion
@@ -43,6 +45,7 @@ public class ViewletMapUtil
     // Map conversion
     // ---
 
+    @Nullable
     @SuppressWarnings("unchecked")
     public static Map<String, Object> asStringObjectMap(Object object)
     {
@@ -64,7 +67,7 @@ public class ViewletMapUtil
 
     public static boolean isMap(Object object)
     {
-        return object != null && object instanceof Map<?, ?>;
+        return object instanceof Map<?, ?>;
     }
 
 
@@ -311,6 +314,7 @@ public class ViewletMapUtil
     // Fetch and convert basic values
     // ---
 
+    @Nullable
     public static Date optionalDate(Map<String, Object> map, String key, Date defaultValue)
     {
         if (map != null)
@@ -346,6 +350,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
+    @Nullable
     public static String optionalString(Map<String, Object> map, String key, String defaultValue)
     {
         if (map != null)
@@ -416,6 +421,7 @@ public class ViewletMapUtil
     // Internal object conversion
     // ---
 
+    @Nullable
     private static Integer objectToDimension(Object object)
     {
         if (object instanceof String)
@@ -486,6 +492,7 @@ public class ViewletMapUtil
         return null;
     }
 
+    @Nullable
     private static Integer objectToColor(Object object)
     {
         if (object instanceof String)
@@ -518,6 +525,7 @@ public class ViewletMapUtil
         return null;
     }
 
+    @Nullable
     private static String objectToString(Object object)
     {
         if (object instanceof String)
@@ -531,6 +539,7 @@ public class ViewletMapUtil
         return null;
     }
 
+    @Nullable
     private static Double objectToDouble(Object object)
     {
         if (object instanceof String)
@@ -562,6 +571,7 @@ public class ViewletMapUtil
         return null;
     }
 
+    @Nullable
     private static Float objectToFloat(Object object)
     {
         if (object instanceof String)
@@ -593,6 +603,7 @@ public class ViewletMapUtil
         return null;
     }
 
+    @Nullable
     private static Integer objectToInteger(Object object)
     {
         if (object instanceof String)
@@ -632,6 +643,7 @@ public class ViewletMapUtil
         return null;
     }
 
+    @Nullable
     private static Boolean objectToBoolean(Object object)
     {
         if (object instanceof String)

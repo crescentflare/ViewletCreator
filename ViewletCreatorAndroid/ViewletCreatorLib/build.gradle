@@ -48,7 +48,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.json:org.json:2.0'
