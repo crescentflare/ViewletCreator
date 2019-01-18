@@ -3,6 +3,7 @@ package com.crescentflare.viewletcreator.utility;
 import android.content.res.Resources;
 import android.graphics.Color;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.text.DateFormat;
@@ -73,6 +74,7 @@ public class ViewletMapUtil
     // Fetch and convert lists
     // ---
 
+    @NotNull
     @SuppressWarnings("unchecked")
     public static List<Object> optionalObjectList(Map<String, Object> map, String key)
     {
@@ -94,6 +96,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
+    @NotNull
     public static List<String> optionalStringList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -120,6 +123,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
+    @NotNull
     public static List<Double> optionalDoubleList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -146,6 +150,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
+    @NotNull
     public static List<Float> optionalFloatList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -172,6 +177,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
+    @NotNull
     public static List<Integer> optionalIntegerList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -198,6 +204,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
+    @NotNull
     public static List<Boolean> optionalBooleanList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -229,6 +236,7 @@ public class ViewletMapUtil
     // Fetch and convert view-related values
     // ---
 
+    @NotNull
     public static List<Integer> optionalColorList(Map<String, Object> map, String key)
     {
         if (map != null)
@@ -255,6 +263,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
+    @NotNull
     public static List<Integer> optionalDimensionList(Map<String, Object> map, String key)
     {
         if (map != null)
