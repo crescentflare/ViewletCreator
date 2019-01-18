@@ -2,6 +2,9 @@ package com.crescentflare.viewletcreator.binder;
 
 import android.view.View;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -16,7 +19,7 @@ public class ViewletAnnotationBinder implements ViewletBinder
     private Object assignToObject;
     private Map<String, Field> annotatedFields = new HashMap<>();
 
-    public ViewletAnnotationBinder(Object assignToObject)
+    public ViewletAnnotationBinder(@NotNull Object assignToObject)
     {
         this.assignToObject = assignToObject;
         for (Field field : assignToObject.getClass().getDeclaredFields())
@@ -32,7 +35,7 @@ public class ViewletAnnotationBinder implements ViewletBinder
     }
 
     @Override
-    public void onBind(String refId, View view)
+    public void onBind(@NotNull String refId, @Nullable View view)
     {
         if (view != null)
         {

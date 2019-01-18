@@ -2,6 +2,7 @@ package com.crescentflare.viewletcreator.utility;
 
 import android.content.Context;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -12,14 +13,14 @@ public class ViewletResourceDimensionLookup implements ViewletDimensionLookup
 {
     private Context resourceContext;
 
-    public ViewletResourceDimensionLookup(Context resourceContext)
+    public ViewletResourceDimensionLookup(@NotNull Context resourceContext)
     {
         this.resourceContext = resourceContext;
     }
 
     @Nullable
     @Override
-    public Integer getDimension(String refId)
+    public Integer getDimension(@NotNull String refId)
     {
         int identifier = resourceContext.getResources().getIdentifier(refId, "dimen", resourceContext.getPackageName());
         if (identifier > 0)

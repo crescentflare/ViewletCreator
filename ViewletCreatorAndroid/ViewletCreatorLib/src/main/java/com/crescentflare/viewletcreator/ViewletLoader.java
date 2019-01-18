@@ -62,22 +62,19 @@ public class ViewletLoader
         try
         {
             InputStream stream = context.getResources().openRawResource(rawResourceId);
-            if (stream != null)
+            Map<String, Object> loadedItem = null;
+            String jsonString = readFromInputStream(stream);
+            if (jsonString != null)
             {
-                Map<String, Object> loadedItem = null;
-                String jsonString = readFromInputStream(stream);
-                if (jsonString != null)
+                Type type = new TypeToken<Map<String, Object>>(){}.getType();
+                loadedItem = new Gson().fromJson(jsonString, type);
+                if (loadedItem != null)
                 {
-                    Type type = new TypeToken<Map<String, Object>>(){}.getType();
-                    loadedItem = new Gson().fromJson(jsonString, type);
-                    if (loadedItem != null)
-                    {
-                        instance.loadedAttributes.put(rawResourceId, loadedItem);
-                    }
+                    instance.loadedAttributes.put(rawResourceId, loadedItem);
                 }
-                stream.close();
-                return loadedItem;
             }
+            stream.close();
+            return loadedItem;
         }
         catch (IOException ignored)
         {

@@ -29,12 +29,12 @@ public class ViewletMapUtil
     private static ViewletColorLookup colorLookup = null;
     private static ViewletDimensionLookup dimensionLookup = null;
 
-    public static void setColorLookup(ViewletColorLookup lookup)
+    public static void setColorLookup(@Nullable ViewletColorLookup lookup)
     {
         colorLookup = lookup;
     }
 
-    public static void setDimensionLookup(ViewletDimensionLookup lookup)
+    public static void setDimensionLookup(@Nullable ViewletDimensionLookup lookup)
     {
         dimensionLookup = lookup;
     }
@@ -46,7 +46,7 @@ public class ViewletMapUtil
 
     @Nullable
     @SuppressWarnings("unchecked")
-    public static Map<String, Object> asStringObjectMap(Object object)
+    public static Map<String, Object> asStringObjectMap(@Nullable Object object)
     {
         if (isMap(object))
         {
@@ -64,7 +64,7 @@ public class ViewletMapUtil
         return null;
     }
 
-    public static boolean isMap(Object object)
+    public static boolean isMap(@Nullable Object object)
     {
         return object instanceof Map<?, ?>;
     }
@@ -76,12 +76,12 @@ public class ViewletMapUtil
 
     @NotNull
     @SuppressWarnings("unchecked")
-    public static List<Object> optionalObjectList(Map<String, Object> map, String key)
+    public static List<Object> optionalObjectList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -97,12 +97,12 @@ public class ViewletMapUtil
     }
 
     @NotNull
-    public static List<String> optionalStringList(Map<String, Object> map, String key)
+    public static List<String> optionalStringList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -124,12 +124,12 @@ public class ViewletMapUtil
     }
 
     @NotNull
-    public static List<Double> optionalDoubleList(Map<String, Object> map, String key)
+    public static List<Double> optionalDoubleList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -151,12 +151,12 @@ public class ViewletMapUtil
     }
 
     @NotNull
-    public static List<Float> optionalFloatList(Map<String, Object> map, String key)
+    public static List<Float> optionalFloatList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -178,12 +178,12 @@ public class ViewletMapUtil
     }
 
     @NotNull
-    public static List<Integer> optionalIntegerList(Map<String, Object> map, String key)
+    public static List<Integer> optionalIntegerList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -205,12 +205,12 @@ public class ViewletMapUtil
     }
 
     @NotNull
-    public static List<Boolean> optionalBooleanList(Map<String, Object> map, String key)
+    public static List<Boolean> optionalBooleanList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -237,12 +237,12 @@ public class ViewletMapUtil
     // ---
 
     @NotNull
-    public static List<Integer> optionalColorList(Map<String, Object> map, String key)
+    public static List<Integer> optionalColorList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -264,12 +264,12 @@ public class ViewletMapUtil
     }
 
     @NotNull
-    public static List<Integer> optionalDimensionList(Map<String, Object> map, String key)
+    public static List<Integer> optionalDimensionList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -290,7 +290,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static int optionalColor(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalColor(@Nullable Map<String, Object> map, @NotNull String key, int defaultValue)
     {
         if (map != null)
         {
@@ -303,7 +303,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static int optionalDimension(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalDimension(@Nullable Map<String, Object> map, @NotNull String key, int defaultValue)
     {
         if (map != null)
         {
@@ -322,7 +322,7 @@ public class ViewletMapUtil
     // ---
 
     @Nullable
-    public static Date optionalDate(Map<String, Object> map, String key, Date defaultValue)
+    public static Date optionalDate(@Nullable Map<String, Object> map, @NotNull String key, @Nullable Date defaultValue)
     {
         if (map != null)
         {
@@ -358,7 +358,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    public static String optionalString(Map<String, Object> map, String key, String defaultValue)
+    public static String optionalString(@Nullable Map<String, Object> map, @NotNull String key, @Nullable String defaultValue)
     {
         if (map != null)
         {
@@ -371,7 +371,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static double optionalDouble(Map<String, Object> map, String key, double defaultValue)
+    public static double optionalDouble(@Nullable Map<String, Object> map, @NotNull String key, double defaultValue)
     {
         if (map != null)
         {
@@ -384,7 +384,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static float optionalFloat(Map<String, Object> map, String key, float defaultValue)
+    public static float optionalFloat(@Nullable Map<String, Object> map, @NotNull String key, float defaultValue)
     {
         if (map != null)
         {
@@ -397,7 +397,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static int optionalInteger(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalInteger(@Nullable Map<String, Object> map, @NotNull String key, int defaultValue)
     {
         if (map != null)
         {
@@ -410,7 +410,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static boolean optionalBoolean(Map<String, Object> map, String key, boolean defaultValue)
+    public static boolean optionalBoolean(@Nullable Map<String, Object> map, @NotNull String key, boolean defaultValue)
     {
         if (map != null)
         {
@@ -429,7 +429,7 @@ public class ViewletMapUtil
     // ---
 
     @Nullable
-    private static Integer objectToDimension(Object object)
+    private static Integer objectToDimension(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -500,7 +500,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    private static Integer objectToColor(Object object)
+    private static Integer objectToColor(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -533,7 +533,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    private static String objectToString(Object object)
+    private static String objectToString(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -547,7 +547,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    private static Double objectToDouble(Object object)
+    private static Double objectToDouble(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -579,7 +579,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    private static Float objectToFloat(Object object)
+    private static Float objectToFloat(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -611,7 +611,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    private static Integer objectToInteger(Object object)
+    private static Integer objectToInteger(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -651,7 +651,7 @@ public class ViewletMapUtil
     }
 
     @Nullable
-    private static Boolean objectToBoolean(Object object)
+    private static Boolean objectToBoolean(@Nullable Object object)
     {
         if (object instanceof String)
         {

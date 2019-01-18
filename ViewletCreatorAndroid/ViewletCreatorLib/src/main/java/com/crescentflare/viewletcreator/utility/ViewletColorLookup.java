@@ -1,5 +1,6 @@
 package com.crescentflare.viewletcreator.utility;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -9,5 +10,5 @@ import org.jetbrains.annotations.Nullable;
 public interface ViewletColorLookup
 {
     @Nullable
-    Integer getColor(String refId);
+    Integer getColor(@NotNull String refId);
 }

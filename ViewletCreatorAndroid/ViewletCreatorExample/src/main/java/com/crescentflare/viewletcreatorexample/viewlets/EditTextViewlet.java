@@ -12,6 +12,9 @@ import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;
 import com.crescentflare.viewletcreator.utility.ViewletMapUtil;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Map;
 
 /**
@@ -20,14 +23,15 @@ import java.util.Map;
  */
 public class EditTextViewlet implements ViewletCreator.Viewlet
 {
+    @NotNull
     @Override
-    public View create(Context context)
+    public View create(@NotNull Context context)
     {
         return new EditText(context);
     }
 
     @Override
-    public boolean update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public boolean update(@NotNull View view, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
     {
         if (view instanceof EditText)
         {
@@ -77,7 +81,7 @@ public class EditTextViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public boolean canRecycle(View view, Map<String, Object> attributes)
+    public boolean canRecycle(@NotNull View view, @Nullable Map<String, Object> attributes)
     {
         return view instanceof EditText;
     }

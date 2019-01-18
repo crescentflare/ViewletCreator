@@ -2,6 +2,7 @@ package com.crescentflare.viewletcreator.binder;
 
 import android.view.View;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class ViewletMapBinder implements ViewletBinder
     private Map<String, View> boundViews = new HashMap<>();
 
     @Override
-    public void onBind(String refId, View view)
+    public void onBind(@NotNull String refId, @Nullable View view)
     {
         if (view != null)
         {
@@ -25,7 +26,7 @@ public class ViewletMapBinder implements ViewletBinder
     }
 
     @Nullable
-    public View findByReference(String refId)
+    public View findByReference(@NotNull String refId)
     {
         return boundViews.get(refId);
     }
