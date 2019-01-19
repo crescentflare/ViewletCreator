@@ -107,23 +107,123 @@ public class ViewletConvUtil {
 
     public static func asColor(value: Any?) -> UIColor? {
         if let colorString = value as? String {
+            // Handle lookup
             if colorString.hasPrefix("$") {
                 return colorLookup?.getColor(refId: String(colorString[colorString.index(after: colorString.startIndex)...]))
             }
-            var rgbValue: UInt32 = 0
-            let scanner = Scanner(string: colorString)
-            var alpha: CGFloat = 1
-            if colorString.hasPrefix("#") {
-                scanner.scanLocation = 1
+            
+            // Handle formatted color string
+            if colorString.hasPrefix("h") || colorString.hasPrefix("H") {
+                // Obtain color components for possible hue, saturation, value (brightness) / luminousity and alpha
+                var colorComponents = [ 0, 100, 100, 100, 100 ]
+                var inColorComponent = 0
+                var useLuminousity = false
+                for character in colorString {
+                    if character >= "0" && character <= "9" {
+                        let zeroCharValue = "0".unicodeScalars.first?.value ?? 0
+                        if inColorComponent < colorComponents.count {
+                            colorComponents[inColorComponent] = colorComponents[inColorComponent] * 10 + Int(character.unicodeScalars.first?.value ?? zeroCharValue) - Int(zeroCharValue)
+                        }
+                    } else {
+                        if character == "H" || character == "h" {
+                            inColorComponent = 0
+                        } else if character == "S" || character == "s" {
+                            inColorComponent = 1
+                        } else if character == "V" || character == "v" {
+                            inColorComponent = 2
+                            useLuminousity = false
+                        } else if character == "L" || character == "l" {
+                            inColorComponent = 3
+                            useLuminousity = true
+                        } else if character == "A" || character == "a" {
+                            inColorComponent = 4
+                        } else {
+                            inColorComponent = 9999
+                        }
+                        if inColorComponent < colorComponents.count {
+                            colorComponents[inColorComponent] = 0
+                        }
+                    }
+                }
+                
+                // When in HSL (luminousity) color space, convert to HSV first
+                var saturation = CGFloat(colorComponents[1]) / 100
+                var brightness = CGFloat(colorComponents[2]) / 100
+                if useLuminousity {
+                    let luminousity = CGFloat(colorComponents[3]) / 100
+                    let x = saturation * min(1 - luminousity, luminousity)
+                    saturation = 2 * x / max(luminousity + x, 1e-9)
+                    brightness = luminousity + x
+                }
+                
+                // Convert color to RGB color space
+                let hue = CGFloat(colorComponents[0])
+                let alpha = CGFloat(colorComponents[4]) / 100
+                /* For Android
+                // No saturation
+                let value = CGFloat(colorComponents[2]) / 100
+                if (colorComponents[1] == 0) {
+                    return UIColor(red: value, green: value, blue: value, alpha: alpha)
+                }
+                
+                // Calculate intermediate values
+                let saturation = CGFloat(colorComponents[1]) / 100
+                let angle = (hue >= 360 ? 0 : hue)
+                let sector = angle / 60
+                let factorial = sector - floor(sector)
+                let p = value * (1 - saturation)
+                let q = value * (1 - (saturation * factorial))
+                let t = value * (1 - (saturation * (1 - factorial)))
+                
+                // Convert to color
+                switch(floor(sector)) {
+                case 0:
+                    return UIColor(red: value, green: t, blue: p, alpha: alpha)
+                case 1:
+                    return UIColor(red: q, green: value, blue: p, alpha: alpha)
+                case 2:
+                    return UIColor(red: p, green: value, blue: t, alpha: alpha)
+                case 3:
+                    return UIColor(red: p, green: q, blue: value, alpha: alpha)
+                case 4:
+                    return UIColor(red: t, green: p, blue: value, alpha: alpha)
+                default:
+                    return UIColor(red: value, green: p, blue: q, alpha: alpha)
+                }
+                */
+                return UIColor(hue: hue / 360, saturation: saturation, brightness: brightness, alpha: alpha)
+            } else {
+                // Prepare conversion
+                var rgbValue: UInt32 = 0
+                let scanner = Scanner(string: colorString)
+                var alpha: CGFloat = 1
+                var characterCount = colorString.count
+                if colorString.hasPrefix("#") {
+                    scanner.scanLocation = 1
+                    characterCount -= 1
+                }
+                
+                // Continue conversion, only allow formats with 3/4 characters (short RGB or ARGB) and 6/8 characters (normal RGB or ARGB)
+                if characterCount == 3 || characterCount == 4 || characterCount == 6 || characterCount == 8 {
+                    scanner.scanHexInt32(&rgbValue)
+                    if characterCount == 8 {
+                        alpha = CGFloat((rgbValue & 0xff000000) >> 24) / 255
+                    } else if characterCount == 4 {
+                        alpha = CGFloat((rgbValue & 0xf000) >> 12) / 15
+                    }
+                    if characterCount <= 4 {
+                        let red = CGFloat((rgbValue & 0xf00) >> 8) / 15
+                        let green = CGFloat((rgbValue & 0xf0) >> 4) / 15
+                        let blue = CGFloat(rgbValue & 0xf) / 15
+                        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+                    } else {
+                        let red = CGFloat((rgbValue & 0xff0000) >> 16) / 255
+                        let green = CGFloat((rgbValue & 0xff00) >> 8) / 255
+                        let blue = CGFloat(rgbValue & 0xff) / 255
+                        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+                    }
+                }
             }
-            scanner.scanHexInt32(&rgbValue)
-            if colorString.count >= 8 {
-                alpha = CGFloat((rgbValue & 0xff000000) >> 24) / 255
-            }
-            let red = CGFloat((rgbValue & 0xff0000) >> 16) / 255
-            let green = CGFloat((rgbValue & 0xff00) >> 8) / 255
-            let blue = CGFloat(rgbValue & 0xff) / 255
-            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
         }
         return nil
     }

@@ -111,6 +111,31 @@ public class ViewletMapUtilTest
 
 
     // ---
+    // Fetch and convert view related values
+    // ---
+
+    @Test
+    public void optionalColor()
+    {
+        Map<String, Object> map = new HashMap<>();
+        map.put("red", "#ff0000");
+        map.put("transparent", "#00000000");
+        map.put("yellow", "#ff0");
+        map.put("invisibleWhite", "#0fff");
+        map.put("hsvNonAlpha", "h259s99v10");
+        map.put("hsvWithAlpha", "h164s83v95a50");
+        map.put("hslSpaced", "H202 S19 L39 A25");
+        Assert.assertEquals(0xFFFF0000, ViewletMapUtil.optionalColor(map, "red", 0));
+        Assert.assertEquals(0x00000000, ViewletMapUtil.optionalColor(map, "transparent", 0));
+        Assert.assertEquals(0xFFFFFF00, ViewletMapUtil.optionalColor(map, "yellow", 0));
+        Assert.assertEquals(0x00FFFFFF, ViewletMapUtil.optionalColor(map, "invisibleWhite", 0));
+        Assert.assertEquals(0xFF080019, ViewletMapUtil.optionalColor(map, "hsvNonAlpha", 0));
+        Assert.assertEquals(0x7F29F2BC, ViewletMapUtil.optionalColor(map, "hsvWithAlpha", 0));
+        Assert.assertEquals(0x3F506876, ViewletMapUtil.optionalColor(map, "hslSpaced", 0));
+    }
+
+
+    // ---
     // Fetch and convert basic values
     // ---
 

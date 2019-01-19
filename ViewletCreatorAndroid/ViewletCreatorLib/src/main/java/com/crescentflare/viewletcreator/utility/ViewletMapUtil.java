@@ -502,6 +502,7 @@ public class ViewletMapUtil
     {
         if (object instanceof String)
         {
+            // Handle lookup
             String colorString = (String)object;
             if (colorString.startsWith("$"))
             {
@@ -515,16 +516,147 @@ public class ViewletMapUtil
                 }
                 return null;
             }
-            if (colorString.length() > 0 && colorString.charAt(0) != '#')
+
+            // Handle formatted color string
+            if (colorString.startsWith("h") || colorString.startsWith("H"))
             {
-                colorString = "#" + colorString;
+                // Obtain color components for possible hue, saturation, value (brightness) / luminousity and alpha
+                int colorComponents[] = { 0, 100, 100, 100, 100 };
+                int inColorComponent = 0;
+                boolean useLuminousity = false;
+                for (int i = 0; i < colorString.length(); i++)
+                {
+                    char character = colorString.charAt(i);
+                    if (character >= '0' && character <= '9')
+                    {
+                        if (inColorComponent < colorComponents.length)
+                        {
+                            colorComponents[inColorComponent] = colorComponents[inColorComponent] * 10 + character - '0';
+                        }
+                    }
+                    else
+                    {
+                        switch (character)
+                        {
+                            case 'H':
+                            case 'h':
+                                inColorComponent = 0;
+                                break;
+                            case 'S':
+                            case 's':
+                                inColorComponent = 1;
+                                break;
+                            case 'V':
+                            case 'v':
+                                inColorComponent = 2;
+                                useLuminousity = false;
+                                break;
+                            case 'L':
+                            case 'l':
+                                inColorComponent = 3;
+                                useLuminousity = true;
+                                break;
+                            case 'A':
+                            case 'a':
+                                inColorComponent = 4;
+                                break;
+                            default:
+                                inColorComponent = 9999;
+                        }
+                        if (inColorComponent < colorComponents.length)
+                        {
+                            colorComponents[inColorComponent] = 0;
+                        }
+                    }
+                }
+
+                // When in HSL (luminousity) color space, convert to HSV first
+                float saturation = colorComponents[1] / 100.0f;
+                float brightness = colorComponents[2] / 100.0f;
+                if (useLuminousity)
+                {
+                    float luminousity = colorComponents[3] / 100.0f;
+                    float x = saturation * Math.min(1 - luminousity, luminousity);
+                    saturation = 2 * x / Math.max(luminousity + x, 0.000000001f);
+                    brightness = luminousity + x;
+                }
+
+                // No saturation
+                float hue = colorComponents[0];
+                int alpha = colorComponents[4] * 255 / 100;
+                int intBrightness = (int)(brightness * 255);
+                if (saturation == 0)
+                {
+                    return (alpha << 24) | (intBrightness << 16) | (intBrightness << 8) | intBrightness;
+                }
+
+                // Calculate intermediate values
+                float angle = (hue >= 360 ? 0 : hue);
+                float sector = angle / 60;
+                float factorial = sector - (float)Math.floor(sector);
+                int p = (int)(brightness * (1 - saturation) * 255);
+                int q = (int)(brightness * (1 - (saturation * factorial)) * 255);
+                int t = (int)(brightness * (1 - (saturation * (1 - factorial))) * 255);
+
+                // Convert to color
+                switch((int)Math.floor(sector))
+                {
+                    case 0:
+                        return (alpha << 24) | (intBrightness << 16) | (t << 8) | p;
+                    case 1:
+                        return (alpha << 24) | (q << 16) | (intBrightness << 8) | p;
+                    case 2:
+                        return (alpha << 24) | (p << 16) | (intBrightness << 8) | t;
+                    case 3:
+                        return (alpha << 24) | (p << 16) | (q << 8) | intBrightness;
+                    case 4:
+                        return (alpha << 24) | (t << 16) | (p << 8) | intBrightness;
+                    default:
+                        return (alpha << 24) | (intBrightness << 16) | (p << 8) | q;
+                }
             }
-            try
+            else
             {
-                return Color.parseColor(colorString);
-            }
-            catch (IllegalArgumentException ignored)
-            {
+                // Prepare conversion
+                int characterCount = colorString.length();
+                int startChar = 0;
+                if (colorString.startsWith("#"))
+                {
+                    startChar = 1;
+                    characterCount--;
+                }
+
+                // Continue conversion, only allow formats with 3/4 characters (short RGB or ARGB) and 6/8 characters (normal RGB or ARGB)
+                if (characterCount == 3 || characterCount == 4 || characterCount == 6 || characterCount == 8)
+                {
+                    try
+                    {
+                        int rgbValue = Integer.parseInt(colorString.substring(startChar), 16);
+                        if (characterCount <= 4)
+                        {
+                            int alpha = 0xf;
+                            int red = (rgbValue & 0xf00) >> 8;
+                            int green = (rgbValue & 0xf0) >> 4;
+                            int blue = rgbValue & 0xf;
+                            if (characterCount == 4)
+                            {
+                                alpha = (rgbValue & 0xf000) >> 12;
+                            }
+                            return ((alpha * 255 / 15) << 24) | ((red * 255 / 15) << 16) | ((green * 255 / 15) << 8) | (blue * 255 / 15);
+                        }
+                        else
+                        {
+                            if (characterCount == 6)
+                            {
+                                rgbValue |= 0xff000000;
+                            }
+                            return rgbValue;
+                        }
+                    }
+                    catch (Exception ignored)
+                    {
+                    }
+                }
             }
         }
         return null;
