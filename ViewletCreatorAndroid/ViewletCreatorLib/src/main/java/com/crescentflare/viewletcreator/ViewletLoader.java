@@ -19,6 +19,7 @@ import java.util.Map;
  * Viewlet creator: loading viewlet properties
  * Load viewlet property definitions from JSON and parses them to attributes (to be used for creation or inflation)
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletLoader
 {
     // ---
@@ -87,6 +88,7 @@ public class ViewletLoader
     // Helper
     // ---
 
+    @SuppressWarnings("CharsetObjectCanBeUsed")
     private static String readFromInputStream(InputStream stream)
     {
         final int bufferSize = 1024;

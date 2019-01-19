@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
  * Viewlet creator utility: interface for color lookup
  * Integrates with ViewletMapUtil to look up custom color references
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public interface ViewletColorLookup
 {
     @Nullable

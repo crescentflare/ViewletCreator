@@ -33,7 +33,7 @@ public class TextViewViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public boolean update(@NotNull View view, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
+    public boolean update(@NotNull View view, @NotNull Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
     {
         if (view instanceof TextView)
         {
@@ -83,7 +83,7 @@ public class TextViewViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public boolean canRecycle(@NotNull View view, @Nullable Map<String, Object> attributes)
+    public boolean canRecycle(@NotNull View view, @NotNull Map<String, Object> attributes)
     {
         return view instanceof TextView && !(view instanceof Button) && !(view instanceof EditText);
     }

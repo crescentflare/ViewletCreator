@@ -34,14 +34,14 @@ public class ViewViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public boolean update(@NotNull View view, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
+    public boolean update(@NotNull View view, @NotNull Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
     {
         applyDefaultAttributes(view, attributes);
         return true;
     }
 
     @Override
-    public boolean canRecycle(@NotNull View view, @Nullable Map<String, Object> attributes)
+    public boolean canRecycle(@NotNull View view, @NotNull Map<String, Object> attributes)
     {
         return false;
     }

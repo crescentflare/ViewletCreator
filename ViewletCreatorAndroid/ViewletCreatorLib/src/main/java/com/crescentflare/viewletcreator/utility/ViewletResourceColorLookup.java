@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
  * Viewlet creator utility: color lookup through resource ID
  * A color lookup implementation fetching colors through the app color resources defined in XML
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletResourceColorLookup implements ViewletColorLookup
 {
     private Context resourceContext;

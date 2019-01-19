@@ -14,6 +14,7 @@ import java.util.Map;
  * Viewlet creator binder: view annotations
  * A viewlet binder implementation which assigns views to annotated fields in the given class
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletAnnotationBinder implements ViewletBinder
 {
     private Object assignToObject;

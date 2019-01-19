@@ -20,6 +20,7 @@ import java.util.TimeZone;
  * Viewlet creator utility: map access
  * Access values from a dynamic map easily and safely with data conversion
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletMapUtil
 {
     // ---
@@ -86,10 +87,7 @@ public class ViewletMapUtil
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof Object)
-                    {
-                        return (List<Object>)object;
-                    }
+                    return (List<Object>)object;
                 }
             }
         }

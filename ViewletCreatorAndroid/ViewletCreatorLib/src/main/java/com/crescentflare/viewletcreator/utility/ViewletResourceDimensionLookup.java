@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
  * Viewlet creator utility: dimension lookup through resource ID
  * A dimension lookup implementation fetching dimensions through the app dimension resources defined in XML
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletResourceDimensionLookup implements ViewletDimensionLookup
 {
     private Context resourceContext;

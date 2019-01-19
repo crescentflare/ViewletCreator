@@ -19,6 +19,7 @@ import java.util.Map;
  * Viewlet creator: manages viewlets
  * The main interface to register and create new view components
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletCreator
 {
     // ---
@@ -191,13 +192,13 @@ public class ViewletCreator
         return null;
     }
 
-    @Nullable
+    @NotNull
     private static Map<String, Object> mergeAttributes(@Nullable Map<String, Object> givenAttributes, @Nullable Map<String, Object> fallbackAttributes)
     {
         // Just return one of the attributes if the other is null
         if (fallbackAttributes == null)
         {
-            return givenAttributes;
+            return givenAttributes != null ? givenAttributes : new HashMap<String, Object>();
         }
         else if (givenAttributes == null)
         {
@@ -272,7 +273,7 @@ public class ViewletCreator
         @NotNull
         View create(@NotNull Context context);
 
-        boolean update(@NotNull View view, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder);
-        boolean canRecycle(@NotNull View view, @Nullable Map<String, Object> attributes);
+        boolean update(@NotNull View view, @NotNull Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder);
+        boolean canRecycle(@NotNull View view, @NotNull Map<String, Object> attributes);
     }
 }

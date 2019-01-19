@@ -12,6 +12,7 @@ import java.util.Map;
  * Viewlet creator binder: view map
  * A viewlet binder implementation which contains a map of all referenced views
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletMapBinder implements ViewletBinder
 {
     private Map<String, View> boundViews = new HashMap<>();
