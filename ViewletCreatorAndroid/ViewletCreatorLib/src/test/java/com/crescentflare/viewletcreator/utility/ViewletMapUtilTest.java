@@ -1,7 +1,6 @@
 package com.crescentflare.viewletcreator.utility;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,12 +8,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.TimeZone;
-
-import static org.junit.Assert.*;
 
 /**
  * Utility test: map utility
@@ -26,7 +21,7 @@ public class ViewletMapUtilTest
     // ---
 
     @Test
-    public void asStringObjectMap() throws Exception
+    public void asStringObjectMap()
     {
         Map<String, String> stringMap = new HashMap<>();
         Map<String, Integer> integerMap = new HashMap<>();
@@ -40,7 +35,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void isMap() throws Exception
+    public void isMap()
     {
         Assert.assertTrue(ViewletMapUtil.isMap(new HashMap<String, String>()));
         Assert.assertFalse(ViewletMapUtil.isMap(new ArrayList<String>()));
@@ -53,7 +48,7 @@ public class ViewletMapUtilTest
     // ---
 
     @Test
-    public void optionalObjectList() throws Exception
+    public void optionalObjectList()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("list", new ArrayList<>(Arrays.asList("item", "item2")));
@@ -63,7 +58,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalStringList() throws Exception
+    public void optionalStringList()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("strings", new ArrayList<>(Arrays.asList("first", "second")));
@@ -73,7 +68,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalDoubleList() throws Exception
+    public void optionalDoubleList()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("strings", new ArrayList<>(Arrays.asList("4.23", "16", "1.2345")));
@@ -83,7 +78,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalFloatList() throws Exception
+    public void optionalFloatList()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("floats", new ArrayList<>(Arrays.asList(5f, 823.123f, 11f)));
@@ -93,7 +88,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalIntegerList() throws Exception
+    public void optionalIntegerList()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("ints", new ArrayList<>(Arrays.asList(99, 5126)));
@@ -103,7 +98,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalBooleanList() throws Exception
+    public void optionalBooleanList()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("strings", new ArrayList<>(Arrays.asList("true", "false")));
@@ -120,7 +115,7 @@ public class ViewletMapUtilTest
     // ---
 
     @Test
-    public void optionalDate() throws Exception
+    public void optionalDate()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("first", "2016-08-19");
@@ -134,7 +129,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalString() throws Exception
+    public void optionalString()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("string", "text");
@@ -146,27 +141,27 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalDouble() throws Exception
+    public void optionalDouble()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("string", "4.142");
         map.put("double", 8.9);
-        Assert.assertEquals(4.142, ViewletMapUtil.optionalDouble(map, "string", 0));
-        Assert.assertEquals(8.9, ViewletMapUtil.optionalDouble(map, "double", 0));
+        Assert.assertEquals(4.142, ViewletMapUtil.optionalDouble(map, "string", 0), 0);
+        Assert.assertEquals(8.9, ViewletMapUtil.optionalDouble(map, "double", 0), 0);
     }
 
     @Test
-    public void optionalFloat() throws Exception
+    public void optionalFloat()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("int", 8);
         map.put("float", 5.156f);
-        Assert.assertEquals(8.0f, ViewletMapUtil.optionalFloat(map, "int", 0));
-        Assert.assertEquals(5.156f, ViewletMapUtil.optionalFloat(map, "float", 0));
+        Assert.assertEquals(8.0f, ViewletMapUtil.optionalFloat(map, "int", 0), 0.0f);
+        Assert.assertEquals(5.156f, ViewletMapUtil.optionalFloat(map, "float", 0), 0.0f);
     }
 
     @Test
-    public void optionalInteger() throws Exception
+    public void optionalInteger()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("int", 78465);
@@ -176,7 +171,7 @@ public class ViewletMapUtilTest
     }
 
     @Test
-    public void optionalBoolean() throws Exception
+    public void optionalBoolean()
     {
         Map<String, Object> map = new HashMap<>();
         map.put("int", 0);
@@ -190,24 +185,24 @@ public class ViewletMapUtilTest
     // Helpers
     // ---
 
-    public Date dateFrom(int year, int month, int day)
+    private Date dateFrom(int year, int month, int day)
     {
         return dateFrom(year, month, day, 0, 0, 0);
     }
 
-    public Date dateFrom(int year, int month, int day, int hour, int minute, int second)
+    private Date dateFrom(int year, int month, int day, int hour, int minute, int second)
     {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month - 1, day, hour, minute, second);
         return calendar.getTime();
     }
 
-    public Date utcDateFrom(int year, int month, int day)
+    private Date utcDateFrom(int year, int month, int day)
     {
         return utcDateFrom(year, month, day, 0, 0, 0);
     }
 
-    public Date utcDateFrom(int year, int month, int day, int hour, int minute, int second)
+    private Date utcDateFrom(int year, int month, int day, int hour, int minute, int second)
     {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month - 1, day, hour, minute, second);
