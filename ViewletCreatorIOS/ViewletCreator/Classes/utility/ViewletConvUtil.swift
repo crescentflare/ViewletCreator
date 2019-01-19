@@ -159,38 +159,6 @@ public class ViewletConvUtil {
                 // Convert color to RGB color space
                 let hue = CGFloat(colorComponents[0])
                 let alpha = CGFloat(colorComponents[4]) / 100
-                /* For Android
-                // No saturation
-                let value = CGFloat(colorComponents[2]) / 100
-                if (colorComponents[1] == 0) {
-                    return UIColor(red: value, green: value, blue: value, alpha: alpha)
-                }
-                
-                // Calculate intermediate values
-                let saturation = CGFloat(colorComponents[1]) / 100
-                let angle = (hue >= 360 ? 0 : hue)
-                let sector = angle / 60
-                let factorial = sector - floor(sector)
-                let p = value * (1 - saturation)
-                let q = value * (1 - (saturation * factorial))
-                let t = value * (1 - (saturation * (1 - factorial)))
-                
-                // Convert to color
-                switch(floor(sector)) {
-                case 0:
-                    return UIColor(red: value, green: t, blue: p, alpha: alpha)
-                case 1:
-                    return UIColor(red: q, green: value, blue: p, alpha: alpha)
-                case 2:
-                    return UIColor(red: p, green: value, blue: t, alpha: alpha)
-                case 3:
-                    return UIColor(red: p, green: q, blue: value, alpha: alpha)
-                case 4:
-                    return UIColor(red: t, green: p, blue: value, alpha: alpha)
-                default:
-                    return UIColor(red: value, green: p, blue: q, alpha: alpha)
-                }
-                */
                 return UIColor(hue: hue / 360, saturation: saturation, brightness: brightness, alpha: alpha)
             } else {
                 // Prepare conversion
