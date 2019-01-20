@@ -1,12 +1,15 @@
 package com.crescentflare.viewletcreator.utility;
 
-import android.view.View;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Viewlet creator utility: interface for color lookup
  * Integrates with ViewletMapUtil to look up custom color references
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public interface ViewletColorLookup
 {
-    Integer getColor(String refId);
+    @Nullable
+    Integer getColor(@NotNull String refId);
 }

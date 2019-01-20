@@ -6,6 +6,8 @@ import android.util.SparseArray;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,6 +19,7 @@ import java.util.Map;
  * Viewlet creator: loading viewlet properties
  * Load viewlet property definitions from JSON and parses them to attributes (to be used for creation or inflation)
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletLoader
 {
     // ---
@@ -46,6 +49,7 @@ public class ViewletLoader
     // Loading
     // ---
 
+    @Nullable
     public static Map<String, Object> loadAttributes(Context context, int rawResourceId)
     {
         // Obtain cached item if possible
@@ -59,22 +63,19 @@ public class ViewletLoader
         try
         {
             InputStream stream = context.getResources().openRawResource(rawResourceId);
-            if (stream != null)
+            Map<String, Object> loadedItem = null;
+            String jsonString = readFromInputStream(stream);
+            if (jsonString != null)
             {
-                Map<String, Object> loadedItem = null;
-                String jsonString = readFromInputStream(stream);
-                if (jsonString != null)
+                Type type = new TypeToken<Map<String, Object>>(){}.getType();
+                loadedItem = new Gson().fromJson(jsonString, type);
+                if (loadedItem != null)
                 {
-                    Type type = new TypeToken<Map<String, Object>>(){}.getType();
-                    loadedItem = new Gson().fromJson(jsonString, type);
-                    if (loadedItem != null)
-                    {
-                        instance.loadedAttributes.put(rawResourceId, loadedItem);
-                    }
+                    instance.loadedAttributes.put(rawResourceId, loadedItem);
                 }
-                stream.close();
-                return loadedItem;
             }
+            stream.close();
+            return loadedItem;
         }
         catch (IOException ignored)
         {
@@ -87,6 +88,7 @@ public class ViewletLoader
     // Helper
     // ---
 
+    @SuppressWarnings("CharsetObjectCanBeUsed")
     private static String readFromInputStream(InputStream stream)
     {
         final int bufferSize = 1024;

@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;
 import com.crescentflare.viewletcreator.utility.ViewletMapUtil;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.Map;
  * Viewlet creator: manages viewlets
  * The main interface to register and create new view components
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletCreator
 {
     // ---
@@ -46,7 +50,7 @@ public class ViewletCreator
     // Registration
     // ---
 
-    public static void registerViewlet(String name, Viewlet viewlet)
+    public static void registerViewlet(@Nullable String name, @Nullable Viewlet viewlet)
     {
         if (name != null)
         {
@@ -61,7 +65,7 @@ public class ViewletCreator
         }
     }
 
-    public static void registerStyle(String viewletName, String styleName, Map<String, Object> styleAttributes)
+    public static void registerStyle(@Nullable String viewletName, @Nullable String styleName, @Nullable Map<String, Object> styleAttributes)
     {
         if (viewletName != null && styleName != null)
         {
@@ -85,6 +89,7 @@ public class ViewletCreator
         }
     }
 
+    @NotNull
     public static List<String> registeredViewletNames()
     {
         return new ArrayList<>(instance.registeredViewlets.keySet());
@@ -95,12 +100,14 @@ public class ViewletCreator
     // Create and update
     // ---
 
-    public static View create(Context context, Map<String, Object> attributes, ViewGroup parent)
+    @Nullable
+    public static View create(@NotNull Context context, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent)
     {
         return create(context, attributes, parent, null);
     }
 
-    public static View create(Context context, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    @Nullable
+    public static View create(@NotNull Context context, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
     {
         String viewletName = findViewletNameInAttributes(attributes);
         if (viewletName != null)
@@ -109,23 +116,20 @@ public class ViewletCreator
             if (viewlet != null)
             {
                 View view = viewlet.create(context);
-                if (view != null)
-                {
-                    Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
-                    viewlet.update(view, mergedAttributes, parent, binder);
-                }
+                Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+                viewlet.update(view, mergedAttributes, parent, binder);
                 return view;
             }
         }
         return null;
     }
 
-    public static boolean inflateOn(View view, Map<String, Object> attributes, ViewGroup parent)
+    public static boolean inflateOn(@NotNull View view, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent)
     {
         return inflateOn(view, attributes, parent, null);
     }
 
-    public static boolean inflateOn(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public static boolean inflateOn(@NotNull View view, @Nullable Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
     {
         String viewletName = findViewletNameInAttributes(attributes);
         if (viewletName != null)
@@ -140,7 +144,7 @@ public class ViewletCreator
         return false;
     }
 
-    public static boolean canRecycle(View view, Map<String, Object> attributes)
+    public static boolean canRecycle(@Nullable View view, @Nullable Map<String, Object> attributes)
     {
         if (view != null && attributes != null)
         {
@@ -153,7 +157,8 @@ public class ViewletCreator
         return false;
     }
 
-    public static Viewlet findViewletInAttributes(Map<String, Object> attributes)
+    @Nullable
+    public static Viewlet findViewletInAttributes(@Nullable Map<String, Object> attributes)
     {
         String viewletName = ViewletMapUtil.optionalString(attributes, "viewlet", null);
         if (viewletName != null)
@@ -163,12 +168,14 @@ public class ViewletCreator
         return null;
     }
 
-    public static String findViewletNameInAttributes(Map<String, Object> attributes)
+    @Nullable
+    public static String findViewletNameInAttributes(@Nullable Map<String, Object> attributes)
     {
         return ViewletMapUtil.optionalString(attributes, "viewlet", null);
     }
 
-    private static Map<String, Object> attributesForStyle(String viewletName, String styleName)
+    @Nullable
+    private static Map<String, Object> attributesForStyle(@Nullable String viewletName, @Nullable String styleName)
     {
         if (viewletName != null)
         {
@@ -185,12 +192,13 @@ public class ViewletCreator
         return null;
     }
 
-    private static Map<String, Object> mergeAttributes(Map<String, Object> givenAttributes, Map<String, Object> fallbackAttributes)
+    @NotNull
+    private static Map<String, Object> mergeAttributes(@Nullable Map<String, Object> givenAttributes, @Nullable Map<String, Object> fallbackAttributes)
     {
         // Just return one of the attributes if the other is null
         if (fallbackAttributes == null)
         {
-            return givenAttributes;
+            return givenAttributes != null ? givenAttributes : new HashMap<String, Object>();
         }
         else if (givenAttributes == null)
         {
@@ -218,7 +226,8 @@ public class ViewletCreator
     // Sub-viewlet utilities
     // ---
 
-    public static Map<String, Object> attributesForSubViewlet(Object subViewletItem)
+    @Nullable
+    public static Map<String, Object> attributesForSubViewlet(@Nullable Object subViewletItem)
     {
         Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(subViewletItem);
         if (attributes != null)
@@ -232,10 +241,10 @@ public class ViewletCreator
         return null;
     }
 
-    public static List<Map<String, Object>> attributesForSubViewletList(Object subViewletItemList)
+    public static List<Map<String, Object>> attributesForSubViewletList(@Nullable Object subViewletItemList)
     {
         List<Map<String, Object>> viewletItemList = new ArrayList<>();
-        if (subViewletItemList != null && subViewletItemList instanceof List<?>)
+        if (subViewletItemList instanceof List<?>)
         {
             List<?> itemList = (List<?>) subViewletItemList;
             for (Object item : itemList)
@@ -261,8 +270,10 @@ public class ViewletCreator
 
     public interface Viewlet
     {
-        View create(Context context);
-        boolean update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder);
-        boolean canRecycle(View view, Map<String, Object> attributes);
+        @NotNull
+        View create(@NotNull Context context);
+
+        boolean update(@NotNull View view, @NotNull Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder);
+        boolean canRecycle(@NotNull View view, @NotNull Map<String, Object> attributes);
     }
 }

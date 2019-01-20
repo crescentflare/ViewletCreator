@@ -3,8 +3,10 @@ package com.crescentflare.viewletcreator.utility;
 import android.content.res.Resources;
 import android.graphics.Color;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,13 +14,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.TimeZone;
 
 /**
  * Viewlet creator utility: map access
  * Access values from a dynamic map easily and safely with data conversion
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ViewletMapUtil
 {
     // ---
@@ -28,12 +30,12 @@ public class ViewletMapUtil
     private static ViewletColorLookup colorLookup = null;
     private static ViewletDimensionLookup dimensionLookup = null;
 
-    public static void setColorLookup(ViewletColorLookup lookup)
+    public static void setColorLookup(@Nullable ViewletColorLookup lookup)
     {
         colorLookup = lookup;
     }
 
-    public static void setDimensionLookup(ViewletDimensionLookup lookup)
+    public static void setDimensionLookup(@Nullable ViewletDimensionLookup lookup)
     {
         dimensionLookup = lookup;
     }
@@ -43,8 +45,9 @@ public class ViewletMapUtil
     // Map conversion
     // ---
 
+    @Nullable
     @SuppressWarnings("unchecked")
-    public static Map<String, Object> asStringObjectMap(Object object)
+    public static Map<String, Object> asStringObjectMap(@Nullable Object object)
     {
         if (isMap(object))
         {
@@ -62,9 +65,9 @@ public class ViewletMapUtil
         return null;
     }
 
-    public static boolean isMap(Object object)
+    public static boolean isMap(@Nullable Object object)
     {
-        return object != null && object instanceof Map<?, ?>;
+        return object instanceof Map<?, ?>;
     }
 
 
@@ -72,33 +75,32 @@ public class ViewletMapUtil
     // Fetch and convert lists
     // ---
 
+    @NotNull
     @SuppressWarnings("unchecked")
-    public static List<Object> optionalObjectList(Map<String, Object> map, String key)
+    public static List<Object> optionalObjectList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
                 {
-                    if (list.get(0) instanceof Object)
-                    {
-                        return (List<Object>)object;
-                    }
+                    return (List<Object>)object;
                 }
             }
         }
         return new ArrayList<>();
     }
 
-    public static List<String> optionalStringList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<String> optionalStringList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -119,12 +121,13 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static List<Double> optionalDoubleList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<Double> optionalDoubleList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -145,12 +148,13 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static List<Float> optionalFloatList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<Float> optionalFloatList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -171,12 +175,13 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static List<Integer> optionalIntegerList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<Integer> optionalIntegerList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -197,12 +202,13 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static List<Boolean> optionalBooleanList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<Boolean> optionalBooleanList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -228,12 +234,13 @@ public class ViewletMapUtil
     // Fetch and convert view-related values
     // ---
 
-    public static List<Integer> optionalColorList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<Integer> optionalColorList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -254,12 +261,13 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static List<Integer> optionalDimensionList(Map<String, Object> map, String key)
+    @NotNull
+    public static List<Integer> optionalDimensionList(@Nullable Map<String, Object> map, @NotNull String key)
     {
         if (map != null)
         {
             Object object = map.get(key);
-            if (object != null && object instanceof List<?>)
+            if (object instanceof List<?>)
             {
                 List<?> list = (List<?>)object;
                 if (list.size() > 0)
@@ -280,7 +288,7 @@ public class ViewletMapUtil
         return new ArrayList<>();
     }
 
-    public static int optionalColor(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalColor(@Nullable Map<String, Object> map, @NotNull String key, int defaultValue)
     {
         if (map != null)
         {
@@ -293,7 +301,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static int optionalDimension(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalDimension(@Nullable Map<String, Object> map, @NotNull String key, int defaultValue)
     {
         if (map != null)
         {
@@ -311,7 +319,8 @@ public class ViewletMapUtil
     // Fetch and convert basic values
     // ---
 
-    public static Date optionalDate(Map<String, Object> map, String key, Date defaultValue)
+    @Nullable
+    public static Date optionalDate(@Nullable Map<String, Object> map, @NotNull String key, @Nullable Date defaultValue)
     {
         if (map != null)
         {
@@ -346,7 +355,8 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static String optionalString(Map<String, Object> map, String key, String defaultValue)
+    @Nullable
+    public static String optionalString(@Nullable Map<String, Object> map, @NotNull String key, @Nullable String defaultValue)
     {
         if (map != null)
         {
@@ -359,7 +369,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static double optionalDouble(Map<String, Object> map, String key, double defaultValue)
+    public static double optionalDouble(@Nullable Map<String, Object> map, @NotNull String key, double defaultValue)
     {
         if (map != null)
         {
@@ -372,7 +382,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static float optionalFloat(Map<String, Object> map, String key, float defaultValue)
+    public static float optionalFloat(@Nullable Map<String, Object> map, @NotNull String key, float defaultValue)
     {
         if (map != null)
         {
@@ -385,7 +395,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static int optionalInteger(Map<String, Object> map, String key, int defaultValue)
+    public static int optionalInteger(@Nullable Map<String, Object> map, @NotNull String key, int defaultValue)
     {
         if (map != null)
         {
@@ -398,7 +408,7 @@ public class ViewletMapUtil
         return defaultValue;
     }
 
-    public static boolean optionalBoolean(Map<String, Object> map, String key, boolean defaultValue)
+    public static boolean optionalBoolean(@Nullable Map<String, Object> map, @NotNull String key, boolean defaultValue)
     {
         if (map != null)
         {
@@ -416,7 +426,8 @@ public class ViewletMapUtil
     // Internal object conversion
     // ---
 
-    private static Integer objectToDimension(Object object)
+    @Nullable
+    private static Integer objectToDimension(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -486,10 +497,12 @@ public class ViewletMapUtil
         return null;
     }
 
-    private static Integer objectToColor(Object object)
+    @Nullable
+    private static Integer objectToColor(@Nullable Object object)
     {
         if (object instanceof String)
         {
+            // Handle lookup
             String colorString = (String)object;
             if (colorString.startsWith("$"))
             {
@@ -503,22 +516,154 @@ public class ViewletMapUtil
                 }
                 return null;
             }
-            if (colorString.length() > 0 && colorString.charAt(0) != '#')
+
+            // Handle formatted color string
+            if (colorString.startsWith("h") || colorString.startsWith("H"))
             {
-                colorString = "#" + colorString;
+                // Obtain color components for possible hue, saturation, value (brightness) / luminousity and alpha
+                int colorComponents[] = { 0, 100, 100, 100, 100 };
+                int inColorComponent = 0;
+                boolean useLuminousity = false;
+                for (int i = 0; i < colorString.length(); i++)
+                {
+                    char character = colorString.charAt(i);
+                    if (character >= '0' && character <= '9')
+                    {
+                        if (inColorComponent < colorComponents.length)
+                        {
+                            colorComponents[inColorComponent] = colorComponents[inColorComponent] * 10 + character - '0';
+                        }
+                    }
+                    else
+                    {
+                        switch (character)
+                        {
+                            case 'H':
+                            case 'h':
+                                inColorComponent = 0;
+                                break;
+                            case 'S':
+                            case 's':
+                                inColorComponent = 1;
+                                break;
+                            case 'V':
+                            case 'v':
+                                inColorComponent = 2;
+                                useLuminousity = false;
+                                break;
+                            case 'L':
+                            case 'l':
+                                inColorComponent = 3;
+                                useLuminousity = true;
+                                break;
+                            case 'A':
+                            case 'a':
+                                inColorComponent = 4;
+                                break;
+                            default:
+                                inColorComponent = 9999;
+                        }
+                        if (inColorComponent < colorComponents.length)
+                        {
+                            colorComponents[inColorComponent] = 0;
+                        }
+                    }
+                }
+
+                // When in HSL (luminousity) color space, convert to HSV first
+                float saturation = colorComponents[1] / 100.0f;
+                float brightness = colorComponents[2] / 100.0f;
+                if (useLuminousity)
+                {
+                    float luminousity = colorComponents[3] / 100.0f;
+                    float x = saturation * Math.min(1 - luminousity, luminousity);
+                    saturation = 2 * x / Math.max(luminousity + x, 0.000000001f);
+                    brightness = luminousity + x;
+                }
+
+                // No saturation
+                float hue = colorComponents[0];
+                int alpha = colorComponents[4] * 255 / 100;
+                int intBrightness = (int)(brightness * 255);
+                if (saturation == 0)
+                {
+                    return (alpha << 24) | (intBrightness << 16) | (intBrightness << 8) | intBrightness;
+                }
+
+                // Calculate intermediate values
+                float angle = (hue >= 360 ? 0 : hue);
+                float sector = angle / 60;
+                float factorial = sector - (float)Math.floor(sector);
+                int p = (int)(brightness * (1 - saturation) * 255);
+                int q = (int)(brightness * (1 - (saturation * factorial)) * 255);
+                int t = (int)(brightness * (1 - (saturation * (1 - factorial))) * 255);
+
+                // Convert to color
+                switch((int)Math.floor(sector))
+                {
+                    case 0:
+                        return (alpha << 24) | (intBrightness << 16) | (t << 8) | p;
+                    case 1:
+                        return (alpha << 24) | (q << 16) | (intBrightness << 8) | p;
+                    case 2:
+                        return (alpha << 24) | (p << 16) | (intBrightness << 8) | t;
+                    case 3:
+                        return (alpha << 24) | (p << 16) | (q << 8) | intBrightness;
+                    case 4:
+                        return (alpha << 24) | (t << 16) | (p << 8) | intBrightness;
+                    default:
+                        return (alpha << 24) | (intBrightness << 16) | (p << 8) | q;
+                }
             }
-            try
+            else
             {
-                return Color.parseColor(colorString);
-            }
-            catch (IllegalArgumentException ignored)
-            {
+                // Prepare conversion
+                int characterCount = colorString.length();
+                int startChar = 0;
+                if (colorString.startsWith("#"))
+                {
+                    startChar = 1;
+                    characterCount--;
+                }
+
+                // Continue conversion, only allow formats with 3/4 characters (short RGB or ARGB) and 6/8 characters (normal RGB or ARGB)
+                if (characterCount == 3 || characterCount == 4 || characterCount == 6 || characterCount == 8)
+                {
+                    try
+                    {
+                        int rgbValue = Integer.parseInt(colorString.substring(startChar), 16);
+                        if (characterCount <= 4)
+                        {
+                            int alpha = 0xf;
+                            int red = (rgbValue & 0xf00) >> 8;
+                            int green = (rgbValue & 0xf0) >> 4;
+                            int blue = rgbValue & 0xf;
+                            if (characterCount == 4)
+                            {
+                                alpha = (rgbValue & 0xf000) >> 12;
+                            }
+                            return ((alpha * 255 / 15) << 24) | ((red * 255 / 15) << 16) | ((green * 255 / 15) << 8) | (blue * 255 / 15);
+                        }
+                        else
+                        {
+                            if (characterCount == 6)
+                            {
+                                rgbValue |= 0xff000000;
+                            }
+                            return rgbValue;
+                        }
+                    }
+                    catch (Exception ignored)
+                    {
+                    }
+                }
             }
         }
         return null;
     }
 
-    private static String objectToString(Object object)
+    @Nullable
+    private static String objectToString(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -531,7 +676,8 @@ public class ViewletMapUtil
         return null;
     }
 
-    private static Double objectToDouble(Object object)
+    @Nullable
+    private static Double objectToDouble(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -562,7 +708,8 @@ public class ViewletMapUtil
         return null;
     }
 
-    private static Float objectToFloat(Object object)
+    @Nullable
+    private static Float objectToFloat(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -593,7 +740,8 @@ public class ViewletMapUtil
         return null;
     }
 
-    private static Integer objectToInteger(Object object)
+    @Nullable
+    private static Integer objectToInteger(@Nullable Object object)
     {
         if (object instanceof String)
         {
@@ -632,7 +780,8 @@ public class ViewletMapUtil
         return null;
     }
 
-    private static Boolean objectToBoolean(Object object)
+    @Nullable
+    private static Boolean objectToBoolean(@Nullable Object object)
     {
         if (object instanceof String)
         {

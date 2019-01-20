@@ -49,6 +49,11 @@ class Tests: XCTestCase {
     func testAsColor() {
         XCTAssertEqual(UIColor.red, ViewletConvUtil.asColor(value: "#ff0000"))
         XCTAssertEqual(UIColor(red: 0, green: 0, blue: 0, alpha: 0), ViewletConvUtil.asColor(value: "#00000000"))
+        XCTAssertEqual(UIColor.yellow, ViewletConvUtil.asColor(value: "#ff0"))
+        XCTAssertEqual(UIColor(red: 1, green: 1, blue: 1, alpha: 0), ViewletConvUtil.asColor(value: "#0fff"))
+        XCTAssertEqual(UIColor(hue: 259.0 / 360, saturation: 99.0 / 100, brightness: 10.0 / 100, alpha: 1), ViewletConvUtil.asColor(value: "h259s99v10"))
+        XCTAssertEqual(UIColor(hue: 164.0 / 360, saturation: 83.0 / 100, brightness: 95.0 / 100, alpha: 0.5), ViewletConvUtil.asColor(value: "h164s83v95a50"))
+        XCTAssertEqual(UIColor(red: 0.3159, green: 0.40976, blue: 0.4641, alpha: 0.25), ViewletConvUtil.asColor(value: "H202 S19 L39 A25"))
     }
     
     func testAsPointValue() {

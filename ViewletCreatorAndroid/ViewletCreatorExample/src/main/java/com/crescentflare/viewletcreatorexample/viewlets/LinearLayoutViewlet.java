@@ -9,6 +9,9 @@ import com.crescentflare.viewletcreator.ViewletCreator;
 import com.crescentflare.viewletcreator.binder.ViewletBinder;
 import com.crescentflare.viewletcreator.utility.ViewletMapUtil;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 import java.util.Map;
 
@@ -18,14 +21,15 @@ import java.util.Map;
  */
 public class LinearLayoutViewlet implements ViewletCreator.Viewlet
 {
+    @NotNull
     @Override
-    public View create(Context context)
+    public View create(@NotNull Context context)
     {
         return new LinearLayout(context);
     }
 
     @Override
-    public boolean update(View view, Map<String, Object> attributes, ViewGroup parent, ViewletBinder binder)
+    public boolean update(@NotNull View view, @NotNull Map<String, Object> attributes, @Nullable ViewGroup parent, @Nullable ViewletBinder binder)
     {
         if (view instanceof LinearLayout)
         {
@@ -89,7 +93,7 @@ public class LinearLayoutViewlet implements ViewletCreator.Viewlet
     }
 
     @Override
-    public boolean canRecycle(View view, Map<String, Object> attributes)
+    public boolean canRecycle(@NotNull View view, @NotNull Map<String, Object> attributes)
     {
         return view instanceof LinearLayout;
     }
