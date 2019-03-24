@@ -455,15 +455,25 @@ public class ViewletMapUtil
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = Resources.getSystem().getDisplayMetrics().density;
             }
-            else if (densityString.endsWith("wp"))
+            else if (densityString.endsWith("wp") || densityString.endsWith("vw"))
             {
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = (float)Resources.getSystem().getDisplayMetrics().widthPixels / 100;
             }
-            else if (densityString.endsWith("hp"))
+            else if (densityString.endsWith("hp") || densityString.endsWith("vh"))
             {
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100;
+            }
+            else if (densityString.endsWith("minp") || densityString.endsWith("vmin"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 4);
+                density = Math.min((float)Resources.getSystem().getDisplayMetrics().widthPixels / 100, (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100);
+            }
+            else if (densityString.endsWith("maxp") || densityString.endsWith("vmax"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 4);
+                density = Math.max((float)Resources.getSystem().getDisplayMetrics().widthPixels / 100, (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100);
             }
             else if (densityString.endsWith("px"))
             {
@@ -631,16 +641,16 @@ public class ViewletMapUtil
                 {
                     try
                     {
-                        int rgbValue = Integer.parseInt(colorString.substring(startChar), 16);
+                        long rgbValue = Long.parseLong(colorString.substring(startChar), 16);
                         if (characterCount <= 4)
                         {
                             int alpha = 0xf;
-                            int red = (rgbValue & 0xf00) >> 8;
-                            int green = (rgbValue & 0xf0) >> 4;
-                            int blue = rgbValue & 0xf;
+                            int red = (int)((rgbValue & 0xf00) >> 8);
+                            int green = (int)((rgbValue & 0xf0) >> 4);
+                            int blue = (int)(rgbValue & 0xf);
                             if (characterCount == 4)
                             {
-                                alpha = (rgbValue & 0xf000) >> 12;
+                                alpha = (int)((rgbValue & 0xf000) >> 12);
                             }
                             return ((alpha * 255 / 15) << 24) | ((red * 255 / 15) << 16) | ((green * 255 / 15) << 8) | (blue * 255 / 15);
                         }
@@ -650,7 +660,7 @@ public class ViewletMapUtil
                             {
                                 rgbValue |= 0xff000000;
                             }
-                            return rgbValue;
+                            return (int)rgbValue;
                         }
                     }
                     catch (Exception ignored)

@@ -204,12 +204,18 @@ public class ViewletConvUtil {
             }
             if stringValue.hasSuffix("dp") || stringValue.hasSuffix("sp") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
-            } else if stringValue.hasSuffix("wp") {
+            } else if stringValue.hasSuffix("wp") || stringValue.hasSuffix("vw") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.width / 100
-            } else if stringValue.hasSuffix("hp") {
+            } else if stringValue.hasSuffix("hp") || stringValue.hasSuffix("vh") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.height / 100
+            } else if stringValue.hasSuffix("minp") || stringValue.hasSuffix("vmin") {
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -4)])
+                multiplier = min(UIScreen.main.bounds.width / 100, UIScreen.main.bounds.height / 100)
+            } else if stringValue.hasSuffix("maxp") || stringValue.hasSuffix("vmax") {
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -4)])
+                multiplier = max(UIScreen.main.bounds.width / 100, UIScreen.main.bounds.height / 100)
             } else if stringValue.hasSuffix("px") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = 1 / UIScreen.main.scale
