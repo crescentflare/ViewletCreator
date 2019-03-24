@@ -204,10 +204,10 @@ public class ViewletConvUtil {
             }
             if stringValue.hasSuffix("dp") || stringValue.hasSuffix("sp") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
-            } else if stringValue.hasSuffix("wp") {
+            } else if stringValue.hasSuffix("wp") || stringValue.hasSuffix("vw") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.width / 100
-            } else if stringValue.hasSuffix("hp") {
+            } else if stringValue.hasSuffix("hp") || stringValue.hasSuffix("vh") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.height / 100
             } else if stringValue.hasSuffix("px") {

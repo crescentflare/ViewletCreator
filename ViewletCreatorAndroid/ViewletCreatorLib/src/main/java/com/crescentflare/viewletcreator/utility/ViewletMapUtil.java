@@ -455,12 +455,12 @@ public class ViewletMapUtil
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = Resources.getSystem().getDisplayMetrics().density;
             }
-            else if (densityString.endsWith("wp"))
+            else if (densityString.endsWith("wp") || densityString.endsWith("vw"))
             {
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = (float)Resources.getSystem().getDisplayMetrics().widthPixels / 100;
             }
-            else if (densityString.endsWith("hp"))
+            else if (densityString.endsWith("hp") || densityString.endsWith("vh"))
             {
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100;
