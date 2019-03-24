@@ -465,6 +465,16 @@ public class ViewletMapUtil
                 densityString = densityString.substring(0, densityString.length() - 2);
                 density = (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100;
             }
+            else if (densityString.endsWith("minp") || densityString.endsWith("vmin"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 4);
+                density = Math.min((float)Resources.getSystem().getDisplayMetrics().widthPixels / 100, (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100);
+            }
+            else if (densityString.endsWith("maxp") || densityString.endsWith("vmax"))
+            {
+                densityString = densityString.substring(0, densityString.length() - 4);
+                density = Math.max((float)Resources.getSystem().getDisplayMetrics().widthPixels / 100, (float)Resources.getSystem().getDisplayMetrics().heightPixels / 100);
+            }
             else if (densityString.endsWith("px"))
             {
                 densityString = densityString.substring(0, densityString.length() - 2);

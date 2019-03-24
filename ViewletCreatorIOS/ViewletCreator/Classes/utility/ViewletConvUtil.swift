@@ -210,6 +210,12 @@ public class ViewletConvUtil {
             } else if stringValue.hasSuffix("hp") || stringValue.hasSuffix("vh") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = UIScreen.main.bounds.height / 100
+            } else if stringValue.hasSuffix("minp") || stringValue.hasSuffix("vmin") {
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -4)])
+                multiplier = min(UIScreen.main.bounds.width / 100, UIScreen.main.bounds.height / 100)
+            } else if stringValue.hasSuffix("maxp") || stringValue.hasSuffix("vmax") {
+                stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -4)])
+                multiplier = max(UIScreen.main.bounds.width / 100, UIScreen.main.bounds.height / 100)
             } else if stringValue.hasSuffix("px") {
                 stringValue = String(stringValue[..<stringValue.index(stringValue.endIndex, offsetBy: -2)])
                 multiplier = 1 / UIScreen.main.scale

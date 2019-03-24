@@ -43,7 +43,10 @@ class Tests: XCTestCase {
         let pixel = 1 / UIScreen.main.scale
         let widthPoint = CGFloat(UIScreen.main.bounds.width / 100)
         let heightPoint = CGFloat(UIScreen.main.bounds.height / 100)
-        XCTAssertEqual([ pixel, 10, 4, 9, CGFloat(Float(10)) * widthPoint, CGFloat(Float(5.2)) * heightPoint], ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp", "10wp", "5.2hp" ]))
+        XCTAssertEqual(
+            [ pixel, 10, 4, 9, CGFloat(Float(10)) * widthPoint, CGFloat(Float(5.2)) * heightPoint, CGFloat(Float(1.94)) * min(widthPoint, heightPoint), CGFloat(Float(-2.4)) * max(widthPoint, heightPoint)],
+            ViewletConvUtil.asDimensionArray(value: [ "1px", "10dp", "4sp", "9dp", "10wp", "5.2hp", "1.94minp", "-2.4maxp" ])
+        )
     }
 
     func testAsColor() {
@@ -67,6 +70,8 @@ class Tests: XCTestCase {
         XCTAssertEqual(8, ViewletConvUtil.asDimension(value: 8))
         XCTAssertEqual(widthPoint * 12.5, ViewletConvUtil.asDimension(value: "12.5wp"))
         XCTAssertEqual(heightPoint * 99, ViewletConvUtil.asDimension(value: "99hp"))
+        XCTAssertEqual(min(widthPoint, heightPoint) * 45, ViewletConvUtil.asDimension(value: "45minp"))
+        XCTAssertEqual(max(widthPoint, heightPoint) * 3, ViewletConvUtil.asDimension(value: "3maxp"))
     }
     
 
