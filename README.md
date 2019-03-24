@@ -17,6 +17,7 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 * Adds utilities to safely fetch view properties from a JSON structure with data conversion
 * Share colors and coordinates/sizes by using color and dimension tables
 * Define styles with default attributes to fall back on for each viewlet
+* Define sub-attributes to be merged into the attribute list, or attributes to be excluded. For example, to define extra attributes which are specific for a platform 
 
 
 ### iOS integration guide
@@ -24,7 +25,7 @@ Use the library together with [UniLayout](https://github.com/crescentflare/UniLa
 The library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod "ViewletCreator", '~> 0.4.4'
+pod "ViewletCreator", '~> 0.5.0'
 ```
 
 The above version is for Swift 4.2. For older Swift versions use the following:
@@ -38,7 +39,7 @@ The above version is for Swift 4.2. For older Swift versions use the following:
 When using gradle, the library can easily be imported into the build.gradle file of your project. Add the following dependency:
 
 ```
-compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.4.4'
+compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.5.0'
 ```
 
 Make sure that jcenter is added as a repository.
