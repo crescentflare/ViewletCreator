@@ -631,16 +631,16 @@ public class ViewletMapUtil
                 {
                     try
                     {
-                        int rgbValue = Integer.parseInt(colorString.substring(startChar), 16);
+                        long rgbValue = Long.parseLong(colorString.substring(startChar), 16);
                         if (characterCount <= 4)
                         {
                             int alpha = 0xf;
-                            int red = (rgbValue & 0xf00) >> 8;
-                            int green = (rgbValue & 0xf0) >> 4;
-                            int blue = rgbValue & 0xf;
+                            int red = (int)((rgbValue & 0xf00) >> 8);
+                            int green = (int)((rgbValue & 0xf0) >> 4);
+                            int blue = (int)(rgbValue & 0xf);
                             if (characterCount == 4)
                             {
-                                alpha = (rgbValue & 0xf000) >> 12;
+                                alpha = (int)((rgbValue & 0xf000) >> 12);
                             }
                             return ((alpha * 255 / 15) << 24) | ((red * 255 / 15) << 16) | ((green * 255 / 15) << 8) | (blue * 255 / 15);
                         }
@@ -650,7 +650,7 @@ public class ViewletMapUtil
                             {
                                 rgbValue |= 0xff000000;
                             }
-                            return rgbValue;
+                            return (int)rgbValue;
                         }
                     }
                     catch (Exception ignored)
