@@ -35,6 +35,8 @@ public class ViewletCreator
 
     private Map<String, Viewlet> registeredViewlets = new HashMap<>();
     private Map<String, Map<String, Map<String, Object>>> registeredStyles = new HashMap<>();
+    private List<String> mergeSubAttributes = new ArrayList<>();
+    private List<String> excludeAttributes = new ArrayList<>();
 
 
     // ---
@@ -95,6 +97,16 @@ public class ViewletCreator
         return new ArrayList<>(instance.registeredViewlets.keySet());
     }
 
+    public static void setMergeSubAttributes(List<String> attributeNames)
+    {
+        instance.mergeSubAttributes = attributeNames;
+    }
+
+    public static void setExcludeAttributes(List<String> attributeNames)
+    {
+        instance.excludeAttributes = attributeNames;
+    }
+
 
     // ---
     // Create and update
@@ -116,7 +128,7 @@ public class ViewletCreator
             if (viewlet != null)
             {
                 View view = viewlet.create(context);
-                Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+                Map<String, Object> mergedAttributes = processAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)), instance.mergeSubAttributes, instance.excludeAttributes);
                 viewlet.update(view, mergedAttributes, parent, binder);
                 return view;
             }
@@ -137,7 +149,7 @@ public class ViewletCreator
             Viewlet viewlet = instance.registeredViewlets.get(viewletName);
             if (viewlet != null)
             {
-                Map<String, Object> mergedAttributes = mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
+                Map<String, Object> mergedAttributes = processAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)), instance.mergeSubAttributes, instance.excludeAttributes);
                 return viewlet.update(view, mergedAttributes, parent, binder);
             }
         }
@@ -174,6 +186,53 @@ public class ViewletCreator
         return ViewletMapUtil.optionalString(attributes, "viewlet", null);
     }
 
+
+    // ---
+    // Sub-viewlet utilities
+    // ---
+
+    @Nullable
+    public static Map<String, Object> attributesForSubViewlet(@Nullable Object subViewletItem)
+    {
+        Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(subViewletItem);
+        if (attributes != null)
+        {
+            String viewletName = findViewletNameInAttributes(attributes);
+            if (viewletName != null)
+            {
+                return processAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)), instance.mergeSubAttributes, instance.excludeAttributes);
+            }
+        }
+        return null;
+    }
+
+    public static List<Map<String, Object>> attributesForSubViewletList(@Nullable Object subViewletItemList)
+    {
+        List<Map<String, Object>> viewletItemList = new ArrayList<>();
+        if (subViewletItemList instanceof List<?>)
+        {
+            List<?> itemList = (List<?>) subViewletItemList;
+            for (Object item : itemList)
+            {
+                Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(item);
+                if (attributes != null)
+                {
+                    String viewletName = findViewletNameInAttributes(attributes);
+                    if (viewletName != null)
+                    {
+                        viewletItemList.add(processAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)), instance.mergeSubAttributes, instance.excludeAttributes));
+                    }
+                }
+            }
+        }
+        return viewletItemList;
+    }
+
+
+    // ---
+    // Attribute processing
+    // ---
+
     @Nullable
     private static Map<String, Object> attributesForStyle(@Nullable String viewletName, @Nullable String styleName)
     {
@@ -190,6 +249,25 @@ public class ViewletCreator
             }
         }
         return null;
+    }
+
+    @NotNull
+    private static Map<String, Object> processAttributes(@Nullable Map<String, Object> givenAttributes, @Nullable Map<String, Object> fallbackAttributes, List<String> mergeSubAttributes, List<String> excludeAttributes)
+    {
+        Map<String, Object> result = mergeAttributes(givenAttributes, fallbackAttributes);
+        for (String mergeSubAttribute : mergeSubAttributes)
+        {
+            Map<String, Object> item = ViewletMapUtil.asStringObjectMap(result.get(mergeSubAttribute));
+            if (item != null)
+            {
+                result = mergeAttributes(item, result);
+            }
+        }
+        for (String excludeAttribute : excludeAttributes)
+        {
+            result.remove(excludeAttribute);
+        }
+        return result;
     }
 
     @NotNull
@@ -219,48 +297,6 @@ public class ViewletCreator
             }
         }
         return mergedAttributes;
-    }
-
-
-    // ---
-    // Sub-viewlet utilities
-    // ---
-
-    @Nullable
-    public static Map<String, Object> attributesForSubViewlet(@Nullable Object subViewletItem)
-    {
-        Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(subViewletItem);
-        if (attributes != null)
-        {
-            String viewletName = findViewletNameInAttributes(attributes);
-            if (viewletName != null)
-            {
-                return mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null)));
-            }
-        }
-        return null;
-    }
-
-    public static List<Map<String, Object>> attributesForSubViewletList(@Nullable Object subViewletItemList)
-    {
-        List<Map<String, Object>> viewletItemList = new ArrayList<>();
-        if (subViewletItemList instanceof List<?>)
-        {
-            List<?> itemList = (List<?>) subViewletItemList;
-            for (Object item : itemList)
-            {
-                Map<String, Object> attributes = ViewletMapUtil.asStringObjectMap(item);
-                if (attributes != null)
-                {
-                    String viewletName = findViewletNameInAttributes(attributes);
-                    if (viewletName != null)
-                    {
-                        viewletItemList.add(mergeAttributes(attributes, attributesForStyle(viewletName, ViewletMapUtil.optionalString(attributes, "viewletStyle", null))));
-                    }
-                }
-            }
-        }
-        return viewletItemList;
     }
 
 
