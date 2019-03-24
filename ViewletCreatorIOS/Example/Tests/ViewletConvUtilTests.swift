@@ -49,6 +49,7 @@ class Tests: XCTestCase {
     func testAsColor() {
         XCTAssertEqual(UIColor.red, ViewletConvUtil.asColor(value: "#ff0000"))
         XCTAssertEqual(UIColor(red: 0, green: 0, blue: 0, alpha: 0), ViewletConvUtil.asColor(value: "#00000000"))
+        XCTAssertEqual(UIColor(red: 0, green: 0, blue: 0, alpha: 176.0 / 255), ViewletConvUtil.asColor(value: "#b0000000"))
         XCTAssertEqual(UIColor.yellow, ViewletConvUtil.asColor(value: "#ff0"))
         XCTAssertEqual(UIColor(red: 1, green: 1, blue: 1, alpha: 0), ViewletConvUtil.asColor(value: "#0fff"))
         XCTAssertEqual(UIColor(hue: 259.0 / 360, saturation: 99.0 / 100, brightness: 10.0 / 100, alpha: 1), ViewletConvUtil.asColor(value: "h259s99v10"))
