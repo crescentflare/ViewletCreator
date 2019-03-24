@@ -68,7 +68,7 @@ public class ViewletCreator {
         return shared.registeredViewlets.keys.map({ $0 })
     }
     
-    public static func setMergeSubAttribbutes(_ attributeNames: [String]) {
+    public static func setMergeSubAttributes(_ attributeNames: [String]) {
         shared.mergeSubAttributes = attributeNames
     }
     
