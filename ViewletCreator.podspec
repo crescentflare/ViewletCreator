@@ -9,6 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ViewletCreator'
   s.version          = '0.5.1'
+  s.swift_version    = '5.0'
   s.summary          = 'ViewletCreator creates layouts from JSON for both Android and iOS.'
 
 # This description is used to generate tags and improve search results.
