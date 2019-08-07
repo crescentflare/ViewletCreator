@@ -1,23 +1,6 @@
 # Viewlet creator
 
-[![CI Status](http://img.shields.io/travis/crescentflare/ViewletCreator.svg?style=flat)](https://travis-ci.org/crescentflare/ViewletCreator)
-[![License](https://img.shields.io/cocoapods/l/ViewletCreator.svg?style=flat)](http://cocoapods.org/pods/ViewletCreator)
-[![Version](https://img.shields.io/cocoapods/v/ViewletCreator.svg?style=flat)](http://cocoapods.org/pods/ViewletCreator)
-[![Version](https://img.shields.io/bintray/v/crescentflare/maven/ViewletCreatorLib.svg?style=flat)](https://bintray.com/crescentflare/maven/ViewletCreatorLib)
-
-Viewlet creator is a project to allow creation of layouts and view components from JSON on both iOS and Android. It provides a way to make UI development more modular and dynamic. The example demonstrates how to use viewlet creator to prototype user interfaces real-time on multiple devices simultaneously.
-
-Use the library together with [UniLayout](https://github.com/crescentflare/UniLayout) for simultaneous multi-platform development of UI on both iOS and Android.
-
-
-### Features
-
-* Provides a structure to create view components from JSON
-* Register viewlets in the viewlet creator to allow viewlets within viewlets (nested items)
-* Adds utilities to safely fetch view properties from a JSON structure with data conversion
-* Share colors and coordinates/sizes by using color and dimension tables
-* Define styles with default attributes to fall back on for each viewlet
-* Define sub-attributes to be merged into the attribute list, or attributes to be excluded. For example, to define extra attributes which are specific for a platform 
+A library to create views from json-based data for both Android and iOS.
 
 
 ### iOS integration guide
@@ -40,17 +23,12 @@ The above version is for Swift 5.0. For older Swift versions use the following:
 When using gradle, the library can easily be imported into the build.gradle file of your project. Add the following dependency:
 
 ```
-compile 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.5.0'
+implementation 'com.crescentflare.viewletcreator:ViewletCreatorLib:0.5.0'
 ```
 
 Make sure that jcenter is added as a repository.
 
 
-### Example
-
-The provided example shows how to create viewlets, register them and use them to make and prototype UI. In the example, it will use autolayout on iOS and viewgroup related layouts for Android.
-
-
 ### Status
 
-The library is new but already provides a range of useful functionality. More features may be added in the future.
+This library has evolved into [JsonInflator](https://github.com/crescentflare/JsonInflator). The new library is able to create views and other objects from json-based data and will continue development.
